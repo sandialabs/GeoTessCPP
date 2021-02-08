@@ -1,0 +1,94 @@
+# ****************************************************************************
+# 
+# Copyright 2009 Sandia Corporation. Under the terms of Contract
+# DE-AC04-94AL85000 with Sandia Corporation, the U.S. Government
+# retains certain rights in this software.
+# 
+# BSD Open Source License.
+# All rights reserved.
+# 
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+# 
+#    * Redistributions of source code must retain the above copyright notice,
+#      this list of conditions and the following disclaimer.
+#    * Redistributions in binary form must reproduce the above copyright
+#      notice, this list of conditions and the following disclaimer in the
+#      documentation and/or other materials provided with the distribution.
+#    * Neither the name of Sandia National Laboratories nor the names of its
+#      contributors may be used to endorse or promote products derived from
+#      this software without specific prior written permission.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# POSSIBILITY OF SUCH DAMAGE.
+#
+# ****************************************************************************
+
+#-------------------------------------------------------------------------------
+# Define Program, Program Directory, Program Version, Install Directories, and
+# Target Names ... set mode to default (empty)
+#-------------------------------------------------------------------------------
+
+INCLUDE_DIR			= include
+INCLUDE_GEOTESSCPP		= ..\GeoTessCPP\include
+LIB_GEOTESSCPP			= ..\GeoTessCPP\lib
+CV = @
+
+RM = del
+
+CC = cl
+CCFLAGS = /EHsc /nologo /D "WIN32" /D "_WINDOWS" /D "_CONSOLE" /D "_UNICODE" /D "UNICODE" /errorReport:prompt /W1 /Zi /O2 /Oi /D "NDEBUG" /FD /MD /Gy -Iinclude
+COMPILE = @${CC} ${CCFLAGS} 
+
+#-------------------------------------------------------------------------------
+# targets
+#-------------------------------------------------------------------------------
+
+
+all : info GeoTessModelExtended.o InterrogateModel.o PopulateModel2D.o PopulateModel3D.o ExtendedModel.o done
+
+GeoTessModelExtended.o :
+	@echo ${COMPILE} /c src/GeoTessModelExtended.cc libgeotesscpp.lib -I${INCLUDE_DIR} -I${INCLUDE_GEOTESSCPP} -link -LIBPATH:"${LIB_GEOTESSCPP}"
+	${COMPILE} /c src/GeoTessModelExtended.cc libgeotesscpp.lib -I${INCLUDE_DIR} -I${INCLUDE_GEOTESSCPP} -link -LIBPATH:"${LIB_GEOTESSCPP}"
+
+InterrogateModel.o :
+	@echo ${COMPILE} src/InterrogateModel.cc libgeotesscpp.lib -I${INCLUDE_DIR} -I${INCLUDE_GEOTESSCPP} -link -LIBPATH:"${LIB_GEOTESSCPP}" -out:bin/interrogatemodel
+	${COMPILE} src/InterrogateModel.cc libgeotesscpp.lib -I${INCLUDE_DIR} -I${INCLUDE_GEOTESSCPP} -link -LIBPATH:"${LIB_GEOTESSCPP}" -out:bin/interrogatemodel.exe
+
+PopulateModel2D.o :
+	@echo ${COMPILE} src/PopulateModel2D.cc libgeotesscpp.lib -I${INCLUDE_DIR} -I${INCLUDE_GEOTESSCPP} -link -LIBPATH:"${LIB_GEOTESSCPP}" -out:bin/populatemodel2d
+	${COMPILE} src/PopulateModel2D.cc libgeotesscpp.lib -I${INCLUDE_DIR} -I${INCLUDE_GEOTESSCPP} -link -LIBPATH:"${LIB_GEOTESSCPP}" -out:bin/populatemodel2d.exe
+
+PopulateModel3D.o :
+	@echo ${COMPILE} src/PopulateModel3D.cc libgeotesscpp.lib -I${INCLUDE_DIR} -I${INCLUDE_GEOTESSCPP} -link -LIBPATH:"${LIB_GEOTESSCPP}" -out:bin/populatemodel3d
+	${COMPILE} src/PopulateModel3D.cc libgeotesscpp.lib -I${INCLUDE_DIR} -I${INCLUDE_GEOTESSCPP} -link -LIBPATH:"${LIB_GEOTESSCPP}" -out:bin/populatemodel3d.exe
+
+ExtendedModel.o :
+	@echo ${COMPILE} src/ExtendedModel.cc GeoTessModelExtended.obj libgeotesscpp.lib -I${INCLUDE_DIR} -I${INCLUDE_GEOTESSCPP} -link -LIBPATH:"${LIB_GEOTESSCPP}" -out:bin/extendedmodel
+	${COMPILE} src/ExtendedModel.cc GeoTessModelExtended.obj libgeotesscpp.lib -I${INCLUDE_DIR} -I${INCLUDE_GEOTESSCPP} -link -LIBPATH:"${LIB_GEOTESSCPP}" -out:bin/extendedmodel.exe
+
+clean_objs:
+	@echo "removing object files"
+	@$[RM} *.obj
+
+clean: clean_objs
+	@echo "removing executable files"
+	@${RM} bin\*
+
+info :
+	@ echo "========================================="
+	@ echo "Building GeoTessCPPExamples on" $(OS) "with" $(MACHINE)
+	@ $(CC)
+
+done :
+	@echo "Done building GeoTessCPPExamples"
+	@ echo ""

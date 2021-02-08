@@ -1,0 +1,140 @@
+# ****************************************************************************
+#
+# Copyright 2009 Sandia Corporation. Under the terms of Contract
+# DE-AC04-94AL85000 with Sandia Corporation, the U.S. Government
+# retains certain rights in this software.
+#
+# BSD Open Source License.
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#
+#    * Redistributions of source code must retain the above copyright notice,
+#      this list of conditions and the following disclaimer.
+#    * Redistributions in binary form must reproduce the above copyright
+#      notice, this list of conditions and the following disclaimer in the
+#      documentation and/or other materials provided with the distribution.
+#    * Neither the name of Sandia National Laboratories nor the names of its
+#      contributors may be used to endorse or promote products derived from
+#      this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# POSSIBILITY OF SUCH DAMAGE.
+#
+# ****************************************************************************
+
+#To change between building 64 and 32 bit binaries, specify on the command line a value for ARCH.
+#Can be either "32bit" or "64bit".  Default is 64bit.  Example: "make ARCH=32bit"
+#
+
+INCLUDE_GEOTESSCPP		= ../GeoTessCPP/include
+LIB_GEOTESSCPP			= ../GeoTessCPP/lib
+
+ifeq ($(ARCH),32bit)
+MACHINE=-m32
+else
+MACHINE=-m64
+endif
+
+OS := $(shell uname -s)
+# OS-specific compiler variables
+ifeq ($(OS),SunOS)
+	CC = CC
+	CCFLAGS = $(MACHINE) -Kpic -xO5 -dalign -fns -fsimple=2 -ftrap=%none
+	COMPILE = @${CC} ${CCFLAGS} -Iinclude -I${INCLUDE_GEOTESSCPP} -c
+	# LINK    = @${CC} $(MACHINE) -L${LIB_GEOTESSCPP} -lgeotesscpp GeoTessModelExtended.o
+	LINK_PREFIX = @${CC} $(MACHINE)
+	LINK_POSTFIX = GeoTessModelExtended.o -L${LIB_GEOTESSCPP} -lgeotesscpp -lstdc++ -lm
+	VERSION_FLAG = -V
+endif
+ifeq ($(OS),Linux)
+	CC = gcc
+	CCFLAGS = $(MACHINE) -O3 -fPIC -ffast-math -fno-trapping-math
+	COMPILE = @${CC} ${CCFLAGS} -Iinclude -I${INCLUDE_GEOTESSCPP} -c
+	# LINK = @${CC} $(CCFLAGS) -L${LIB_GEOTESSCPP} -lgeotesscpp -lstdc++ -lm GeoTessModelExtended.o
+	LINK_PREFIX = @${CC} $(CCFLAGS)
+	LINK_POSTFIX = GeoTessModelExtended.o -L${LIB_GEOTESSCPP} -lgeotesscpp -lstdc++ -lm
+	VERSION_FLAG = --version
+endif
+ifeq ($(OS),Darwin)
+	CC = g++
+	COMPILE = @${CC} ${MACHINE} -O3 -Iinclude -I${INCLUDE_GEOTESSCPP} -c
+	# LINK = @${CC} $(MACHINE) -L${LIB_GEOTESSCPP} -lgeotesscpp -lstdc++ GeoTessModelExtended.o
+	LINK_PREFIX = @${CC} $(MACHINE)
+	LINK_POSTFIX = GeoTessModelExtended.o -L${LIB_GEOTESSCPP} -lgeotesscpp -lstdc++ -lm
+	VERSION_FLAG = --version
+endif
+
+#-------------------------------------------------------------------------------
+
+all : info makedir GeoTessModelExtended.o InterrogateModel.o PopulateModel2D.o PopulateModel3D.o ExtendedModel.o Tomography2D.o link done
+
+GeoTessModelExtended.o :
+	@echo ${COMPILE} src/GeoTessModelExtended.cc
+	${COMPILE} src/GeoTessModelExtended.cc
+
+InterrogateModel.o :
+	@echo ${COMPILE} src/InterrogateModel.cc
+	${COMPILE} src/InterrogateModel.cc
+
+PopulateModel2D.o :
+	@echo ${COMPILE} src/PopulateModel2D.cc
+	${COMPILE} src/PopulateModel2D.cc
+
+PopulateModel3D.o :
+	@echo ${COMPILE} src/PopulateModel3D.cc
+	${COMPILE} src/PopulateModel3D.cc
+
+ExtendedModel.o :
+	@echo ${COMPILE} src/ExtendedModel.cc
+	${COMPILE} src/ExtendedModel.cc
+
+Tomography2D.o :
+	@echo ${COMPILE} src/Tomography2D.cc
+	${COMPILE} src/Tomography2D.cc
+
+link :
+	@echo
+	@echo "linking executables"
+	@echo ${LINK_PREFIX} -o bin/interrogatemodel InterrogateModel.o ${LINK_POSTFIX}
+	${LINK_PREFIX} -o bin/interrogatemodel InterrogateModel.o ${LINK_POSTFIX}
+	@echo ${LINK_PREFIX} -o bin/populatemodel2d PopulateModel2D.o ${LINK_POSTFIX}
+	${LINK_PREFIX} -o bin/populatemodel2d PopulateModel2D.o ${LINK_POSTFIX}
+	@echo ${LINK_PREFIX} -o bin/populatemodel3d PopulateModel3D.o ${LINK_POSTFIX}
+	${LINK_PREFIX} -o bin/populatemodel3d PopulateModel3D.o ${LINK_POSTFIX}
+	@echo ${LINK_PREFIX} -o bin/extendedmodel ExtendedModel.o ${LINK_POSTFIX}
+	${LINK_PREFIX} -o bin/extendedmodel ExtendedModel.o ${LINK_POSTFIX}
+	@echo ${LINK_PREFIX} -o bin/tomography2d Tomography2D.o ${LINK_POSTFIX}
+	${LINK_PREFIX} -o bin/tomography2d Tomography2D.o ${LINK_POSTFIX}
+	@echo
+
+makedir:
+	-mkdir bin
+
+clean_objs:
+	@echo "removing object files"
+	@rm -f *.o
+
+clean: clean_objs
+	@echo "removing executable files"
+	@rm -f bin/*
+
+info :
+	@ echo "========================================="
+	@ echo "Building GeoTessCPPExamples on" $(OS) "with" $(MACHINE)
+	@ $(CC) $(VERSION_FLAG)
+	@ echo ""
+
+done :
+	@echo "Done building GeoTessCPPExamples"
+	@ echo ""

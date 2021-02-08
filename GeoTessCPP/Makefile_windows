@@ -1,0 +1,139 @@
+# ****************************************************************************
+# 
+# Copyright 2009 Sandia Corporation. Under the terms of Contract
+# DE-AC04-94AL85000 with Sandia Corporation, the U.S. Government
+# retains certain rights in this software.
+# 
+# BSD Open Source License.
+# All rights reserved.
+# 
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+# 
+#    * Redistributions of source code must retain the above copyright notice,
+#      this list of conditions and the following disclaimer.
+#    * Redistributions in binary form must reproduce the above copyright
+#      notice, this list of conditions and the following disclaimer in the
+#      documentation and/or other materials provided with the distribution.
+#    * Neither the name of Sandia National Laboratories nor the names of its
+#      contributors may be used to endorse or promote products derived from
+#      this software without specific prior written permission.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# POSSIBILITY OF SUCH DAMAGE.
+#
+# ****************************************************************************
+
+#-------------------------------------------------------------------------------
+# Define Program, Program Directory, Program Version, Install Directories, and
+# Target Names ... set mode to default (empty)
+#-------------------------------------------------------------------------------
+PROGRAM			= libgeotess
+PROG_NAM		= geotess
+
+SRC	= src/ArrayReuse.cc \
+	src/CPPUtils.cc \
+	src/CpuTimer.cc \
+	src/DataType.cc \
+	src/EnumType.cc \
+	src/GeoTessDataArray.cc \
+	src/GeoTessData.cc \
+	src/GeoTessDataValue.cc \
+	src/GeoTessException.cc \
+	src/GeoTessGreatCircle.cc \
+	src/GeoTessGrid.cc \
+	src/GeoTessHorizon.cc \
+	src/GeoTessHorizonDepth.cc \
+	src/GeoTessHorizonLayer.cc \
+	src/GeoTessHorizonRadius.cc \
+	src/GeoTessInterpolatorType.cc \
+	src/GeoTessMetaData.cc \
+	src/GeoTessModel.cc \
+	src/GeoTessModelUtils.cc \
+	src/GeoTessOptimizationType.cc \
+	src/GeoTessPointMap.cc \
+	src/GeoTessPolygon3D.cc \
+	src/GeoTessPolygon.cc \
+	src/GeoTessPosition.cc \
+	src/GeoTessPositionLinear.cc \
+	src/GeoTessPositionNaturalNeighbor.cc \
+	src/GeoTessProfile.cc \
+	src/GeoTessProfileConstant.cc \
+	src/GeoTessProfileEmpty.cc \
+	src/GeoTessProfileNPoint.cc \
+	src/GeoTessProfileSurface.cc \
+	src/GeoTessProfileSurfaceEmpty.cc \
+	src/GeoTessProfileThin.cc \
+	src/GeoTessProfileType.cc \
+	src/GeoTessUtils.cc \
+	src/IFStreamAscii.cc \
+	src/IFStreamBinary.cc
+
+OBJECTS=$(SRC:.cc=.obj)
+INCLUDE_DIR			= include
+
+CV = @
+
+LIB_DIR				= lib
+RM = del
+OUT=$(LIB_DIR)\libgeotesscpp.dll
+
+ifeq ($(ARCH),32bit)
+MACHINE=/MACHINE:X86
+else
+MACHINE=/MACHINE:X64
+endif
+
+CC = cl
+CCFLAGS = /O2 /Oi /GL /D "WIN32" /D "_WINDOWS" /D "_USRDLL" /D "GEOTESS_EXPORTS" /D "_CRT_SECURE_NO_DEPRECATE" /D "_MBCS" /D "_WINDLL" /FD /EHsc /MD /Gy /W1 /nologo /Zi /errorReport:prompt
+COMPILE = ${CV} ${CC} ${CCFLAGS} -I${INCLUDE_DIR} -c
+LINK = ${CV} ${CC} ${CCFLAGS} $(OBJECTS) -link -dll -out:${OUT} /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /OPT:REF /OPT:ICF /LTCG /DYNAMICBASE /NXCOMPAT $(MACHINE)
+MANIFEST = mt.exe /nologo -manifest $(OUT).manifest -outputresource:$(OUT);2 
+
+#-------------------------------------------------------------------------------
+# targets
+#-------------------------------------------------------------------------------
+
+
+all : info makedir geotess manifest done
+
+%.obj: $($*:.obj=.cc)
+	${COMPILE} $*.cc /Fo$*
+
+geotess : ${OBJECTS}
+	${CV} echo "linking shared library"
+	$(CV) echo ${LINK}
+	$(CV) ${LINK}
+	
+manifest:
+	$(CV) echo ${MANIFEST}
+	$(CV) ${MANIFEST}
+
+#-----------------------------------------------------------
+# make sure lib and bin subdirectories exist
+makedir:
+	-mkdir ${LIB_DIR}
+
+clean: clean_objs
+	$(RM) $(OUT)
+
+clean_objs :
+	${CV} echo "removing object files"
+	$(RM) $(OBJECTS)
+
+info :
+	@ echo "========================================="
+	@ echo "Building" $(PROG_NAM) "on WINDOWS for " $(MACHINE)
+	@ $(CC)
+
+done :
+	@echo "Done building" $(PROG_NAM)

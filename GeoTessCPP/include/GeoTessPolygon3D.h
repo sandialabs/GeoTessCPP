@@ -108,7 +108,6 @@ class GeoTessPosition;
  * polygon's reference count.  When it is done with the polygon it should
  * decrement the polygon's reference count and delete the polygon if the
  * reference count is equal to zero.
- *
  */
 class GEOTESS_EXP_IMP GeoTessPolygon3D : public GeoTessPolygon
 {

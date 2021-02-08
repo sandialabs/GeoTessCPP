@@ -122,7 +122,7 @@ public:
 	 * The current GeoTess version.
 	 * @return the current GeoTess version
 	 */
-	static string getVersion() { return "2.6.0"; }
+	static string getVersion() { return "2.6.1"; }
 
 	/**
 	 * Return the dot product of two vectors.

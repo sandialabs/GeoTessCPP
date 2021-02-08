@@ -62,7 +62,6 @@ namespace geotess {
  *
  *An enum list of the valid Profile types, including EMPTY, THIN, CONSTANT,
  * NPOINT and SURFACE.
- *
  */
 class GEOTESS_EXP_IMP GeoTessProfileType : public GeoTessEnumType
 {

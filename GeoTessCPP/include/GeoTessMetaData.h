@@ -46,7 +46,6 @@
 #include <list>
 #include <sstream>
 #include <map>
-#include <regex>
 
 
 // use standard library objects
@@ -90,7 +89,6 @@ namespace geotess
  * </ul>
  * Each GeoTessModel has a single instance of MetaData that it passes around to
  * wherever the information is needed.
- *
  */
 class GEOTESS_EXP_IMP GeoTessMetaData
 {

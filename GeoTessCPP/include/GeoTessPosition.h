@@ -94,7 +94,6 @@ class GeoTessProfile;
  * is that single instances of a GeoTessGrid object and GeoTessData object can be shared among all
  * the threads in a multi-threaded application and each thread will have it's own instance of a
  * GeoTessPosition object that references the common GeoTessGrid + GeoTessData combination.
- *
  */
 class GEOTESS_EXP_IMP GeoTessPosition
 {

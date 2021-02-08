@@ -72,6 +72,15 @@ class GeoTessProfile;
  * Implements the Natural Neighbor Interpolation algorithm of Sibson (1980, 1981). This technique
  * interpolates values stored on a Delaunay triangulation. Returned values are continuous everywhere
  * and smooth everywhere except the vertices of the triangulation.
+ *
+ * <p>
+ * Sibson, R., (1980) A Vector Identity for the Dirichlet Tessellation, Proc. Cambridge
+ * Philosophical Society, 87, 151-155.
+ *
+ * <p>
+ * Sibson, R. (1981). "A brief description of natural neighbor interpolation (Chapter 2)". In V.
+ * Barnett. Interpreting Multivariate Data. Chichester: John Wiley. pp. 21�36.
+ *
  */
 class GEOTESS_EXP_IMP GeoTessPositionNaturalNeighbor: public GeoTessPosition {
 

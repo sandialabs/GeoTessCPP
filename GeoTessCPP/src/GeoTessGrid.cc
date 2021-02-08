@@ -774,6 +774,7 @@ void GeoTessGrid::initialize()
 	int** neighbors = CPPUtils::new2DArray<int>(nTriangles, 3);
 
 	// Find the 3 neighbors of each triangle.
+	// This is an implementation of the "Triangle neighbor identification"
 
 	int n, c, vj, vk;
 	int* corners;

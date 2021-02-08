@@ -64,7 +64,6 @@ namespace geotess {
  * knows how to perform. Includes both 2D interpolation algorithms that will
  * be applied to vertices in the 2D grid, and 1D interpolation algorithms
  * that will be applied to nodes distributed along radial profiles.
- *
  */
 class GEOTESS_EXP_IMP GeoTessInterpolatorType : public GeoTessEnumType
 {

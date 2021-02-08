@@ -64,7 +64,6 @@ namespace geotess {
  * \brief Defines a "surface" in a model that resides at a constant radius.
  *
  * Defines a "surface" in a model that resides at a constant radius.
- *
  */
 class GEOTESS_EXP_IMP GeoTessHorizonRadius : public GeoTessHorizon
 {

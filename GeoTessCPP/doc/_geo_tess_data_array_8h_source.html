@@ -72,17 +72,17 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="_geo_tess_data_array_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//- ****************************************************************************</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//- </span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//-</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//- Copyright 2009 Sandia Corporation. Under the terms of Contract</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//- DE-AC04-94AL85000 with Sandia Corporation, the U.S. Government</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//- retains certain rights in this software.</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//- </span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//-</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//- BSD Open Source License.</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">//- All rights reserved.</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">//- </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">//-</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">//- Redistribution and use in source and binary forms, with or without</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">//- modification, are permitted provided that the following conditions are met:</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">//- </span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">//-</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">//-    * Redistributions of source code must retain the above copyright notice,</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">//-      this list of conditions and the following disclaimer.</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">//-    * Redistributions in binary form must reproduce the above copyright</span></div>
@@ -91,7 +91,7 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">//-    * Neither the name of Sandia National Laboratories nor the names of its</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">//-      contributors may be used to endorse or promote products derived from</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">//-      this software without specific prior written permission.</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">//- </span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">//-</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">//- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">//- AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">//- IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE</span></div>
@@ -340,14 +340,14 @@ $(function() {
 <div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;<span class="keyword">template</span>&lt;&gt;</div>
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span>     GeoTessDataArray&lt;double&gt;::isNaN(<span class="keywordtype">int</span> attributeIndex)<span class="keyword"> const</span></div>
 <div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;        <span class="keywordflow">return</span> (isnan(values[attributeIndex]));</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;        <span class="keywordflow">return</span> (values[attributeIndex] == values [attributeIndex]);</div>
 <div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;}</div>
 <div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160; </div>
 <div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;<span class="keyword">template</span>&lt;&gt;</div>
 <div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span>     GeoTessDataArray&lt;float&gt;::isNaN(<span class="keywordtype">int</span> attributeIndex)<span class="keyword"> const</span></div>
 <div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;<span class="keyword"></span>{</div>
 <div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;        <span class="keywordtype">double</span> v = (double) values[attributeIndex];</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;        <span class="keywordflow">return</span> (isnan(v));</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;        <span class="keywordflow">return</span> (v == v);</div>
 <div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;}</div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160; </div>
 <div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;<span class="keyword">template</span>&lt;&gt;</div>

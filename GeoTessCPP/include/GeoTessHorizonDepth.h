@@ -65,7 +65,6 @@ namespace geotess {
  * \brief Defines a "surface" in a model that resides at a constant depth.
  *
  * Defines a "surface" in a model that resides at a constant depth.
- *
  */
 class GEOTESS_EXP_IMP GeoTessHorizonDepth : public GeoTessHorizon
 {

@@ -280,14 +280,14 @@ $(function() {
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="keyword">template</span>&lt;&gt;</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span>     GeoTessDataValue&lt;double&gt;::isNaN(<span class="keywordtype">int</span> attributeIndex)<span class="keyword"> const</span></div>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        <span class="keywordflow">return</span> (isnan(value));</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        <span class="keywordflow">return</span> (std::isnan(value));</div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;}</div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="keyword">template</span>&lt;&gt;</div>
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span>     GeoTessDataValue&lt;float&gt;::isNaN(<span class="keywordtype">int</span> attributeIndex)<span class="keyword"> const</span></div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;<span class="keyword"></span>{</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        <span class="keywordtype">double</span> v = (double) value;</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        <span class="keywordflow">return</span> (isnan(v));</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        <span class="keywordflow">return</span> (std::isnan(v));</div>
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;}</div>
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="keyword">template</span>&lt;&gt;</div>

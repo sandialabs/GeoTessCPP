@@ -112,7 +112,6 @@ class IFStreamBinary;
  * profile (all profiles have a node with index 0 for example). The term 'point' refers to all the
  * nodes in all the profiles of the model. There is only one 'point' in the model with index 0.
  * PointMap is introduced to manage all these different indexes.
- *
  */
 class GEOTESS_EXP_IMP GeoTessModel
 {

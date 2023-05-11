@@ -39,34 +39,60 @@ else
 BITS=ARCH=64bit
 endif
 
-OS := $(shell uname -s)
+GEOTESS_ROOT=`pwd`
+OS=$(shell uname -s)
 
-ifeq ($(OS),SunOS)
-MAKE=gmake
-else
-MAKE=make
-endif
+all: libraries binaries tests env
 
-all:
-	cd GeoTessCPP; $(MAKE) $(BITS)
-	cd GeoTessCPPExamples; $(MAKE) $(BITS)
-	cd GeoTessCShell; $(MAKE) $(BITS)
-	cd GeoTessCExamples; $(MAKE) $(BITS)
-	cd GeoTessAmplitudeCPP; $(MAKE) $(BITS)
-	cd GeoTessAmplitudeCShell; $(MAKE) $(BITS)
+libraries:
+	@cd GeoTessCPP; make $(BITS)
+	@cd GeoTessCShell; make $(BITS)
+	@cd GeoTessAmplitudeCPP; make $(BITS)
+	@cd GeoTessAmplitudeCShell; make $(BITS)
+	@cd LibCorr3D; make $(BITS)
+
+binaries:
+	@cd GeoTessCPPExamples; make $(BITS)
+	@cd GeoTessCExamples; make $(BITS)
+
+tests:
+	@cd geo-tess-cpp-cxx-test; make $(BITS)
 
 clean_objs:
-	cd GeoTessCPP; $(MAKE) clean_objs
-	cd GeoTessCPPExamples; $(MAKE) clean_objs
-	cd GeoTessCShell; $(MAKE) clean_objs
-	cd GeoTessCExamples; $(MAKE) clean_objs
-	cd GeoTessAmplitudeCPP; $(MAKE) clean_objs
-	cd GeoTessAmplitudeCShell; $(MAKE) clean_objs
+	@cd GeoTessCPP; make clean_objs
+	@cd GeoTessCShell; make clean_objs
+	@cd GeoTessCExamples; make clean_objs
+	@cd GeoTessAmplitudeCPP; make clean_objs
+	@cd LibCorr3D; make clean_objs
+	@cd GeoTessCPPExamples; make clean_objs
+	@cd GeoTessAmplitudeCShell; make clean_objs
 
 clean:
-	cd GeoTessCPP; $(MAKE) clean
-	cd GeoTessCPPExamples; $(MAKE) clean
-	cd GeoTessCShell; $(MAKE) clean
-	cd GeoTessCExamples; $(MAKE) clean
-	cd GeoTessAmplitudeCPP; $(MAKE) clean
-	cd GeoTessAmplitudeCShell; $(MAKE) clean
+	@cd GeoTessCPP; make clean
+	@cd GeoTessCShell; make clean
+	@cd GeoTessAmplitudeCPP; make clean
+	@cd GeoTessAmplitudeCShell; make clean
+	@cd LibCorr3D; make clean
+	@cd GeoTessCPPExamples; make clean
+	@cd GeoTessCExamples; make clean
+	@rm -rf lib
+
+doxygen:
+	@cd GeoTessCPP; doxygen
+	@cd GeoTessCShell; doxygen
+	@cd GeoTessAmplitudeCPP; doxygen
+	@cd GeoTessAmplitudeCShell; doxygen
+	@cd LibCorr3D; doxygen
+
+env:
+	@ echo "****************************************************************************"
+	@echo 
+	@echo "recommended environment variables for $(OS):"
+	@echo
+	@if [ "$(OS)" = "Darwin" ]; then \
+		echo "export DYLD_LIBRARY_PATH=\$$DYLD_LIBRARY_PATH:${GEOTESS_ROOT}/lib"; \
+	else \
+		echo "export LD_LIBRARY_PATH=\$$LD_LIBRARY_PATH:${GEOTESS_ROOT}/lib"; \
+	fi
+	@echo
+

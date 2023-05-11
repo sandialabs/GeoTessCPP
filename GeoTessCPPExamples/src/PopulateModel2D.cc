@@ -186,7 +186,7 @@ int main(int argc, char** argv)
 		position->setTop(layerID, v);
 
 		char ss[300];
-		sprintf(ss, "Interpolation lat, lon, depth = %7.3f deg, %7.3f deg",
+		snprintf(ss, 300, "Interpolation lat, lon, depth = %7.3f deg, %7.3f deg",
 				ellipsoid.getLatDegrees(position->getVector()),
 				ellipsoid.getLonDegrees(position->getVector()));
 		cout << ss << endl << endl;
@@ -197,18 +197,18 @@ int main(int argc, char** argv)
 
 		// Output the interpolated distance from the position specified in the GeoTessPosition
 		// object to station ANMO, in degrees.
-		sprintf(ss, "Interpolated distance from station ANMO = %1.3f degrees", distance);
+		snprintf(ss, 300, "Interpolated distance from station ANMO = %1.3f degrees", distance);
 		//CPPUtils::toDegrees(distance));
 		cout << ss << endl << endl;
 
 		// compute actual distance from ANMO to the position of interest.
 		double actualDistance = GeoTessUtils::angleDegrees(anmo, position->getVector());
 
-		sprintf(ss, "Actual distance from station ANMO       = %1.3f degrees", actualDistance);
+		snprintf(ss, 300, "Actual distance from station ANMO       = %1.3f degrees", actualDistance);
 		cout << ss << endl << endl;
 
 		// print out the index of the triangle in which point resides.
-		sprintf(ss, "Interpolated point resides in triangle index = %d", position->getTriangle());
+		snprintf(ss, 300, "Interpolated point resides in triangle index = %d", position->getTriangle());
 		cout << ss << endl;
 
 		// print out a table with the node indexes, node lat, node lon and
@@ -225,7 +225,7 @@ int main(int argc, char** argv)
 		const GeoTessGrid& gridnew = model->getGrid();
 		for (int j = 0; j < (int) x.size(); ++j)
 		{
-			sprintf(ss, "%6d %10.4f %10.4f %10.6f", x[j],
+			snprintf(ss, 300, "%6d %10.4f %10.4f %10.6f", x[j],
 					ellipsoid.getLatDegrees(gridnew.getVertex(x[j])),
 					ellipsoid.getLonDegrees(gridnew.getVertex(x[j])), coef[j]);
 			cout << ss << endl;

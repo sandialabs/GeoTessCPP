@@ -37,8 +37,10 @@
 #Can be either "32bit" or "64bit".  Default is 64bit.  Example: "make ARCH=32bit"
 #
 
-INCLUDE_GEOTESSCPP		= ../GeoTessCPP/include
-LIB_GEOTESSCPP			= ../GeoTessCPP/lib
+INCLUDES		= -Iinclude -I../GeoTessCPP/include -I../LibCorr3D/include
+LIBS			= -L../lib -lgeotesscpp -llibcorr3d
+
+BIN=bin
 
 ifeq ($(ARCH),32bit)
 MACHINE=-m32
@@ -51,90 +53,80 @@ OS := $(shell uname -s)
 ifeq ($(OS),SunOS)
 	CC = CC
 	CCFLAGS = $(MACHINE) -Kpic -xO5 -dalign -fns -fsimple=2 -ftrap=%none
-	COMPILE = @${CC} ${CCFLAGS} -Iinclude -I${INCLUDE_GEOTESSCPP} -c
-	# LINK    = @${CC} $(MACHINE) -L${LIB_GEOTESSCPP} -lgeotesscpp GeoTessModelExtended.o
-	LINK_PREFIX = @${CC} $(MACHINE)
-	LINK_POSTFIX = GeoTessModelExtended.o -L${LIB_GEOTESSCPP} -lgeotesscpp -lstdc++ -lm
+	COMPILE = ${CC} ${CCFLAGS} $(INCLUDES) -c
+	LINK_PREFIX = ${CC} $(MACHINE)
+	LINK_POSTFIX = GeoTessModelExtended.o $(LIBS) -lstdc++ -lm
 	VERSION_FLAG = -V
 endif
 ifeq ($(OS),Linux)
 	CC = gcc
 	CCFLAGS = $(MACHINE) -O3 -fPIC -ffast-math -fno-trapping-math
-	COMPILE = @${CC} ${CCFLAGS} -Iinclude -I${INCLUDE_GEOTESSCPP} -c
-	# LINK = @${CC} $(CCFLAGS) -L${LIB_GEOTESSCPP} -lgeotesscpp -lstdc++ -lm GeoTessModelExtended.o
-	LINK_PREFIX = @${CC} $(CCFLAGS)
-	LINK_POSTFIX = GeoTessModelExtended.o -L${LIB_GEOTESSCPP} -lgeotesscpp -lstdc++ -lm
+	COMPILE = ${CC} ${CCFLAGS} $(INCLUDES) -c
+	LINK_PREFIX = ${CC} $(CCFLAGS)
+	LINK_POSTFIX = GeoTessModelExtended.o $(LIBS) -lstdc++ -lm
 	VERSION_FLAG = --version
 endif
 ifeq ($(OS),Darwin)
 	CC = g++
-	COMPILE = @${CC} ${MACHINE} -O3 -Iinclude -I${INCLUDE_GEOTESSCPP} -c
-	# LINK = @${CC} $(MACHINE) -L${LIB_GEOTESSCPP} -lgeotesscpp -lstdc++ GeoTessModelExtended.o
-	LINK_PREFIX = @${CC} $(MACHINE)
-	LINK_POSTFIX = GeoTessModelExtended.o -L${LIB_GEOTESSCPP} -lgeotesscpp -lstdc++ -lm
+	COMPILE = ${CC} ${MACHINE} -O3 $(INCLUDES) -c
+	LINK_PREFIX = ${CC} $(MACHINE)
+	LINK_POSTFIX = GeoTessModelExtended.o $(LIBS) -lstdc++ -lm
 	VERSION_FLAG = --version
 endif
 
 #-------------------------------------------------------------------------------
 
-all : info makedir GeoTessModelExtended.o InterrogateModel.o PopulateModel2D.o PopulateModel3D.o ExtendedModel.o Tomography2D.o link done
+all : info makedir GeoTessModelExtended InterrogateLibCorr3D InterrogateModel PopulateModel2D PopulateModel3D ExtendedModel Tomography2D link done
 
-GeoTessModelExtended.o :
-	@echo ${COMPILE} src/GeoTessModelExtended.cc
+GeoTessModelExtended :
 	${COMPILE} src/GeoTessModelExtended.cc
 
-InterrogateModel.o :
-	@echo ${COMPILE} src/InterrogateModel.cc
+InterrogateLibCorr3D :
+	${COMPILE} src/InterrogateLibCorr3D.cc
+	
+InterrogateModel :
 	${COMPILE} src/InterrogateModel.cc
 
-PopulateModel2D.o :
-	@echo ${COMPILE} src/PopulateModel2D.cc
+PopulateModel2D :
 	${COMPILE} src/PopulateModel2D.cc
 
-PopulateModel3D.o :
-	@echo ${COMPILE} src/PopulateModel3D.cc
+PopulateModel3D :
 	${COMPILE} src/PopulateModel3D.cc
 
-ExtendedModel.o :
-	@echo ${COMPILE} src/ExtendedModel.cc
+ExtendedModel :
 	${COMPILE} src/ExtendedModel.cc
 
-Tomography2D.o :
-	@echo ${COMPILE} src/Tomography2D.cc
+Tomography2D :
 	${COMPILE} src/Tomography2D.cc
 
 link :
 	@echo
 	@echo "linking executables"
-	@echo ${LINK_PREFIX} -o bin/interrogatemodel InterrogateModel.o ${LINK_POSTFIX}
-	${LINK_PREFIX} -o bin/interrogatemodel InterrogateModel.o ${LINK_POSTFIX}
-	@echo ${LINK_PREFIX} -o bin/populatemodel2d PopulateModel2D.o ${LINK_POSTFIX}
-	${LINK_PREFIX} -o bin/populatemodel2d PopulateModel2D.o ${LINK_POSTFIX}
-	@echo ${LINK_PREFIX} -o bin/populatemodel3d PopulateModel3D.o ${LINK_POSTFIX}
-	${LINK_PREFIX} -o bin/populatemodel3d PopulateModel3D.o ${LINK_POSTFIX}
-	@echo ${LINK_PREFIX} -o bin/extendedmodel ExtendedModel.o ${LINK_POSTFIX}
-	${LINK_PREFIX} -o bin/extendedmodel ExtendedModel.o ${LINK_POSTFIX}
-	@echo ${LINK_PREFIX} -o bin/tomography2d Tomography2D.o ${LINK_POSTFIX}
-	${LINK_PREFIX} -o bin/tomography2d Tomography2D.o ${LINK_POSTFIX}
+	${LINK_PREFIX} -o $(BIN)/interrogatelibcorr3d InterrogateLibCorr3D.o ${LINK_POSTFIX}
+	${LINK_PREFIX} -o $(BIN)/interrogatemodel InterrogateModel.o ${LINK_POSTFIX}
+	${LINK_PREFIX} -o $(BIN)/populatemodel2d PopulateModel2D.o ${LINK_POSTFIX}
+	${LINK_PREFIX} -o $(BIN)/populatemodel3d PopulateModel3D.o ${LINK_POSTFIX}
+	${LINK_PREFIX} -o $(BIN)/extendedmodel ExtendedModel.o ${LINK_POSTFIX}
+	${LINK_PREFIX} -o $(BIN)/tomography2d Tomography2D.o ${LINK_POSTFIX}
 	@echo
 
 makedir:
-	-mkdir bin
+	@mkdir -p $(BIN)
 
 clean_objs:
-	@echo "removing object files"
+	@echo "removing object files GeoTessCPPExamples/src/*.o"
 	@rm -f *.o
 
 clean: clean_objs
-	@echo "removing executable files"
-	@rm -f bin/*
+	@echo "removing bin directory"
+	@rm -rf $(BIN)
 
 info :
 	@ echo "========================================="
 	@ echo "Building GeoTessCPPExamples on" $(OS) "with" $(MACHINE)
 	@ $(CC) $(VERSION_FLAG)
-	@ echo ""
+	@ echo
 
 done :
+	@ echo
 	@echo "Done building GeoTessCPPExamples"
-	@ echo ""

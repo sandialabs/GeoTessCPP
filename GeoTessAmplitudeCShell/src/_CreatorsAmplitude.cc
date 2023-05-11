@@ -63,5 +63,3 @@ GeoTessModelC* create_model_amplitude(const string& error_message)
 
 GeoTessModelAmplitude* get_model_amplitude(GeoTessModelC* cModel)
 { return cModel->size < 2 ? NULL : (GeoTessModelAmplitude*) cModel->pointers[1]; }
-
-

@@ -229,7 +229,6 @@ class GEOTESS_EXP_IMP GeoTessProfileSurface: virtual public GeoTessProfile
 		virtual void        	  setData(int index, GeoTessData* inData)
 														{ delete data; data = inData; }
 
-		// TODO: added by sb 9/27/2012
 		/**
 		 * Replace the radii currently associated with this Profile with new values.
 		 */
@@ -308,7 +307,6 @@ class GEOTESS_EXP_IMP GeoTessProfileSurface: virtual public GeoTessProfile
 															data->write(ofs);
 															ofs.writeNL(); };
 
-		// *** TODO added 7/20/2012
 		/**
 		 * Find the index of the node in this Profile that has radius closest to the
 		 * supplied radius.
@@ -320,7 +318,6 @@ class GEOTESS_EXP_IMP GeoTessProfileSurface: virtual public GeoTessProfile
 		virtual int							findClosestRadiusIndex(double radius) const
 														{	return -1; }
 
-		// *** TODO added 7/20/2012
 		/**
 		 * Set the pointIndex that corresponds to the supplied nodeIndex.
 		 * <p>There is a node index for each Data object in a profile and they are indexed from 0 to
@@ -331,7 +328,6 @@ class GEOTESS_EXP_IMP GeoTessProfileSurface: virtual public GeoTessProfile
 		virtual void						setPointIndex(int nodeIndex, int pntIndex)
 														{	pointIndex = pntIndex; }
 
-		// *** TODO added 10/14/2012
 		/**
 		 * Reset all the pointIndex values to -1.
 		 * <p>There is a node index for each Data object in a profile and they are indexed from 0 to
@@ -341,7 +337,6 @@ class GEOTESS_EXP_IMP GeoTessProfileSurface: virtual public GeoTessProfile
 		 */
 		virtual void resetPointIndices() { pointIndex = -1; }
 
-		// *** TODO added 7/20/2012
 		/**
 		 * Get the pointIndex that corresponds to the supplied nodeIndex.
 		 * <p>There is a node index for each Data object in a profile and they are indexed from 0 to
@@ -352,7 +347,6 @@ class GEOTESS_EXP_IMP GeoTessProfileSurface: virtual public GeoTessProfile
 		virtual int							getPointIndex(int nodeIndex) const
 														{	return pointIndex; }
 
-		// *** TODO added 8/20/2012
 		/**
 		 * Returns a deep copy of this profile.
 		 */

@@ -33,11 +33,6 @@
 //-
 //- ****************************************************************************
 
-//#include <iostream>
-//#include <iomanip>
-
-// **** _LOCAL INCLUDES_ *******************************************************
-
 #include "GeoTessPolygon.h"
 #include "GeoTessPolygon3D.h"
 #include "GeoTessHorizon.h"

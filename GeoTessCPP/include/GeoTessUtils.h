@@ -1,15 +1,15 @@
 //- ****************************************************************************
-//-
+//- 
 //- Copyright 2009 Sandia Corporation. Under the terms of Contract
 //- DE-AC04-94AL85000 with Sandia Corporation, the U.S. Government
 //- retains certain rights in this software.
-//-
+//- 
 //- BSD Open Source License.
 //- All rights reserved.
-//-
+//- 
 //- Redistribution and use in source and binary forms, with or without
 //- modification, are permitted provided that the following conditions are met:
-//-
+//- 
 //-    * Redistributions of source code must retain the above copyright notice,
 //-      this list of conditions and the following disclaimer.
 //-    * Redistributions in binary form must reproduce the above copyright
@@ -18,7 +18,7 @@
 //-    * Neither the name of Sandia National Laboratories nor the names of its
 //-      contributors may be used to endorse or promote products derived from
 //-      this software without specific prior written permission.
-//-
+//- 
 //- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 //- AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 //- IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -122,7 +122,7 @@ public:
 	 * The current GeoTess version.
 	 * @return the current GeoTess version
 	 */
-	static string getVersion() { return "2.6.1"; }
+	static string getVersion() { return "2.6.2"; }
 
 	/**
 	 * Return the dot product of two vectors.
@@ -580,11 +580,7 @@ static void rotate(const double* const x, const double* const p, double a,
 	 * @return geographic latitude in degrees.
 	 */
 	static double getLatDegrees(const double* const v)
-	{
-		// the constant 0.9933 is (1-e*e) where e is the eccentricity of the
-		// earth as defined by the WGS84 ellipsoid.
-		return CPPUtils::toDegrees(atan(tan(asin(v[2])) / 0.9933056199770992));
-	}
+	{ return CPPUtils::toDegrees(getLat(v)); }
 
 	/**
 	 * Convert a 3-component unit vector to a longitude, in degrees.
@@ -1206,6 +1202,121 @@ static void rotate(const double* const x, const double* const p, double a,
 		}
 		normalize(x);
 	}
+
+	/**
+	 * Find the inverse of 3x3 matrix m.
+	 * @param m a 3x3 matrix
+	 * @return the inverse of m.
+	 */
+	static double** inverse_3x3(double** m)
+	{
+		double** inv = CPPUtils::new2DArray<double>(3, 3);
+		double det = 0.;
+		for(int i = 0; i < 3; i++)
+			det += (m[0][i] * (m[1][(i+1)%3] * m[2][(i+2)%3]
+													- m[1][(i+2)%3] * m[2][(i+1)%3]));
+		for(int i = 0; i < 3; ++i)
+			for(int j = 0; j < 3; ++j)
+				inv[i][j] = (((m[(j+1)%3][(i+1)%3] * m[(j+2)%3][(i+2)%3])
+						- (m[(j+1)%3][(i+2)%3] * m[(j+2)%3][(i+1)%3]))/ det);
+		return inv;
+	}
+
+	/**
+	 * Given a location, retrieve the Euler rotation angles, in radians, that will rotate
+	 * the north pole ([0., 0., 1.]) to the specified location.
+	 * The 3 angles are: longitude+PI/2, geocentric colatitude, -PI/2.
+	 * @param unitVector
+	 * @return euler rotation angles in radians.
+	 */
+	static double* getEulerRotationAngles(const double* const u)
+	{
+		double* v = new double[3];
+		v[0] = atan2(u[1], u[0]) + PI/2.;
+		v[1] = acos(u[2]);
+		v[2] = -PI/2.;
+		return v;
+	}
+
+	/**
+	 * Given an Euler rotation matrix computed from 3 Euler rotation angles
+	 * using method getEulerMatrix(), apply the rotation to 3-component
+	 * unit vector u and return the result in a new 3-component unit vector.
+	 * <p>Reference: http://mathworld.wolfram.com/EulerAngles.html
+	 * @param u 3-component unit vector to be rotated
+	 * @param euler 3x3 euler rotation matrix.
+	 * @return rotated 3-component unit vector
+	 */
+	static double* eulerRotation(const double* const u, double** euler)
+	{
+		double* v = new double[3];
+		v[0] = 	u[0]*euler[0][0]+u[1]*euler[1][0]+u[2]*euler[2][0];
+		v[1] = 	u[0]*euler[0][1]+u[1]*euler[1][1]+u[2]*euler[2][1];
+		v[2] = 	u[0]*euler[0][2]+u[1]*euler[1][2]+u[2]*euler[2][2];
+		return v;
+	}
+
+	/**
+	 * Given an Euler rotation matrix computed from 3 Euler rotation angles
+	 * using method getEulerMatrix(), apply the rotation to 3-component
+	 * unit vector u and return the result in unit vector v.  u and v
+	 * can be references to the same array.
+	 * <p>Reference: http://mathworld.wolfram.com/EulerAngles.html
+	 * @param u 3-component unit vector to be rotated
+	 * @param euler 3x3 euler rotation matrix.
+	 * @param v rotated 3-component unit vector
+	 */
+	static void eulerRotation(const double* const u, double** euler, double* v)
+	{
+		double u0 = u[0];
+		double u1 = u[1];
+		double u2 = u[2];
+		v[0] = u0*euler[0][0]+u1*euler[1][0]+u2*euler[2][0];
+		v[1] = u0*euler[0][1]+u1*euler[1][1]+u2*euler[2][1];
+		v[2] = u0*euler[0][2]+u1*euler[1][2]+u2*euler[2][2];
+	}
+
+	/**
+	 * Given three Euler angles in radians, retrieve the Euler rotation matrix.
+	 *
+	 * <p>Euler rotation angles:
+	 * <p>Given two coordinate systems xyz and XYZ with common origin,
+	 * starting with the axis z and Z overlapping, the position of
+	 * the second can be specified in terms of the first using
+	 * three rotations with angles A, B, C as follows:
+	 *
+	 * <ol>
+	 * <li>Rotate the xyz-system about the z-axis by A.
+	 * <li>Rotate the xyz-system again about the now rotated x-axis by B.
+	 * <li>Rotate the xyz-system a third time about the new z-axis by C.
+	 * </ol>
+	 *
+	 * <p>Clockwise rotations, when looking in direction of vector, are positive.
+	 * <p>Reference: http://mathworld.wolfram.com/EulerAngles.html
+	 * @param a double[3] the 3 Euler rotation angles, phi, theta and psi, in radians
+	 * @return double[3][3] Euler rotation matrix
+	 */
+	static double** getEulerMatrix(const double* const a)
+	{
+		double** e = CPPUtils::new2DArray<double>(3,3);
+
+		double cosa0 = cos(a[0]); double sina0 = sin(a[0]);
+		double cosa1 = cos(a[1]); double sina1 = sin(a[1]);
+		double cosa2 = cos(a[2]); double sina2 = sin(a[2]);
+
+		e[0][0] =  cosa2 * cosa0 - cosa1 * sina0 * sina2;
+		e[0][1] =  cosa2 * sina0 + cosa1 * cosa0 * sina2;
+		e[0][2] =  sina2 * sina1;
+		e[1][0] = -sina2 * cosa0 - cosa1 * sina0 * cosa2;
+		e[1][1] = -sina2 * sina0 + cosa1 * cosa0 * cosa2;
+		e[1][2] =  cosa2 * sina1;
+		e[2][0] =  sina1 * sina0;
+		e[2][1] = -sina1 * cosa0;
+		e[2][2] =  cosa1;
+		return e;
+	}
+
+
 };
 // end class GeoTessUtils
 
@@ -1773,4 +1884,3 @@ inline double GeoTessUtils::getGeocentricLat(const double& lat)
 } // end namespace geotess
 
 #endif  // GEOTESSUTILS_OBJECT_H
-

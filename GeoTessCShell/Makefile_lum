@@ -33,9 +33,13 @@
 #
 # ****************************************************************************
 
-#To change between building 64 and 32 bit binaries, specify on the command line a value for ARCH.
-#Can be either "32bit" or "64bit".  Default is 64bit.  Example: "make ARCH=32bit"
-#
+APP=GeoTessCShell
+TARGET=geotesscshell
+LIB=../lib
+
+INCLUDES=-Iinclude -I../GeoTessCPP/include
+
+DEPENDENCIES=-L${LIB} -lgeotesscpp
 
 SRC=src/GeoTessModelC.cc \
 src/GeoTessMetaDataC.cc \
@@ -58,79 +62,4 @@ src/PointMapC.cc \
 src/PolygonC.cc \
 src/EarthShapeC.cc
 
-OBJECTS=$(SRC:.cc=.o)
-
-ifeq ($(ARCH),32bit)
-MACHINE=-m32
-else
-MACHINE=-m64
-endif
-
-# Determine OS
-OS := $(shell uname -s)
-
-# OS-specific compiler variables
-ifeq ($(OS),SunOS)
-	OUTPUT=lib/libgeotesscshell.so
-	CCFLAGS = -D$(OS) $(MACHINE) -KPIC -xO5 -dalign -fns -fsimple=2 -ftrap=%none
-	COMPILE = CC ${CCFLAGS} -Iinclude -I../GeoTessCPP/include -o $@ -c
-	LINK = CC ${CCFLAGS} -G -Bdynamic -o $(OUTPUT)  ${OBJECTS} -L../GeoTessCPP/lib/ -lgeotesscpp -lm -lc -lCrun -lCstd -z defs
-	VERSION = CC -V
-endif
-ifeq ($(OS),Linux)
-	OUTPUT=lib/libgeotesscshell.so
-	CCFLAGS = -D$(OS) $(MACHINE) -O3 -fPIC -ffast-math -fno-trapping-math
-	COMPILE = gcc ${CCFLAGS} -Iinclude -I../GeoTessCPP/include -o $@ -c
-	LINK = gcc ${CCFLAGS} -shared -o $(OUTPUT) ${OBJECTS} -L../GeoTessCPP/lib/ -lgeotesscpp -lstdc++ -lm -z defs
-	VERSION = gcc --version
-endif
-ifeq ($(OS),Darwin)
-	OUTPUT=lib/libgeotesscshell.dylib
-	CCFLAGS= -D$(OS) $(MACHINE) -O3
-	COMPILE = g++ ${CCFLAGS} -Iinclude -I../GeoTessCPP/include -o $@ -c
-	LINK = g++ ${CCFLAGS} -shared -o $(OUTPUT) ${OBJECTS} -L../GeoTessCPP/lib/ -lgeotesscpp -lstdc++
-	VERSION = g++ --version
-endif
-
-
-#-------------------------------------------------------------------------------
-# targets
-#-------------------------------------------------------------------------------
-
-
-all : info makedir cshell done
-	@echo
-
-%.o: $($*:.o=.cc)
-	${COMPILE} $*.cc
-
-cshell : ${OBJECTS}
-	@echo
-	@echo "linking shared library"
-	${LINK}
-	@echo ""
-
-# make sure lib subdirectory exist
-makedir:
-	-mkdir lib
-
-clean: clean_objs
-	@echo "removing" $(OUTPUT)
-	@rm -f $(OUTPUT)
-	@echo
-
-clean_objs:
-	@echo "removing object files"
-	@rm -f src/*.o
-	@echo
-
-info :
-	@ echo
-	@ echo "========================================="
-	@ echo "Building GeoTessCShell on" $(OS) "with" $(MACHINE)
-	@$(VERSION)
-	@ echo ""
-
-done :
-	@echo "Done building GeoTessCShell"
-	@echo ""
+include ../Makefile_common

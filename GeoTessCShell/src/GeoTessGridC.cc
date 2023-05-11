@@ -1246,4 +1246,3 @@ GEO_TESS_EXPORT_C void geogrid_writeGrid(GeoTessGridC* g, char* fileName)
 		ec_push(g->err, getCharsFromString(s));
 	}
 }
-

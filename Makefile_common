@@ -1,0 +1,117 @@
+# ****************************************************************************
+#
+# Copyright 2009 Sandia Corporation. Under the terms of Contract
+# DE-AC04-94AL85000 with Sandia Corporation, the U.S. Government
+# retains certain rights in this software.
+#
+# BSD Open Source License.
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#
+#    * Redistributions of source code must retain the above copyright notice,
+#      this list of conditions and the following disclaimer.
+#    * Redistributions in binary form must reproduce the above copyright
+#      notice, this list of conditions and the following disclaimer in the
+#      documentation and/or other materials provided with the distribution.
+#    * Neither the name of Sandia National Laboratories nor the names of its
+#      contributors may be used to endorse or promote products derived from
+#      this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# POSSIBILITY OF SUCH DAMAGE.
+#
+# ****************************************************************************
+
+# This file contains make file commands that are common to all the c++ classes
+# in this project includein GeoTessCPP, LibCorr3D, GeoTessAmplitudeCPP, GeoTessCShell,
+# and GeoTessAmplitudeCShell.  All those applications have Makefiles that set
+# variables APP, TARGET, INCLUDES, LIB, DEPENDENCIES and SRC and then include this file.
+
+OBJECTS=$(SRC:.cc=.o)
+
+#To change between building 64 and 32 bit binaries, specify on the command line a value for ARCH.
+#Can be either "32bit" or "64bit".  Default is 64bit.  Example: "make ARCH=32bit"
+ifeq ($(ARCH),32bit)
+MACHINE=-m32
+else
+MACHINE=-m64
+endif
+
+# Determine OS
+OS := $(shell uname -s)
+
+# OS-specific compiler variables
+ifeq ($(OS),Darwin)
+	OUTPUT=$(LIB)/lib$(TARGET).dylib
+	CC = g++
+	CCFLAGS= -D$(OS) $(MACHINE) -O3
+	COMPILE = ${CC} ${CCFLAGS} $(INCLUDES) -o $@ -c
+	LINK = ${CC} ${CCFLAGS} -shared -o $(OUTPUT) ${OBJECTS} ${DEPENDENCIES} -lstdc++
+	VERSION_FLAG = --version
+endif
+ifeq ($(OS),Linux)
+	OUTPUT=$(LIB)/lib$(TARGET).so
+	CC = gcc
+	CCFLAGS = -D$(OS) $(MACHINE) -fPIC -O3
+	COMPILE = ${CC} ${CCFLAGS} $(INCLUDES) -o $@ -c
+	LINK = ${CC} ${CCFLAGS} -shared -o $(OUTPUT) ${OBJECTS} ${DEPENDENCIES}
+	VERSION_FLAG = --version
+endif
+ifeq ($(OS),SunOS)
+	OUTPUT=$(LIB)/lib$(TARGET).so
+	CC = CC
+	CCFLAGS = -D$(OS) $(MACHINE) -Kpic -xO5 -dalign -fns -fsimple=2 -ftrap=%none
+	COMPILE = ${CC} ${CCFLAGS} $(INCLUDES) -o $@ -c
+	LINK = ${CC} ${CCFLAGS} -G -Bdynamic -o $(OUTPUT) ${OBJECTS} ${DEPENDENCIES}
+	VERSION_FLAG = -V
+endif
+
+
+#-------------------------------------------------------------------------------
+# targets
+#-------------------------------------------------------------------------------
+
+all : info makedir compile done
+	@echo
+
+%.o: $($*:.o=.cc)
+	${COMPILE} $*.cc
+
+compile : ${OBJECTS}
+	@echo 
+	@echo "linking shared library"
+	${LINK}
+
+# make sure lib subdirectory exist
+makedir:
+	@mkdir -p $(LIB)
+
+clean: clean_objs
+	@echo "removing " $(OUTPUT)
+	@rm -f $(OUTPUT)
+
+clean_objs:
+	@echo "removing object files $(APP)/src/*.o"
+	@rm -f src/*.o
+
+info :
+	@ echo "****************************************************************************"
+	@ echo "Building $(APP) on" $(OS) "with" $(MACHINE)
+	@$(VERSION)
+	@ echo
+
+done :
+	@echo ""
+	@echo "Done building $(APP)"
+

@@ -80,7 +80,7 @@ protected:
 	 * identified during triangle walk.
 	 * @throws GeoTessException
 	 */
-	virtual void update2D(int tid)
+	virtual void update2D(int tid, const double* const uVector)
 	{
 		vector<int>& vt = vertices[tid];
 		vector<double>& hc = hCoefficients[tid];
@@ -92,13 +92,13 @@ protected:
 
 		// if the interpolation point falls on a grid node set the list of interpolation
 		// vertices to include only the identified vertex, and the interpolation coefficient = 1.
-		if (GeoTessUtils::dot(unitVector, grid.getVertex(trngl[0])) > cos(1e-7))
+		if (GeoTessUtils::dot(uVector, grid.getVertex(trngl[0])) > cos(1e-7))
 		{ vt.push_back(trngl[0]); hc.push_back(1.0); return; }
 
-		if (GeoTessUtils::dot(unitVector, grid.getVertex(trngl[1])) > cos(1e-7))
+		if (GeoTessUtils::dot(uVector, grid.getVertex(trngl[1])) > cos(1e-7))
 		{ vt.push_back(trngl[1]); hc.push_back(1.0); return; }
 
-		if (GeoTessUtils::dot(unitVector, grid.getVertex(trngl[2])) > cos(1e-7))
+		if (GeoTessUtils::dot(uVector, grid.getVertex(trngl[2])) > cos(1e-7))
 		{ vt.push_back(trngl[2]); hc.push_back(1.0); return; }
 
 		// interpolation point is not coincident with a grid node.

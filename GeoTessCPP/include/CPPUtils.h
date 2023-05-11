@@ -117,6 +117,25 @@ public:
 			const string& s);
 
 	/**
+	 * Modify a copy of string s by replacing the first occurrence of string r with string n
+	 * and return the copy. This method functions much like the similarly named method in Java.
+	 * @param s the string to be modified
+	 * @param r the substring in s that is to be replaced
+	 * @param n the new substring that is to replace substring r in s.
+	 * @return a new string that is a copy of s with substring r replaced with substring n
+	 */
+	static string replace(const string& s, const string& r, const string& n);
+
+	/**
+	 * Split string s into substrings using string delim as the delimiter.
+	 * This method functions much like the similarly named method in Java.
+	 * @param s the string to be split
+	 * @param delim the delimiter
+	 * @param tokens the vector of substrings.
+	 */
+	static void split(const string& s, const string& delim, vector<string>& tokens);
+
+	/**
 	 * Removes '/r', '/n', or '/r/n' from the end of the input string if it exists.
 	 */
 	static void 			removeEOL(string& s);

@@ -33,10 +33,13 @@
 #
 # ****************************************************************************
 
-#
-#To change between building 64 and 32 bit binaries, specify on the command line a value for ARCH.
-#Can be either "32bit" or "64bit".  Default is 64bit.  Example: "make ARCH=32bit"
-#
+APP=GeoTessCPP
+TARGET=geotesscpp
+LIB=../lib
+
+INCLUDES=-Iinclude
+
+DEPENDENCIES=
 
 SRC	= src/ArrayReuse.cc \
 	src/CPPUtils.cc \
@@ -76,82 +79,4 @@ SRC	= src/ArrayReuse.cc \
 	src/IFStreamAscii.cc \
 	src/IFStreamBinary.cc
 
-OBJECTS=$(SRC:.cc=.o)
-
-ifeq ($(ARCH),32bit)
-MACHINE=-m32
-else
-MACHINE=-m64
-endif
-
-# Determine OS
-OS := $(shell uname -s)
-
-# OS-specific compiler variables
-ifeq ($(OS),SunOS)
-	OUTPUT=lib/libgeotesscpp.so
-	CC = CC
-	CCFLAGS = -D$(OS) $(MACHINE) -KPIC -xO5 -dalign -fns -fsimple=2 -ftrap=%none
-	COMPILE = ${CC} ${CCFLAGS} -Iinclude -o $@ -c
-	LINK = ${CC} ${CCFLAGS} -G -Bdynamic -o $(OUTPUT)  ${OBJECTS} -lm -lc -lCrun -lCstd -z defs
-	VERSION_FLAG = -V
-endif
-ifeq ($(OS),Linux)
-	OUTPUT=lib/libgeotesscpp.so
-	CC = gcc
-	CCFLAGS = -D$(OS) $(MACHINE) -O3 -fPIC
-	COMPILE = ${CC} ${CCFLAGS} -Iinclude -o $@ -c
-	LINK = ${CC} ${CCFLAGS} -shared -o $(OUTPUT)  ${OBJECTS} -lstdc++ -lm -z defs
-	VERSION_FLAG = --version
-endif
-ifeq ($(OS),Darwin)
-	OUTPUT=lib/libgeotesscpp.dylib
-	CC = g++
-	CCFLAGS= -D$(OS) $(MACHINE) -O3
-	COMPILE = ${CC} ${CCFLAGS} -Iinclude -o $@ -c
-	LINK = ${CC} ${CCFLAGS} -shared -o $(OUTPUT)  ${OBJECTS} -lstdc++
-	VERSION_FLAG = --version
-endif
-
-
-#-------------------------------------------------------------------------------
-# targets
-#-------------------------------------------------------------------------------
-
-
-all : info makedir geotess done
-	@echo
-
-%.o: $($*:.o=.cc)
-	${COMPILE} $*.cc
-
-geotess : ${OBJECTS}
-	@echo
-	@echo "linking shared library"
-	${LINK}
-	@echo ""
-
-# make sure lib subdirectory exist
-makedir:
-	-mkdir lib
-
-clean: clean_objs
-	@echo "removing" $(OUTPUT)
-	@rm -f $(OUTPUT)
-	@echo
-
-clean_objs:
-	@echo "removing object files"
-	@rm -f src/*.o
-	@echo
-
-info :
-	@ echo
-	@ echo "========================================="
-	@ echo "Building GeoTessCPP on" $(OS) "with" $(MACHINE)
-	@$(CC) $(VERSION_FLAG)
-	@ echo ""
-
-done :
-	@echo "Done building GeoTessCPP"
-	@echo ""
+include ../Makefile_common

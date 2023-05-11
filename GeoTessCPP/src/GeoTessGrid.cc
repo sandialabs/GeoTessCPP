@@ -91,24 +91,28 @@ GeoTessGrid::~GeoTessGrid()
 /**
  * Copy constructor.
  */
-GeoTessGrid::GeoTessGrid(GeoTessGrid &other) :
-												vertices(NULL), nVertices(0),
-												triangles(NULL), nTriangles(0),
-												levels(NULL), nLevels(0),
-												tessellations(NULL), nTessellations(0),
-												descendants(NULL), gridID(other.gridID),
-												gridInputFile(other.gridInputFile), gridOutputFile(other.gridOutputFile),
-												gridSoftwareVersion(other.gridSoftwareVersion),
-												gridGenerationDate(other.gridGenerationDate), refCount(0)
+GeoTessGrid::GeoTessGrid(GeoTessGrid &other, double** eulerRotationMatrix) :
+	vertices(NULL), nVertices(0),
+	triangles(NULL), nTriangles(0),
+	levels(NULL), nLevels(0),
+	tessellations(NULL), nTessellations(0),
+	descendants(NULL), gridID(other.gridID),
+	gridInputFile(other.gridInputFile), gridOutputFile(other.gridOutputFile),
+	gridSoftwareVersion(other.gridSoftwareVersion),
+	gridGenerationDate(other.gridGenerationDate), refCount(0)
 {
 	nVertices = other.nVertices;
 	vertices = CPPUtils::new2DArray<double>(nVertices, 3);
-	for (int i=0; i<nVertices; ++i)
-	{
-		vertices[i][0] = other.vertices[i][0];
-		vertices[i][1] = other.vertices[i][1];
-		vertices[i][2] = other.vertices[i][2];
-	}
+	if (eulerRotationMatrix == NULL)
+		for (int i=0; i<nVertices; ++i)
+		{
+			vertices[i][0] = other.vertices[i][0];
+			vertices[i][1] = other.vertices[i][1];
+			vertices[i][2] = other.vertices[i][2];
+		}
+	else
+		for (int i=0; i<nVertices; ++i)
+			vertices[i] = GeoTessUtils::eulerRotation(other.vertices[i], eulerRotationMatrix);
 
 	nTriangles = other.nTriangles;
 	triangles = CPPUtils::new2DArray<int>(nTriangles, 3);
@@ -137,57 +141,73 @@ GeoTessGrid::GeoTessGrid(GeoTessGrid &other) :
 		tessellations[i][1] = other.tessellations[i][1];
 	}
 
-	vtxTriangles.resize(nLevels);
-	for (int level=0; level<nLevels; ++level)
+	if (eulerRotationMatrix != NULL)
 	{
-		vector<vector<int> >& a = vtxTriangles[level];
-		vector<vector<int> >& b = other.vtxTriangles[level];
-		a.resize(nVertices);
-		for (int v=0; v<nVertices; ++v)
-		{
-			vector<int>& aa = a[v];
-			vector<int>& bb = b[v];
-			aa.resize(bb.size());
-			for (int n=0; n<(int)aa.size(); ++n)
-				aa[n] = bb[n];
-		}
+		initialize();
+		gridID = "-";
 	}
-
-	circumCenters.resize(other.circumCenters.size(), NULL);
-	for (int i=0; i<(int)circumCenters.size(); ++i)
-		if (other.circumCenters[i] != NULL)
-		{
-			double* b = other.circumCenters[i];
-			double* a = new double[3];
-			a[0]=b[0]; a[1]=b[1]; a[2]=b[2];
-			circumCenters[i] = a;
-		}
-
-	edgeList.resize(nTriangles);
-	Edge *edge, *otherEdge;
-	for (int triangle = 0; triangle < nTriangles; ++triangle)
+	else
 	{
-		vector<Edge*>& tedges = edgeList[triangle];
-		tedges.resize(3);
-
-		const vector<Edge*>& otherEdges = other.edgeList[triangle];
-		for (int v=0; v<3; ++v)
+		vtxTriangles.resize(nLevels);
+		for (int level=0; level<nLevels; ++level)
 		{
-			otherEdge = otherEdges[v];
-			edge = new Edge;
-			edge->vj = otherEdge->vj;
-			edge->vk = otherEdge->vk;
-			edge->tLeft = otherEdge->tLeft;
-			edge->tRight = otherEdge->tRight;
-			edge->normal[0] = otherEdge->normal[0];
-			edge->normal[1] = otherEdge->normal[1];
-			edge->normal[2] = otherEdge->normal[2];
-			edge->next = NULL;
-			tedges[v] = edge;
+			vector<vector<int> >& a = vtxTriangles[level];
+			vector<vector<int> >& b = other.vtxTriangles[level];
+			a.resize(nVertices);
+			for (int v=0; v<nVertices; ++v)
+			{
+				vector<int>& aa = a[v];
+				vector<int>& bb = b[v];
+				aa.resize(bb.size());
+				for (int n=0; n<(int)aa.size(); ++n)
+					aa[n] = bb[n];
+			}
 		}
+
+		circumCenters.resize(other.circumCenters.size(), NULL);
+		for (int i=0; i<(int)circumCenters.size(); ++i)
+			if (other.circumCenters[i] != NULL)
+			{
+				double* b = other.circumCenters[i];
+				double* a = new double[3];
+				if (eulerRotationMatrix == NULL)
+				{a[0]=b[0]; a[1]=b[1]; a[2]=b[2];}
+				else
+					GeoTessUtils::eulerRotation(b, eulerRotationMatrix, a);
+				circumCenters[i] = a;
+			}
+
+		edgeList.resize(nTriangles);
+		Edge *edge, *otherEdge;
+		for (int triangle = 0; triangle < nTriangles; ++triangle)
+		{
+			vector<Edge*>& tedges = edgeList[triangle];
+			tedges.resize(3);
+
+			const vector<Edge*>& otherEdges = other.edgeList[triangle];
+			for (int v=0; v<3; ++v)
+			{
+				otherEdge = otherEdges[v];
+				edge = new Edge;
+				edge->vj = otherEdge->vj;
+				edge->vk = otherEdge->vk;
+				edge->tLeft = otherEdge->tLeft;
+				edge->tRight = otherEdge->tRight;
+				if (eulerRotationMatrix == NULL)
+				{
+					edge->normal[0] = otherEdge->normal[0];
+					edge->normal[1] = otherEdge->normal[1];
+					edge->normal[2] = otherEdge->normal[2];
+				}
+				else
+					GeoTessUtils::eulerRotation(otherEdge->normal, eulerRotationMatrix, edge->normal);
+				edge->next = NULL;
+				tedges[v] = edge;
+			}
+		}
+		spokeList.resize(nLevels);
+		connectedVertices.resize(nLevels);
 	}
-	spokeList.resize(nLevels);
-	connectedVertices.resize(nLevels);
 }
 
 GeoTessGrid& GeoTessGrid::operator=(const GeoTessGrid& other)
@@ -549,14 +569,19 @@ const set<int>&	GeoTessGrid::getVertexIndices(const int& level)
 	return v;
 }
 
-void	GeoTessGrid::getVertices(const int& tessellation, const int& level,set<const double*>& vectors)
+void	GeoTessGrid::getVertices(const int& tessellation, const int& level,set<const double*>& vectors,
+		double** eulerGridToModel)
 {
 	vectors.clear();
 	int lvl = tessellations[tessellation][0] + level;
 	getVertexIndices(lvl);
 	set<int>::iterator it;
-	for (it = connectedVertices[lvl].begin(); it != connectedVertices[lvl].end(); ++it)
-		vectors.insert(vertices[*it]);
+	if (eulerGridToModel == NULL)
+		for (it = connectedVertices[lvl].begin(); it != connectedVertices[lvl].end(); ++it)
+			vectors.insert(vertices[*it]);
+	else
+		for (it = connectedVertices[lvl].begin(); it != connectedVertices[lvl].end(); ++it)
+			vectors.insert(GeoTessUtils::eulerRotation(vertices[*it], eulerGridToModel));
 }
 
 
@@ -642,7 +667,7 @@ string GeoTessGrid::toString()
 	{
 		for (int level = 0; level < getNLevels(tess); ++level)
 		{
-			sprintf(buf, " %6d %8d %8d %8d %8d %8d", tess, level,
+			snprintf(buf, 300, " %6d %8d %8d %8d %8d %8d", tess, level,
 					tessellations[tess][0] + level,
 					getNTriangles(tess, level),
 					getTriangle(tess, level, 0),
@@ -729,7 +754,7 @@ int GeoTessGrid::getTriangle(int triangleIndex, const double* vector)
  * the plane of the great circle containing the edge will be computed during input of the grid
  * from file and stored in memory. With this information, the walking triangle algorithm can use
  * dot products instead of scalar triple products when determining if a point resides inside a
- * triangle. While much more computationally efficient, it requires alot of memory to store all
+ * triangle. While much more computationally efficient, it requires a lot of memory to store all
  * those unit vectors.
  *
  * @param optimization

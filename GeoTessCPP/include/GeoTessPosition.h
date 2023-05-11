@@ -171,7 +171,6 @@ private:
 			tessLevels[tid] = 0;
 			triangle[tid] = grid.getTriangle(tid, 0, 0);
 			getContainingTriangle(tid);
-			update2D(tid);
 		}
 	}
 
@@ -224,9 +223,19 @@ private:
 		if (radialIndexes[0].size() == 0)
 		{
 			vector<int>& v = vertices[tessid];
+			double r = radius;
+			double depth = depthSpecified ? getDepth() : NaN_DOUBLE;
+			double vertex[3];
 			for (int i = 0; i < (int)v.size(); ++i)
+			{
+				if (depthSpecified)
+				{
+					model->getVertex(v[i], vertex);
+					r = model->getEarthShape().getEarthRadius(vertex)-depth;
+				}
 				modlProfiles[v[i]][layerId]->setInterpolationCoefficients(radialInterpolatorType,
-						radialIndexes[i], radialCoefficients[i], radius, radiusOutOfRangeAllowed);
+						radialIndexes[i], radialCoefficients[i], r, radiusOutOfRangeAllowed);
+			}
 		}
 	}
 
@@ -280,6 +289,19 @@ protected:
 	 * Radius of current position, in km.
 	 */
 	double								radius;
+
+	/**
+	 * depthSpecified is set in all the various set(...) methods and used in updateRadialCoefficients.
+	 * Given a triangle and the three Profiles at the corners where we are to compute radial
+	 * coefficients, the coefficients can be computed at a constant radius or a constant depth.
+	 * If the user specified a depth in the set(...) method then use constant depth.
+	 * If user specified a radius in the set(...) method, then use constant radius.
+	 * In the setTop and setBottom methods, if the depth of the interface is < 1000 km
+	 * then constant depth is used.  If depth of the interface it > 1000 km then constant
+	 * radius is used.
+	 * The difference is small but is important when values at an interface are requested.
+	 */
+	bool depthSpecified;
 
 	/**
 	 * radius of the earth at the current position.
@@ -429,7 +451,7 @@ protected:
 	 * Update the 2D vertices and horizontal interpolation coefficients.
 	 * Different types of interpolators will handle this differently.
 	 */
-	virtual void					update2D(int tid) = ABSTRACT;
+	virtual void					update2D(int tid, const double* const uVector) = ABSTRACT;
 
 	/**
 	 * Standard Constructor.
@@ -582,16 +604,7 @@ public:
 
 	/**
 	 * Set the interpolation point to specified latitude and and longitude in
-	 * degrees and depth in km below sea level. This method will perform a
-	 * walking triangle search for the triangle in which the specified position
-	 * is located and compute the associated interpolation coefficients.
-	 * <p>
-	 * This method is pretty expensive compared to the other version of
-	 * setPosition where the position is specified as a unit vector and a
-	 * radius.
-	 * <p>
-	 * Assumes GRS80 ellipsoid.
-	 *
+	 * degrees and depth in km below sea level.
 	 * @param lat
 	 *            in degrees.
 	 * @param lon
@@ -600,12 +613,12 @@ public:
 	 *            below sea level in km.
 	 *
 	 */
-	void 									set(double lat, double lon,	double depth)
+	void set(double lat, double lon, double depth)
 	{
-		double uVector[3] = {0.0, 0.0, 0.0};
-		GeoTessUtils::getVectorDegrees(lat, lon, uVector);
-		double newRadius = GeoTessUtils::getEarthRadius(uVector) - depth;
-		set(uVector, newRadius);
+		double uVector[3];
+		model->getEarthShape().getVectorDegrees(lat, lon, uVector);
+		set(uVector, model->getEarthShape().getEarthRadius(uVector)-depth);
+		depthSpecified = true;
 	}
 
 	/**
@@ -623,24 +636,15 @@ public:
 	void set(const double* const uVector, const double& newRadius)
 	{
 		updatePosition2D(nLayers - 1, uVector);
-
 		int lid = getLayerId(newRadius);
-
 		updatePosition2D(lid, uVector);
 		updateRadius(lid, newRadius);
+		depthSpecified = false;
 	}
 
 	/**
 	 * Set the interpolation point to specified latitude and longitude in degrees and depth in
-	 * km below sea level. This method will perform a walking triangle search for the triangle in
-	 * which the specified position is located and compute the associated interpolation
-	 * coefficients.
-	 * <p>
-	 * This method is pretty expensive compared to the other version of setPosition where the
-	 * position is specified as a unit vector and a radius.
-	 * <p>
-	 * Assumes GRS80 ellipsoid.
-	 *
+	 * km below sea level.
 	 * @param layid the index of the layer of the model in which the position is to be constrained.
 	 * @param lat in degrees.
 	 * @param lon in degrees.
@@ -654,23 +658,22 @@ public:
 		else
 		{
 			double uVector[3];
-			GeoTessUtils::getVectorDegrees(lat, lon, uVector);
-			updatePosition2D(layid, uVector);
-			updateRadius(layid, GeoTessUtils::getEarthRadius(uVector) - depth);
+			model->getEarthShape().getVectorDegrees(lat, lon, uVector);
+			double rad = model->getEarthShape().getEarthRadius(uVector)-depth;
+			set(layid, uVector, rad);
 		}
+		depthSpecified = true;
 	}
 
 	/**
-	 * Set the interpolation point. This method will perform a walking triangle search for the
-	 * triangle in which the specified position is located and compute the associated 2D and radial
-	 * interpolation coefficients.
+	 * Set the interpolation point.
 	 *
 	 * @param layid the index of the layer of the model in which the position is to be constrained.
 	 * @param uVector the Earth-centered unit vector that defines the position that is to be set.
 	 * @param rad the radius of the position, in km.
 	 *
 	 */
-	void									set(int layid, const double* const uVector, double rad)
+	void set(int layid, const double* const uVector, double rad)
 	{
 		if (layid < 0)
 			set(uVector, rad);
@@ -679,6 +682,7 @@ public:
 			updatePosition2D(layid, uVector);
 			if (rad >= 0.0) updateRadius(layid, rad);
 		}
+		depthSpecified = false;
 	}
 
 	/**
@@ -688,10 +692,11 @@ public:
 	 * @param uVector the Earth-centered unit vector that defines the position that is to be set.
 	 *
 	 */
-	void									setTop(int layid, const double* const uVector)
+	void setTop(int layid, const double* const uVector)
 	{
 		updatePosition2D(layid, uVector);
 		updateRadius(layid, getRadiusTop(layid));
+		depthSpecified = radius > 5300;
 	}
 
 	/**
@@ -702,10 +707,11 @@ public:
 	 * @param uVector the Earth-centered unit vector that defines the position that is to be set.
 	 *
 	 */
-	void									setBottom(int layid, const double* const uVector)
+	void setBottom(int layid, const double* const uVector)
 	{
 		updatePosition2D(layid, uVector);
 		updateRadius(layid, getRadiusBottom(layid));
+		depthSpecified = radius > 5300;
 	}
 
 	/**
@@ -715,7 +721,7 @@ public:
 	 * @param rad the new radius in km
 	 *
 	 */
-	void									setRadius(int layid, double rad)
+	void setRadius(int layid, double rad)
 	{
 		if (tessid < 0)
 		{
@@ -725,6 +731,7 @@ public:
 			throw GeoTessException(os, __FILE__, __LINE__, 3001);
 		}
 		updateRadius(layid, rad);
+		depthSpecified = false;
 	}
 
 	/**
@@ -744,6 +751,7 @@ public:
 				throw GeoTessException(os, __FILE__, __LINE__, 3002);
 			}
 		updateRadius(getLayerId(rad), rad);
+		depthSpecified = false;
 	}
 
 	/**
@@ -760,6 +768,8 @@ public:
 	void setDepth(int layer, double depth)
 	{
 		setRadius(layer, getEarthRadius()-depth);
+		depthSpecified = true;
+
 	}
 
 	/**
@@ -771,6 +781,7 @@ public:
 	void setDepth(double depth)
 	{
 		setRadius(getEarthRadius()-depth);
+		depthSpecified = true;
 	}
 
 	/**
@@ -790,6 +801,7 @@ public:
 		tessid = layerTessIds[layid];
 		checkTessellation(tessid);
 		updateRadius(layid, getRadiusTop(layid));
+		depthSpecified = radius > 5300;
 	}
 
 	/**
@@ -810,6 +822,7 @@ public:
 		tessid = layerTessIds[layid];
 		checkTessellation(tessid);
 		updateRadius(layid, getRadiusBottom(layid));
+		depthSpecified = radius > 5300;
 	}
 
 	/**
@@ -830,14 +843,14 @@ public:
 	double								getRadiusBottom(int layid);
 
 	/**
-	 * Retrieve the radius of the Earth at this position, in km. Assumes GRS80 ellipsoid.
+	 * Retrieve the radius of the Earth at this position, in km.
 	 *
 	 * @return the radius of the Earth at this position, in km.
 	 */
 	double								getEarthRadius()
 	{
 		if (earthRadius < 0.)
-			earthRadius = GeoTessUtils::getEarthRadius(unitVector);
+			earthRadius = model->getEarthShape().getEarthRadius(unitVector);
 		return earthRadius;
 	}
 
@@ -1054,7 +1067,7 @@ public:
 	double								getRadius() { return radius; };
 
 	/**
-	 * Retrieve the depth of the current position in km. Assumes GRS80 ellipsoid.
+	 * Retrieve the depth of the current position in km.
 	 *
 	 * @return the depth of the current position in km.
 	 */
@@ -1281,6 +1294,93 @@ public:
 	 * @return  true if reference count is zero.
 	 */
 	bool isNotReferenced() { return refCount == 0; }
+
+	/**
+	 *  Compute radii and attribute values at the current geographic position.
+	 *  The radii will be monotonically increasing values with spacing less than
+	 *  or equal to rSpacing.  There will be radius values at the top and bottom of
+	 *  each layer, which implies there will be duplicate radii at interfaces with
+	 *  attribute values interpolated in layers below and above the interface.
+	 *  <br>Upon return from this function, output vectors layers, radii and attributes will all
+	 *  have the same size.
+	 *  @param rSpacing the radial spacing of sample points in km.  Actual spacing will
+	 *  be less than or equal to the specified value such that an integral number of
+	 *  equally spaced points will be generated between the bottom and top of each layer.
+	 *  @param computeDepth if true, parameter radii will be populated with depths instead
+	 *  of radii.
+	 *  @param layers will be populated with the layer index of each point in the borehole
+	 *  @param radii will be populated with radius or depth of each borehole point, in km
+	 *  @param attributes will be populated with the attribute values at each borehole point.
+	 *  Units will be same as the units specified in the model metadata.
+	 */
+	void getBorehole(const double& rSpacing,  bool computeDepth,
+			vector<int>& layers, vector<double>& radii, vector<vector<double> >& attributes)
+	{
+		// save current layer and radius so they can be restored at the end.
+		int layer0 = getLayerId();
+		double r0 = getRadius();
+
+		layers.clear();
+		radii.clear();
+		attributes.clear();
+
+		// loop over the layers and compute radii such that there
+		// are radii at the top and bottom of each layer.
+		for (int layer=0; layer<model->getNLayers(); ++layer)
+		{
+			double rbot = getRadiusBottom(layer);
+			double rtop = getRadiusTop(layer);
+
+			int nintervals = (int)ceil((rtop - rbot)/rSpacing);
+			double dinterval = (rtop - rbot)/nintervals;
+
+			for (int i=0; i <= nintervals; ++i)
+			{
+				double r = rbot + i*dinterval;
+				radii.push_back(r);
+				layers.push_back(layer);
+			}
+		}
+
+		// loop over the radii and interpolate attribute values.
+		for (int i=0; i<radii.size(); ++i)
+		{
+			setRadius(layers[i], radii[i]);
+			vector<double> att(model->getNAttributes());
+			for (int j=0; j<model->getNAttributes(); ++j)
+				att[j] = getValue(j);
+			attributes.push_back(att);
+		}
+
+		// currently, monotonically increasing radii are stored.
+		// if computeDepth is true, convert to monotonically increasing depths.
+		if (computeDepth)
+		{
+			for (int i=0; i < radii.size()/2; ++i)
+			{
+				int j = radii.size()-1-i;
+				int layer = layers[i];
+				layers[i] = layers[j];
+				layers[j] = layer;
+
+				double r = radii[i];
+				radii[i] = radii[j];
+				radii[j] = r;
+
+				for (int a=0; a < model->getNAttributes(); ++a)
+				{
+					double att = attributes[i][a];
+					attributes[i][a] = attributes[j][a];
+					attributes[j][a] = att;
+				}
+			}
+			for (int i=0; i<radii.size(); ++i)
+				radii[i] = getEarthRadius()-radii[i];
+		}
+
+		// restore original layer and radius.
+		setRadius(layer0, r0);
+	}
 
 }; // end class GeoTessModel
 

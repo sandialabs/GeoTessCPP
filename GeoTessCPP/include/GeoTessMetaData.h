@@ -1,15 +1,15 @@
 //- ****************************************************************************
-//-
+//- 
 //- Copyright 2009 Sandia Corporation. Under the terms of Contract
 //- DE-AC04-94AL85000 with Sandia Corporation, the U.S. Government
 //- retains certain rights in this software.
-//-
+//- 
 //- BSD Open Source License.
 //- All rights reserved.
-//-
+//- 
 //- Redistribution and use in source and binary forms, with or without
 //- modification, are permitted provided that the following conditions are met:
-//-
+//- 
 //-    * Redistributions of source code must retain the above copyright notice,
 //-      this list of conditions and the following disclaimer.
 //-    * Redistributions in binary form must reproduce the above copyright
@@ -18,7 +18,7 @@
 //-    * Neither the name of Sandia National Laboratories nor the names of its
 //-      contributors may be used to endorse or promote products derived from
 //-      this software without specific prior written permission.
-//-
+//- 
 //- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 //- AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 //- IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -40,6 +40,7 @@
 
 #include <iostream>
 #include <string>
+#include <iomanip>
 #include <fstream>
 #include <vector>
 #include <set>
@@ -54,6 +55,7 @@ using namespace std;
 // **** _LOCAL INCLUDES_ *******************************************************
 
 #include "CPPUtils.h"
+#include "CPPGlobals.h"
 #include "GeoTessUtils.h"
 #include "GeoTessDataType.h"
 #include "GeoTessException.h"
@@ -234,6 +236,60 @@ private:
 
 	map<string, string> properties;
 
+	/**
+	 * Angles that are being used to rotate
+	 * unit vectors from grid to model coordinates, in degrees.
+	 * Returns null if no grid rotations are being applied.
+	 * <p>There are possibly two geographic coordinate systems at play:
+	 * <ul>
+	 * <li>Grid coordinates, where grid vertex 0 points to the north pole.
+	 * <li>Model coordinates, where grid vertex 0 points to some other location,
+	 * typically a station location.
+	 * </ul>
+	 * */
+	double* eulerRotationAngles;
+
+	/**
+	 * The Euler Rotation Matrix to use to rotate
+	 * unit vectors from grid to model coordinates.
+	 * Equals null if no grid rotations are being applied.
+	 * <p>There are possibly two geographic coordinate systems at play:
+	 * <ul>
+	 * <li>Grid coordinates, where grid vertex 0 points to the north pole.
+	 * <li>Model coordinates, where grid vertex 0 points to some other location,
+	 * typically a station location.
+	 * </ul>
+	 */
+	double** eulerGridToModel;
+
+	/**
+	 * The Euler Rotation Matrix to use to rotate
+	 * unit vectors from model to grid coordinates.
+	 * Equals null if no grid rotations are being applied.
+	 * <p>There are possibly two geographic coordinate systems at play:
+	 * <ul>
+	 * <li>Grid coordinates, where grid vertex 0 points to the north pole.
+	 * <li>Model coordinates, where grid vertex 0 points to some other location,
+	 * typically a station location.
+	 * </ul>
+	 */
+	double** eulerModelToGrid;
+
+	/**
+	 * make sure properties are up-to-date with all parameters
+	 * supported by modelFileFormat 3.  If modelFileFormat is > 3,
+	 * all the properties read from the input file will still be in
+	 * properties map.
+	 */
+	void updateProperties();
+
+	/**
+	 * After loading properties from the input file, call this method
+	 * to extract metaData information from the properties object.
+	 * @throws IOException
+	 */
+	void readProperties();
+
 public:
 
 	/**
@@ -254,19 +310,14 @@ public:
 	 * </ul>
 	 */
 	GeoTessMetaData()
-			: earthShape(), description(""), nLayers(0), nVertices(0), layerNames(NULL), layerTessIds(
+			: earthShape(), modelFileFormat(0), description(""), nLayers(0), nVertices(0), layerNames(NULL), layerTessIds(
 					NULL), dataType(&GeoTessDataType::NONE), nAttributes(-1), attributeNames(
 					NULL), attributeUnits(NULL), boolAttributeFilter(false),
 					inputModelFile("none"), inputGridFile("none"), loadTimeModel(-1.0),
 					outputModelFile("none"), outputGridFile("none"), writeTimeModel(-1.0),
-					refCount(0), reuseGrids(true), modelSoftwareVersion(""), modelGenerationDate("")
+					refCount(0), reuseGrids(true), modelSoftwareVersion(""), modelGenerationDate(""),
+					eulerRotationAngles(NULL), eulerGridToModel(NULL), eulerModelToGrid(NULL)
 	{ }
-
-	/**
-	 * Load just the metaData object from a GeoTessModel file.
-	 * @param fileName name of GeoTessModel from which to read meta data
-	 */
-	GeoTessMetaData(const string &fileName);
 
 	/**
 	 * Copy constructor.
@@ -542,7 +593,7 @@ public:
 	void setLayerNames(const string& lyrNms)
 	{
 		vector<string> layrNames;
-		CPPUtils::tokenizeString(lyrNms, ";", layrNames);
+		CPPUtils::split(lyrNms, ";", layrNames);
 		setLayerNames(layrNames);
 	}
 
@@ -800,21 +851,21 @@ public:
 	}
 
 	/**
-	 * Specify the names of all the layers that comprise the model.  This will determine
-	 * the value of nLayers as well. The input lyrNms is a semicolon concatenation of
-	 * all layer names (i.e. LAYERNAME1; LAYERNAME2; ...).
+	 * Specify the names and units of the attributes.
 	 * @param nms the names of the attributes
 	 * @param unts the units of the attributes
 	 */
 	void setAttributes(const string& nms, const string& unts)
 	{
 		vector<string> names, units;
-		CPPUtils::tokenizeString(nms, ";", names);
-		CPPUtils::tokenizeString(unts, ";", units);
+		CPPUtils::split(nms, ";", names);
+		CPPUtils::split(unts, ";", units);
 		if (names.size() != units.size())
 		{
 			ostringstream os;
 			os	 << "Error in GeoTessMetaData::setAttributes(const string& nms, const string& unts)" << endl
+					<< "nms  = '" << nms << "'" << endl
+					<< "unts = '" << unts << "'" << endl
 					<< "Attribute names size (" << names.size()
 					<< ") is not equal to units size (" << units.size() << ")" << endl;
 			names.clear(); units.clear();
@@ -929,7 +980,7 @@ public:
 	 * toString function.
 	 * @return string representation of this meta data object
 	 */
-	string toString(const string& className, LONG_INT memory) const;
+	string toString(const string& className, LONG_INT modelMemory, LONG_INT gridMemory) const;
 
 	/**
 	 * toString function.
@@ -1101,6 +1152,102 @@ public:
 	int getModelFileFormat() { return modelFileFormat; }
 
 	void setModelFileFormat(int version) { modelFileFormat = version; }
+
+	/**
+	 * Specify the 3 euler rotation angles, in degrees, that will control grid rotations.
+	 * <p>There are possibly two geographic coordinate systems at play:
+	 * <ul>
+	 * <li>Grid coordinates, where grid vertex 0 points to the north pole.
+	 * <li>Model coordinates, where grid vertex 0 points to some other location,
+	 * typically a station location.
+	 * </ul>
+	 * @param the 3 euler rotation angles, in degrees, that will control grid rotations.
+	 * @throws Exception
+	 */
+	void setEulerRotationAngles(double* angles)
+	{
+		if (eulerRotationAngles != NULL)
+		{
+			delete [] eulerRotationAngles;
+			eulerRotationAngles = NULL;
+			CPPUtils::delete2DArray(eulerGridToModel);
+			CPPUtils::delete2DArray(eulerModelToGrid);
+		}
+		if (angles != NULL)
+		{
+			eulerRotationAngles = angles;
+
+			// convert from degrees to radians
+			eulerRotationAngles[0] *= DEG_TO_RAD;
+			eulerRotationAngles[1] *= DEG_TO_RAD;
+			eulerRotationAngles[2] *= DEG_TO_RAD;
+
+			eulerGridToModel = GeoTessUtils::getEulerMatrix(eulerRotationAngles);
+			eulerModelToGrid = GeoTessUtils::inverse_3x3(eulerGridToModel);
+
+			// convert from radians back to degrees
+			eulerRotationAngles[0] *= RAD_TO_DEG;
+			eulerRotationAngles[1] *= RAD_TO_DEG;
+			eulerRotationAngles[2] *= RAD_TO_DEG;
+		}
+	}
+
+	/**
+	 * Retrieve the Euler Rotation Angles that are being used to rotate
+	 * unit vectors from grid to model coordinates, in degrees.
+	 * Returns null if no grid rotations are being applied.
+	 * <p>There are possibly two geographic coordinate systems at play:
+	 * <ul>
+	 * <li>Grid coordinates, where grid vertex 0 points to the north pole.
+	 * <li>Model coordinates, where grid vertex 0 points to some other location,
+	 * typically a station location.
+	 * </ul>
+	 * @return euler rotation angles in degrees.
+	 */
+	double* getEulerRotationAngles() {
+		return eulerRotationAngles;
+	}
+
+	string getEulerRotationAnglesString() const	{
+		if (eulerRotationAngles == NULL)
+			return "null";
+
+		return CPPUtils::dtos(eulerRotationAngles[0]) + ", "
+			  + CPPUtils::dtos(eulerRotationAngles[1]) + ", "
+			  + CPPUtils::dtos(eulerRotationAngles[2]);
+	}
+
+	/**
+	 * Retrieve the Euler Rotation Matrix to use to rotate
+	 * unit vectors from grid to model coordinates.
+	 * Returns null if no grid rotations are being applied.
+	 * <p>There are possibly two geographic coordinate systems at play:
+	 * <ul>
+	 * <li>Grid coordinates, where grid vertex 0 points to the north pole.
+	 * <li>Model coordinates, where grid vertex 0 points to some other location,
+	 * typically a station location.
+	 * </ul>
+	 * @return
+	 */
+	double** getEulerGridToModel() {
+		return eulerGridToModel;
+	}
+
+	/**
+	 * Retrieve the Euler Rotation Matrix to use to rotate
+	 * unit vectors from model to grid coordinates.
+	 * Returns null if no grid rotations are being applied.
+	 * <p>There are possibly two geographic coordinate systems at play:
+	 * <ul>
+	 * <li>Grid coordinates, where grid vertex 0 points to the north pole.
+	 * <li>Model coordinates, where grid vertex 0 points to some other location,
+	 * typically a station location.
+	 * </ul>
+	 * @return
+	 */
+	double** getEulerModelToGrid() {
+		return eulerModelToGrid;
+	}
 
 	///@endcond
 

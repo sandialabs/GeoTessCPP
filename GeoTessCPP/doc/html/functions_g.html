@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">GeoTessCPP<span id="projectnumber">&#160;2.6</span>
+   <div id="projectname">GeoTessCPP<span id="projectnumber">&#160;2.2</span>
    </div>
    <div id="projectbrief">Software to facilitate storage and retrieval of 3D information about the Earth.</div>
   </td>
@@ -108,7 +108,7 @@ $(function() {
 <li>getBeginBlockCommentDelimiter()&#160;:&#160;<a class="el" href="a00279.html#ab309ade62aaf4810cd8f7edd532f5b65">geotess::IFStreamAscii</a></li>
 <li>getBlankLinesRead()&#160;:&#160;<a class="el" href="a00279.html#ae7097efbf8f8a17f1781c55c910fe36e">geotess::IFStreamAscii</a></li>
 <li>getBlockCommentLinesRead()&#160;:&#160;<a class="el" href="a00279.html#a676f8f913ac5ae723811f5590e833dcc">geotess::IFStreamAscii</a></li>
-<li>getBorehole()&#160;:&#160;<a class="el" href="a00207.html#ae27bd27cf14a146acd85692641224461">geotess::GeoTessModelUtils</a></li>
+<li>getBorehole()&#160;:&#160;<a class="el" href="a00207.html#ae27bd27cf14a146acd85692641224461">geotess::GeoTessModelUtils</a>, <a class="el" href="a00231.html#a72b7defde6721ec3c99a366c18066ce3">geotess::GeoTessPosition</a></li>
 <li>getBoreholeString()&#160;:&#160;<a class="el" href="a00207.html#abd832941d4db350a7edfe0ff2ee6733a">geotess::GeoTessModelUtils</a></li>
 <li>getBottom()&#160;:&#160;<a class="el" href="a00223.html#a8a87e0cae8f3ba433bfc3e4e70b2917e">geotess::GeoTessPolygon3D</a></li>
 <li>getByte()&#160;:&#160;<a class="el" href="a00151.html#a2d3a1ae174c98463a40365dc44bb6f85">geotess::GeoTessData</a>, <a class="el" href="a00143.html#a0f5f01380076a66edd0934d2745b4357">geotess::GeoTessDataArray&lt; T &gt;</a>, <a class="el" href="a00147.html#a723e550b6739f2c3573d3f6f50c55e2f">geotess::GeoTessDataValue&lt; T &gt;</a></li>
@@ -146,6 +146,8 @@ $(function() {
 <li>getEndBlockCommentDelimiter()&#160;:&#160;<a class="el" href="a00279.html#abf9a401f1c5992e11a2fb48cf6627302">geotess::IFStreamAscii</a></li>
 <li>getEquatorialRadius()&#160;:&#160;<a class="el" href="a00139.html#a64aa5c798c9e1de6dc160af619d6d314">geotess::EarthShape</a></li>
 <li>getErrorValue()&#160;:&#160;<a class="el" href="a00231.html#a022f216db08ba1024739c94e3f3363c3">geotess::GeoTessPosition</a></li>
+<li>getEulerMatrix()&#160;:&#160;<a class="el" href="a00275.html#a48be48b8f6d0c6140a4b673bef1374cc">geotess::GeoTessUtils</a></li>
+<li>getEulerRotationAngles()&#160;:&#160;<a class="el" href="a00275.html#a25bd1dd386e185bfd21afbb117a4875c">geotess::GeoTessUtils</a></li>
 <li>getFileName()&#160;:&#160;<a class="el" href="a00279.html#a5a7bb0e63c68e409cd048096a8082fe2">geotess::IFStreamAscii</a>, <a class="el" href="a00283.html#aef4e3a9a169bd58cc3320c6edd50d1b3">geotess::IFStreamBinary</a></li>
 <li>getFirst()&#160;:&#160;<a class="el" href="a00167.html#a8b38530ed99656c9c89121d6b9598b5a">geotess::GeoTessGreatCircle</a></li>
 <li>getFirstLayer()&#160;:&#160;<a class="el" href="a00199.html#a7f2d73b1a877ccc6a7e81d6872f67824">geotess::GeoTessMetaData</a></li>
@@ -164,6 +166,7 @@ $(function() {
 <li>getGridID()&#160;:&#160;<a class="el" href="a00175.html#ad9afddf6b6c335bdbcf67ca1af3f7a9e">geotess::GeoTessGrid</a></li>
 <li>getGridInputFile()&#160;:&#160;<a class="el" href="a00175.html#ad3f333800058c6aa21dd9aee3a7afd14">geotess::GeoTessGrid</a></li>
 <li>getGridOutputFile()&#160;:&#160;<a class="el" href="a00175.html#accdfb4a8964e46a222d5030f9cd6244a">geotess::GeoTessGrid</a></li>
+<li>getGridRotated()&#160;:&#160;<a class="el" href="a00203.html#a3f6a418272db13ff9ed6a8708805c94f">geotess::GeoTessModel</a></li>
 <li>getGridSoftwareVersion()&#160;:&#160;<a class="el" href="a00175.html#ae0bcd89b2be64917484eaa83159f1ba9">geotess::GeoTessGrid</a></li>
 <li>getHorizontalCoefficient()&#160;:&#160;<a class="el" href="a00231.html#a5c5ab6f0d5d5eef5e0691b8c50507bef">geotess::GeoTessPosition</a></li>
 <li>getHorizontalCoefficients()&#160;:&#160;<a class="el" href="a00231.html#a49bd7f7bc9b8273fe69d8e5ad263627a">geotess::GeoTessPosition</a></li>
@@ -307,7 +310,7 @@ $(function() {
 <li>getVector()&#160;:&#160;<a class="el" href="a00139.html#ae6c2f3de584835f362143b8ab113d3e3">geotess::EarthShape</a>, <a class="el" href="a00231.html#a8aefdef7706a44e7b62842829c0609c7">geotess::GeoTessPosition</a>, <a class="el" href="a00275.html#a2ceee4747dea8c9fbe1644124feade23">geotess::GeoTessUtils</a></li>
 <li>getVectorDegrees()&#160;:&#160;<a class="el" href="a00139.html#a5d67a4764c292f77162bcd3039e7b1d5">geotess::EarthShape</a>, <a class="el" href="a00275.html#a75ee76ff0e6f2b8ab6a37505841ee4f3">geotess::GeoTessUtils</a></li>
 <li>getVersion()&#160;:&#160;<a class="el" href="a00275.html#ae35e607c464f731d33b0cda2ccd298ca">geotess::GeoTessUtils</a></li>
-<li>getVertex()&#160;:&#160;<a class="el" href="a00175.html#af0283d8cb417e0d0fc11e9a8323a3a09">geotess::GeoTessGrid</a>, <a class="el" href="a00231.html#a59b9d1f80127e02b1378b6cd6ccfb5ad">geotess::GeoTessPosition</a></li>
+<li>getVertex()&#160;:&#160;<a class="el" href="a00175.html#af0283d8cb417e0d0fc11e9a8323a3a09">geotess::GeoTessGrid</a>, <a class="el" href="a00203.html#a77f564591153362d3af546239931a387">geotess::GeoTessModel</a>, <a class="el" href="a00231.html#a59b9d1f80127e02b1378b6cd6ccfb5ad">geotess::GeoTessPosition</a></li>
 <li>getVertexIndex()&#160;:&#160;<a class="el" href="a00175.html#a73f36c784ff1b92c58ce7b73a56f6a3a">geotess::GeoTessGrid</a>, <a class="el" href="a00215.html#a77364a7aa2dcc668aa4baf8fb307e7e1">geotess::GeoTessPointMap</a>, <a class="el" href="a00231.html#af0901d7a541707bb699eda31ef0d77e2">geotess::GeoTessPosition</a></li>
 <li>getVertexIndices()&#160;:&#160;<a class="el" href="a00175.html#a84a5f8b9b524f32fef634207afde41ee">geotess::GeoTessGrid</a></li>
 <li>getVertexIndicesTopLevel()&#160;:&#160;<a class="el" href="a00175.html#a0fd2791cd98d568ab6554194c3fcf8d1">geotess::GeoTessGrid</a></li>

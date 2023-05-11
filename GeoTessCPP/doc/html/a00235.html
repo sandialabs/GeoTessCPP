@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">GeoTessCPP<span id="projectnumber">&#160;2.6</span>
+   <div id="projectname">GeoTessCPP<span id="projectnumber">&#160;2.2</span>
    </div>
    <div id="projectbrief">Software to facilitate storage and retrieval of 3D information about the Earth.</div>
   </td>
@@ -113,6 +113,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5e008d7f7793c85d7bbb7705344d0db8 inherit pub_methods_a00231"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00231.html#a5e008d7f7793c85d7bbb7705344d0db8">copyVector</a> (double *u)</td></tr>
 <tr class="memdesc:a5e008d7f7793c85d7bbb7705344d0db8 inherit pub_methods_a00231"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy the contents of the unit vector that corresponds to the current position into the supplied double* which must have at least 3 elements.  <a href="a00231.html#a5e008d7f7793c85d7bbb7705344d0db8">More...</a><br /></td></tr>
 <tr class="separator:a5e008d7f7793c85d7bbb7705344d0db8 inherit pub_methods_a00231"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72b7defde6721ec3c99a366c18066ce3 inherit pub_methods_a00231"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00231.html#a72b7defde6721ec3c99a366c18066ce3">getBorehole</a> (const double &amp;rSpacing, bool computeDepth, vector&lt; int &gt; &amp;layers, vector&lt; double &gt; &amp;radii, vector&lt; vector&lt; double &gt; &gt; &amp;attributes)</td></tr>
+<tr class="memdesc:a72b7defde6721ec3c99a366c18066ce3 inherit pub_methods_a00231"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute radii and attribute values at the current geographic position.  <a href="a00231.html#a72b7defde6721ec3c99a366c18066ce3">More...</a><br /></td></tr>
+<tr class="separator:a72b7defde6721ec3c99a366c18066ce3 inherit pub_methods_a00231"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6a591a69c826733f3f6d5bfc5354e95 inherit pub_methods_a00231"><td class="memItemLeft" align="right" valign="top">const double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00231.html#ab6a591a69c826733f3f6d5bfc5354e95">getClosestVertex</a> () const</td></tr>
 <tr class="memdesc:ab6a591a69c826733f3f6d5bfc5354e95 inherit pub_methods_a00231"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the unit vector of the vertex wiht the highest interpolation coefficient.  <a href="a00231.html#ab6a591a69c826733f3f6d5bfc5354e95">More...</a><br /></td></tr>
 <tr class="separator:ab6a591a69c826733f3f6d5bfc5354e95 inherit pub_methods_a00231"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -281,9 +284,9 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:ac491ce0820e8f6a42155bdaff5006eb8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#ac491ce0820e8f6a42155bdaff5006eb8">update2D</a> (int tid)</td></tr>
-<tr class="memdesc:ac491ce0820e8f6a42155bdaff5006eb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set vertices to the 3-element array that stores the corners of the triangle identified during the triangle walk algorithm.  <a href="a00235.html#ac491ce0820e8f6a42155bdaff5006eb8">More...</a><br /></td></tr>
-<tr class="separator:ac491ce0820e8f6a42155bdaff5006eb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a557db6f59f6bf3fb522a25cafb149892"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00235.html#a557db6f59f6bf3fb522a25cafb149892">update2D</a> (int tid, const double *const uVector)</td></tr>
+<tr class="memdesc:a557db6f59f6bf3fb522a25cafb149892"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set vertices to the 3-element array that stores the corners of the triangle identified during the triangle walk algorithm.  <a href="a00235.html#a557db6f59f6bf3fb522a25cafb149892">More...</a><br /></td></tr>
+<tr class="separator:a557db6f59f6bf3fb522a25cafb149892"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -420,8 +423,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="ac491ce0820e8f6a42155bdaff5006eb8" name="ac491ce0820e8f6a42155bdaff5006eb8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac491ce0820e8f6a42155bdaff5006eb8">&#9670;&nbsp;</a></span>update2D()</h2>
+<a id="a557db6f59f6bf3fb522a25cafb149892" name="a557db6f59f6bf3fb522a25cafb149892"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a557db6f59f6bf3fb522a25cafb149892">&#9670;&nbsp;</a></span>update2D()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -433,8 +436,18 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname">virtual void geotess::GeoTessPositionLinear::update2D </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>tid</em></td><td>)</td>
+          <td class="paramname"><em>tid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const double *const&#160;</td>
+          <td class="paramname"><em>uVector</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>

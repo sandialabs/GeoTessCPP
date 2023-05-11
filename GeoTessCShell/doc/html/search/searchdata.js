@@ -1,12 +1,12 @@
 var indexSectionsWithContent =
 {
-  0: "bcdefgilmnops",
+  0: "_bcdefgilmnopst",
   1: "cegp",
-  2: "cdegiop",
-  3: "cdegio",
-  4: "cegmps",
-  5: "dio",
-  6: "bdfilmns",
+  2: "_bcdegiop",
+  3: "cdefgios",
+  4: "ceglmps",
+  5: "bdio",
+  6: "bdfilmnst",
   7: "bgl"
 };
 
@@ -25,7 +25,7 @@ var indexSectionNames =
 var indexSectionLabels =
 {
   0: "All",
-  1: "Data Structures",
+  1: "Classes",
   2: "Files",
   3: "Functions",
   4: "Variables",

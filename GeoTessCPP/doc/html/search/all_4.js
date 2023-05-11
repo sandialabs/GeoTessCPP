@@ -12,5 +12,6 @@ var searchData=
   ['elapsedtimestringfractionabbrvunits_9',['elapsedTimeStringFractionAbbrvUnits',['../a00135.html#af6d298f3d5eb3e6a221583bcefbe95f1',1,'geotess::CpuTimer']]],
   ['emessage_10',['emessage',['../a00163.html#ac980331fcc3a60d98ff869f227e119cb',1,'geotess::GeoTessException']]],
   ['empty_11',['EMPTY',['../a00271.html#a9e34a554a6b457d4fd3d8cc3651111cf',1,'geotess::GeoTessProfileType']]],
-  ['exists_12',['exists',['../a00283.html#a5ed93c8342db68f70b07f60c09083517',1,'geotess::IFStreamBinary']]]
+  ['eulerrotation_12',['eulerRotation',['../a00275.html#a063c1291eee7a438280e8d4b190c4f81',1,'geotess::GeoTessUtils::eulerRotation(const double *const u, double **euler)'],['../a00275.html#af4299f19fc8acef0fbb02353f232d657',1,'geotess::GeoTessUtils::eulerRotation(const double *const u, double **euler, double *v)']]],
+  ['exists_13',['exists',['../a00283.html#a5ed93c8342db68f70b07f60c09083517',1,'geotess::IFStreamBinary']]]
 ];

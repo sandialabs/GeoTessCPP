@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">GeoTessCPP<span id="projectnumber">&#160;2.6</span>
+   <div id="projectname">GeoTessCPP<span id="projectnumber">&#160;2.2</span>
    </div>
    <div id="projectbrief">Software to facilitate storage and retrieval of 3D information about the Earth.</div>
   </td>
@@ -81,7 +81,7 @@ $(function() {
   <tr class="odd"><td class="entry"><a class="el" href="a00175.html#a1a51db389061d83bd4ccee187ccbbd1f">GeoTessGrid</a>()</td><td class="entry"><a class="el" href="a00175.html">geotess::GeoTessGrid</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="a00175.html#ae38bc0a995f88b6c5982f1305b5997c6">GeoTessGrid</a>(IFStreamAscii &amp;input)</td><td class="entry"><a class="el" href="a00175.html">geotess::GeoTessGrid</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="a00175.html#a2a24637f9c0c5a6eff6b6920779f626f">GeoTessGrid</a>(IFStreamBinary &amp;input)</td><td class="entry"><a class="el" href="a00175.html">geotess::GeoTessGrid</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="a00175.html#ae8420efd53e2bf013d5099869ef18c7d">GeoTessGrid</a>(GeoTessGrid &amp;other)</td><td class="entry"><a class="el" href="a00175.html">geotess::GeoTessGrid</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="a00175.html#ab3c59099922c5e2c1bc711142ab54b7c">GeoTessGrid</a>(GeoTessGrid &amp;other, double **eulerRotationMatrix=NULL)</td><td class="entry"><a class="el" href="a00175.html">geotess::GeoTessGrid</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="a00175.html#a6d64743f25a98cd00ed239faa168e9d1">getCenter</a>(const int &amp;triangle, double *center)</td><td class="entry"><a class="el" href="a00175.html">geotess::GeoTessGrid</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="a00175.html#a112e9c6bc4866c09b099e15f2f851cf3">getCircumCenter</a>(const int &amp;triangle) const</td><td class="entry"><a class="el" href="a00175.html">geotess::GeoTessGrid</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="a00175.html#a8296811efbefb458ebbe62ffdfcf9d65">getCircumCenter</a>(const int &amp;triangle, double *cc) const</td><td class="entry"><a class="el" href="a00175.html">geotess::GeoTessGrid</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
@@ -138,7 +138,7 @@ $(function() {
   <tr class="even"><td class="entry"><a class="el" href="a00175.html#a6d2b3ac01838c626e790a0bdd400245a">getVertexTriangles</a>(const int &amp;tessId, const int &amp;level, const int &amp;vertex) const</td><td class="entry"><a class="el" href="a00175.html">geotess::GeoTessGrid</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="a00175.html#abbe5d4868d8a4787643168b97e2a2425">getVertexTriangles</a>(int tessId, int vertex) const</td><td class="entry"><a class="el" href="a00175.html">geotess::GeoTessGrid</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="a00175.html#a20f7a4f79a4eaa7819d82734b9f807e5">getVertices</a>() const</td><td class="entry"><a class="el" href="a00175.html">geotess::GeoTessGrid</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="a00175.html#a1df06d94ddc5735432605a16590c34da">getVertices</a>(const int &amp;tessellation, const int &amp;level, set&lt; const double * &gt; &amp;vectors)</td><td class="entry"><a class="el" href="a00175.html">geotess::GeoTessGrid</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="a00175.html#acee1a85ceba4293624c55a1331fe701e">getVertices</a>(const int &amp;tessellation, const int &amp;level, set&lt; const double * &gt; &amp;vectors, double **eulerGridToModel=NULL)</td><td class="entry"><a class="el" href="a00175.html">geotess::GeoTessGrid</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="a00175.html#affd91927d0f96f0d7de54c38314df3fe">getVerticesTopLevel</a>(const int &amp;tessellation, set&lt; const double * &gt; &amp;vectors)</td><td class="entry"><a class="el" href="a00175.html">geotess::GeoTessGrid</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="a00175.html#ad5bdc90cca187f54e12ccfe4c804cd8e">initialize</a>()</td><td class="entry"><a class="el" href="a00175.html">geotess::GeoTessGrid</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="a00175.html#a4d127c12231299dbc1a71e8011830a35">isGeoTessGrid</a>(const string &amp;inputFile)</td><td class="entry"><a class="el" href="a00175.html">geotess::GeoTessGrid</a></td><td class="entry"><span class="mlabel">static</span></td></tr>

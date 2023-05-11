@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['natural_5fneighbor_0',['NATURAL_NEIGHBOR',['../a00008.html#a91a57f16d058f4c0e1d9c8941f22cef5a6a910d041166a5d1f7592234377118f7',1,'InterpolatorTypeC.h']]],
-  ['none_1',['NONE',['../a00017.html#adfbe74497a2807bb235a36d6eae9c824ac157bdf0b85a40d2619cbc8bc1ae5fe2',1,'DataTypeC.h']]]
+  ['md_0',['md',['../a00091.html#a5200c15245e838a86bc79ff153e513a8',1,'GeoTessMetaDataC']]],
+  ['memory_1',['MEMORY',['../a00062.html#a6363a00cc40c3ebb5efa388c3dbddb0daa0f690187a3a023c04b409b4f653a4a1',1,'OptimizationTypeC.h']]],
+  ['msgs_2',['msgs',['../a00075.html#a3c7ecad9fdee17e54881a5ee72526331',1,'ErrorCache']]]
 ];

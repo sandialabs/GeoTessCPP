@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>GeoTessCShelll: include/ErrorHandler.h File Reference</title>
+<title>GeoTessCPP: include/ErrorHandler.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,9 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">GeoTessCShelll<span id="projectnumber">&#160;2.6</span>
+   <div id="projectname">GeoTessCPP<span id="projectnumber">&#160;2.2</span>
    </div>
-   <div id="projectbrief">C Interface to the GeoTess C++ Library</div>
+   <div id="projectbrief">Software to facilitate storage and retrieval of 3D information about the Earth.</div>
   </td>
  </tr>
  </tbody>
@@ -72,18 +72,20 @@ $(function() {
   <div class="headertitle"><div class="title">ErrorHandler.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;bool.h&quot;</code><br />
-<code>#include &quot;_ErrorCache.h&quot;</code><br />
-</div><table class="memberdecls">
+<div class="textblock"><code>#include &quot;<a class="el" href="a00029_source.html">bool.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00050_source.html">_ErrorCache.h</a>&quot;</code><br />
+</div>
+<p><a href="a00002_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a97824621d0f0e0e303fbacc5c55d5028"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00044.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#a97824621d0f0e0e303fbacc5c55d5028">error_clean</a> ()</td></tr>
+<tr class="memitem:a97824621d0f0e0e303fbacc5c55d5028"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#a97824621d0f0e0e303fbacc5c55d5028">error_clean</a> ()</td></tr>
 <tr class="memdesc:a97824621d0f0e0e303fbacc5c55d5028"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cleans out all remaining error caches.  <a href="a00002.html#a97824621d0f0e0e303fbacc5c55d5028">More...</a><br /></td></tr>
 <tr class="separator:a97824621d0f0e0e303fbacc5c55d5028"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4866726210d02136689f592c63ae767"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00044.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#ac4866726210d02136689f592c63ae767">error_exists</a> ()</td></tr>
+<tr class="memitem:ac4866726210d02136689f592c63ae767"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#ac4866726210d02136689f592c63ae767">error_exists</a> ()</td></tr>
 <tr class="memdesc:ac4866726210d02136689f592c63ae767"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether or not there are any error messages that have not been returned by the error_getMessage function.  <a href="a00002.html#ac4866726210d02136689f592c63ae767">More...</a><br /></td></tr>
 <tr class="separator:ac4866726210d02136689f592c63ae767"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3b9e43fab2fe5b097dce4b8a8bf94ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00044.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#ac3b9e43fab2fe5b097dce4b8a8bf94ed">error_getMessage</a> ()</td></tr>
+<tr class="memitem:ac3b9e43fab2fe5b097dce4b8a8bf94ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#ac3b9e43fab2fe5b097dce4b8a8bf94ed">error_getMessage</a> ()</td></tr>
 <tr class="memdesc:ac3b9e43fab2fe5b097dce4b8a8bf94ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pops the most recent error message off the stack and returns it.  <a href="a00002.html#ac3b9e43fab2fe5b097dce4b8a8bf94ed">More...</a><br /></td></tr>
 <tr class="separator:ac3b9e43fab2fe5b097dce4b8a8bf94ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -95,7 +97,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00044.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void error_clean </td>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void error_clean </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -115,7 +117,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00044.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> int error_exists </td>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> int error_exists </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -134,7 +136,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00044.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> char * error_getMessage </td>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> char * error_getMessage </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -150,7 +152,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 29 2021 06:31:43 for GeoTessCShelll by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
 </small></address>
 </body>
 </html>

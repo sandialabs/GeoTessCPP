@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">GeoTessCPP<span id="projectnumber">&#160;2.6</span>
+   <div id="projectname">GeoTessCPP<span id="projectnumber">&#160;2.2</span>
    </div>
    <div id="projectbrief">Software to facilitate storage and retrieval of 3D information about the Earth.</div>
   </td>
@@ -143,12 +143,24 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a3869e0326dd5b1036c90049403160dcb"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#a3869e0326dd5b1036c90049403160dcb">dot</a> (const double *const v0, const double *const v1)</td></tr>
 <tr class="memdesc:a3869e0326dd5b1036c90049403160dcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the dot product of two vectors.  <a href="a00275.html#a3869e0326dd5b1036c90049403160dcb">More...</a><br /></td></tr>
 <tr class="separator:a3869e0326dd5b1036c90049403160dcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a063c1291eee7a438280e8d4b190c4f81"><td class="memItemLeft" align="right" valign="top">static double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#a063c1291eee7a438280e8d4b190c4f81">eulerRotation</a> (const double *const u, double **euler)</td></tr>
+<tr class="memdesc:a063c1291eee7a438280e8d4b190c4f81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given an Euler rotation matrix computed from 3 Euler rotation angles using method <a class="el" href="a00275.html#a48be48b8f6d0c6140a4b673bef1374cc" title="Given three Euler angles in radians, retrieve the Euler rotation matrix.">getEulerMatrix()</a>, apply the rotation to 3-component unit vector u and return the result in a new 3-component unit vector.  <a href="a00275.html#a063c1291eee7a438280e8d4b190c4f81">More...</a><br /></td></tr>
+<tr class="separator:a063c1291eee7a438280e8d4b190c4f81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4299f19fc8acef0fbb02353f232d657"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#af4299f19fc8acef0fbb02353f232d657">eulerRotation</a> (const double *const u, double **euler, double *v)</td></tr>
+<tr class="memdesc:af4299f19fc8acef0fbb02353f232d657"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given an Euler rotation matrix computed from 3 Euler rotation angles using method <a class="el" href="a00275.html#a48be48b8f6d0c6140a4b673bef1374cc" title="Given three Euler angles in radians, retrieve the Euler rotation matrix.">getEulerMatrix()</a>, apply the rotation to 3-component unit vector u and return the result in unit vector v.  <a href="a00275.html#af4299f19fc8acef0fbb02353f232d657">More...</a><br /></td></tr>
+<tr class="separator:af4299f19fc8acef0fbb02353f232d657"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5747bfd26b78e8ce835d24c1699d847"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#ac5747bfd26b78e8ce835d24c1699d847">getDistance3D</a> (const double *const v0, double r0, const double *const v1, double r1)</td></tr>
 <tr class="memdesc:ac5747bfd26b78e8ce835d24c1699d847"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given two unit vectors and their radii, return the straight line separation between their tips.  <a href="a00275.html#ac5747bfd26b78e8ce835d24c1699d847">More...</a><br /></td></tr>
 <tr class="separator:ac5747bfd26b78e8ce835d24c1699d847"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8506836f063f685d9884415e22f3ab7b"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#a8506836f063f685d9884415e22f3ab7b">getEarthRadius</a> (const double *const v)</td></tr>
 <tr class="memdesc:a8506836f063f685d9884415e22f3ab7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the radius of the Earth in km at the position specified by an Earth-centered unit vector.  <a href="a00275.html#a8506836f063f685d9884415e22f3ab7b">More...</a><br /></td></tr>
 <tr class="separator:a8506836f063f685d9884415e22f3ab7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48be48b8f6d0c6140a4b673bef1374cc"><td class="memItemLeft" align="right" valign="top">static double **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#a48be48b8f6d0c6140a4b673bef1374cc">getEulerMatrix</a> (const double *const a)</td></tr>
+<tr class="memdesc:a48be48b8f6d0c6140a4b673bef1374cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given three Euler angles in radians, retrieve the Euler rotation matrix.  <a href="a00275.html#a48be48b8f6d0c6140a4b673bef1374cc">More...</a><br /></td></tr>
+<tr class="separator:a48be48b8f6d0c6140a4b673bef1374cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25bd1dd386e185bfd21afbb117a4875c"><td class="memItemLeft" align="right" valign="top">static double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#a25bd1dd386e185bfd21afbb117a4875c">getEulerRotationAngles</a> (const double *const u)</td></tr>
+<tr class="memdesc:a25bd1dd386e185bfd21afbb117a4875c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a location, retrieve the Euler rotation angles, in radians, that will rotate the north pole ([0., 0., 1.  <a href="a00275.html#a25bd1dd386e185bfd21afbb117a4875c">More...</a><br /></td></tr>
+<tr class="separator:a25bd1dd386e185bfd21afbb117a4875c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1fd3a9cbe00c33e01f4809548ecfc79e"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#a1fd3a9cbe00c33e01f4809548ecfc79e">getGeocentricLat</a> (const double &amp;lat)</td></tr>
 <tr class="memdesc:a1fd3a9cbe00c33e01f4809548ecfc79e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return geocentric latitude given a geographic latitude using the WGS84 ellipsoid.  <a href="a00275.html#a1fd3a9cbe00c33e01f4809548ecfc79e">More...</a><br /></td></tr>
 <tr class="separator:a1fd3a9cbe00c33e01f4809548ecfc79e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -220,6 +232,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ae35e607c464f731d33b0cda2ccd298ca"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#ae35e607c464f731d33b0cda2ccd298ca">getVersion</a> ()</td></tr>
 <tr class="memdesc:ae35e607c464f731d33b0cda2ccd298ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current GeoTess version.  <a href="a00275.html#ae35e607c464f731d33b0cda2ccd298ca">More...</a><br /></td></tr>
 <tr class="separator:ae35e607c464f731d33b0cda2ccd298ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ff6c582160a3337b1e1e02281010987"><td class="memItemLeft" align="right" valign="top">static double **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#a8ff6c582160a3337b1e1e02281010987">inverse_3x3</a> (double **m)</td></tr>
+<tr class="memdesc:a8ff6c582160a3337b1e1e02281010987"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the inverse of 3x3 matrix m.  <a href="a00275.html#a8ff6c582160a3337b1e1e02281010987">More...</a><br /></td></tr>
+<tr class="separator:a8ff6c582160a3337b1e1e02281010987"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d68448b30750c721cd3447dea2a4834"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#a3d68448b30750c721cd3447dea2a4834">isPole</a> (const double *const u)</td></tr>
 <tr class="memdesc:a3d68448b30750c721cd3447dea2a4834"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if unit vector u is very close to [0, 0, +/- 1].  <a href="a00275.html#a3d68448b30750c721cd3447dea2a4834">More...</a><br /></td></tr>
 <tr class="separator:a3d68448b30750c721cd3447dea2a4834"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1144,6 +1159,105 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a063c1291eee7a438280e8d4b190c4f81" name="a063c1291eee7a438280e8d4b190c4f81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a063c1291eee7a438280e8d4b190c4f81">&#9670;&nbsp;</a></span>eulerRotation() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static double * geotess::GeoTessUtils::eulerRotation </td>
+          <td>(</td>
+          <td class="paramtype">const double *const&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double **&#160;</td>
+          <td class="paramname"><em>euler</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Given an Euler rotation matrix computed from 3 Euler rotation angles using method <a class="el" href="a00275.html#a48be48b8f6d0c6140a4b673bef1374cc" title="Given three Euler angles in radians, retrieve the Euler rotation matrix.">getEulerMatrix()</a>, apply the rotation to 3-component unit vector u and return the result in a new 3-component unit vector. </p>
+<p >Reference: <a href="http://mathworld.wolfram.com/EulerAngles.html">http://mathworld.wolfram.com/EulerAngles.html</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>3-component unit vector to be rotated </td></tr>
+    <tr><td class="paramname">euler</td><td>3x3 euler rotation matrix. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>rotated 3-component unit vector </dd></dl>
+
+</div>
+</div>
+<a id="af4299f19fc8acef0fbb02353f232d657" name="af4299f19fc8acef0fbb02353f232d657"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4299f19fc8acef0fbb02353f232d657">&#9670;&nbsp;</a></span>eulerRotation() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void geotess::GeoTessUtils::eulerRotation </td>
+          <td>(</td>
+          <td class="paramtype">const double *const&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double **&#160;</td>
+          <td class="paramname"><em>euler</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Given an Euler rotation matrix computed from 3 Euler rotation angles using method <a class="el" href="a00275.html#a48be48b8f6d0c6140a4b673bef1374cc" title="Given three Euler angles in radians, retrieve the Euler rotation matrix.">getEulerMatrix()</a>, apply the rotation to 3-component unit vector u and return the result in unit vector v. </p>
+<p >u and v can be references to the same array. </p>
+<p >Reference: <a href="http://mathworld.wolfram.com/EulerAngles.html">http://mathworld.wolfram.com/EulerAngles.html</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>3-component unit vector to be rotated </td></tr>
+    <tr><td class="paramname">euler</td><td>3x3 euler rotation matrix. </td></tr>
+    <tr><td class="paramname">v</td><td>rotated 3-component unit vector </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ac5747bfd26b78e8ce835d24c1699d847" name="ac5747bfd26b78e8ce835d24c1699d847"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac5747bfd26b78e8ce835d24c1699d847">&#9670;&nbsp;</a></span>getDistance3D()</h2>
 
@@ -1238,6 +1352,87 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>radius of the Earth in km at specified position. </dd></dl>
+
+</div>
+</div>
+<a id="a48be48b8f6d0c6140a4b673bef1374cc" name="a48be48b8f6d0c6140a4b673bef1374cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48be48b8f6d0c6140a4b673bef1374cc">&#9670;&nbsp;</a></span>getEulerMatrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static double ** geotess::GeoTessUtils::getEulerMatrix </td>
+          <td>(</td>
+          <td class="paramtype">const double *const&#160;</td>
+          <td class="paramname"><em>a</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Given three Euler angles in radians, retrieve the Euler rotation matrix. </p>
+<p >Euler rotation angles: </p>
+<p >Given two coordinate systems xyz and XYZ with common origin, starting with the axis z and Z overlapping, the position of the second can be specified in terms of the first using three rotations with angles A, B, C as follows:</p>
+<ol>
+<li>
+Rotate the xyz-system about the z-axis by A. </li>
+<li>
+Rotate the xyz-system again about the now rotated x-axis by B. </li>
+<li>
+Rotate the xyz-system a third time about the new z-axis by C. </li>
+</ol>
+<p >Clockwise rotations, when looking in direction of vector, are positive. </p>
+<p >Reference: <a href="http://mathworld.wolfram.com/EulerAngles.html">http://mathworld.wolfram.com/EulerAngles.html</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>double[3] the 3 Euler rotation angles, phi, theta and psi, in radians </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>double[3][3] Euler rotation matrix </dd></dl>
+
+</div>
+</div>
+<a id="a25bd1dd386e185bfd21afbb117a4875c" name="a25bd1dd386e185bfd21afbb117a4875c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25bd1dd386e185bfd21afbb117a4875c">&#9670;&nbsp;</a></span>getEulerRotationAngles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static double * geotess::GeoTessUtils::getEulerRotationAngles </td>
+          <td>(</td>
+          <td class="paramtype">const double *const&#160;</td>
+          <td class="paramname"><em>u</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Given a location, retrieve the Euler rotation angles, in radians, that will rotate the north pole ([0., 0., 1. </p>
+<p >]) to the specified location. The 3 angles are: longitude+PI/2, geocentric colatitude, -PI/2. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">unitVector</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>euler rotation angles in radians. </dd></dl>
 
 </div>
 </div>
@@ -2452,6 +2647,41 @@ Static Public Attributes</h2></td></tr>
 
 <p>The current GeoTess version. </p>
 <dl class="section return"><dt>Returns</dt><dd>the current GeoTess version </dd></dl>
+
+</div>
+</div>
+<a id="a8ff6c582160a3337b1e1e02281010987" name="a8ff6c582160a3337b1e1e02281010987"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ff6c582160a3337b1e1e02281010987">&#9670;&nbsp;</a></span>inverse_3x3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static double ** geotess::GeoTessUtils::inverse_3x3 </td>
+          <td>(</td>
+          <td class="paramtype">double **&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Find the inverse of 3x3 matrix m. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>a 3x3 matrix </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the inverse of m. </dd></dl>
 
 </div>
 </div>

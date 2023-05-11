@@ -1,26 +1,10 @@
 var searchData=
 [
-  ['earthshape_0',['earthShape',['../a00054.html#acfc240d59e41b4c5ccb9cbf447651e8b',1,'EarthShapeC']]],
-  ['earthshape_5fcreate_1',['earthshape_create',['../a00029.html#a51e64e8e31998bbececf9db09f1489be',1,'EarthShapeC.h']]],
-  ['earthshape_5fdestroy_2',['earthshape_destroy',['../a00029.html#a4cb48250219b2d9d3788e9fe31c0feb8',1,'EarthShapeC.h']]],
-  ['earthshape_5fgetearthradius_3',['earthshape_getEarthRadius',['../a00029.html#acd70fc5bbebe489c04d0212144035c62',1,'EarthShapeC.h']]],
-  ['earthshape_5fgetgeocentriclat_4',['earthshape_getGeocentricLat',['../a00029.html#a96156dacd71112ecdfb91c176d564874',1,'EarthShapeC.h']]],
-  ['earthshape_5fgetgeocentriclatdegrees_5',['earthshape_getGeocentricLatDegrees',['../a00029.html#adb85b6e4395b959b4d540e5d67d6ee9c',1,'EarthShapeC.h']]],
-  ['earthshape_5fgetgeographiclat_6',['earthshape_getGeographicLat',['../a00029.html#adaf7d58ed55a2fcc43d4cc427e499f39',1,'EarthShapeC.h']]],
-  ['earthshape_5fgetgeographiclatdegrees_7',['earthshape_getGeographicLatDegrees',['../a00029.html#a339431690a0040fc6510733e407762ad',1,'EarthShapeC.h']]],
-  ['earthshape_5fgetlat_8',['earthshape_getLat',['../a00029.html#a551d9decaa1b8bea00d78f9c7b69519c',1,'EarthShapeC.h']]],
-  ['earthshape_5fgetlatdegrees_9',['earthshape_getLatDegrees',['../a00029.html#af579f8b455633628eecb68c13da718bd',1,'EarthShapeC.h']]],
-  ['earthshape_5fgetlatlonstring_10',['earthshape_getLatLonString',['../a00029.html#a92ac30b4c590f69a695ac5babedf6278',1,'EarthShapeC.h']]],
-  ['earthshape_5fgetlon_11',['earthshape_getLon',['../a00029.html#a7341553c7cc721f6f0bd4d7965988029',1,'EarthShapeC.h']]],
-  ['earthshape_5fgetlondegrees_12',['earthshape_getLonDegrees',['../a00029.html#acae6dc6d5cd5d25a0198ad15bbb42c37',1,'EarthShapeC.h']]],
-  ['earthshape_5fgetshapename_13',['earthshape_getShapeName',['../a00029.html#a6118f65168e55b0d537bcc5be0c0292d',1,'EarthShapeC.h']]],
-  ['earthshape_5fgetvector_14',['earthshape_getVector',['../a00029.html#a5d9d0de4d69ae9660e54feacee31d568',1,'EarthShapeC.h']]],
-  ['earthshape_5fgetvectordegrees_15',['earthshape_getVectorDegrees',['../a00029.html#aa1a4cc481de16b9d7dc8647dc44cd962',1,'EarthShapeC.h']]],
-  ['earthshapec_16',['EarthShapeC',['../a00054.html',1,'']]],
-  ['earthshapec_2eh_17',['EarthShapeC.h',['../a00029.html',1,'']]],
-  ['err_18',['err',['../a00050.html#aea98da852c1e92e34ebb7610fe8ca751',1,'CpuTimerC::err()'],['../a00054.html#a6d252c0496208ebc1f53bd2dfa18ec8e',1,'EarthShapeC::err()'],['../a00058.html#a2e9c739f138e3e3c65287dc5153480cc',1,'GeoTessGridC::err()'],['../a00062.html#a635ac72536da7a204157ee6baf2daf2b',1,'GeoTessMetaDataC::err()'],['../a00066.html#a118d2c4bbf0d786173b4ebef96ce72b1',1,'GeoTessModelC::err()'],['../a00070.html#aff1afac43b38ce9b0caacf84934f15af',1,'GeoTessPositionC::err()'],['../a00074.html#aa396c3e3dcd0c00618834a0f0c881af6',1,'PointMapC::err()'],['../a00078.html#ac4e9a8212b410e876e943e021586aff6',1,'PolygonC::err()']]],
-  ['error_5fclean_19',['error_clean',['../a00002.html#a97824621d0f0e0e303fbacc5c55d5028',1,'ErrorHandler.h']]],
-  ['error_5fexists_20',['error_exists',['../a00002.html#ac4866726210d02136689f592c63ae767',1,'ErrorHandler.h']]],
-  ['error_5fgetmessage_21',['error_getMessage',['../a00002.html#ac3b9e43fab2fe5b097dce4b8a8bf94ed',1,'ErrorHandler.h']]],
-  ['errorhandler_2eh_22',['ErrorHandler.h',['../a00002.html',1,'']]]
+  ['datatype_5fgetname_0',['datatype_getName',['../a00020.html#a642f8f160bd0bc82ca05837081f2ab57',1,'DataTypeC.h']]],
+  ['datatype_5fsize_1',['datatype_size',['../a00020.html#a3934c3fea7347deaca62377ffeb205de',1,'DataTypeC.h']]],
+  ['datatypec_2',['DataTypeC',['../a00020.html#adfbe74497a2807bb235a36d6eae9c824',1,'DataTypeC.h']]],
+  ['datatypec_2eh_3',['DataTypeC.h',['../a00020.html',1,'']]],
+  ['deletevectd_4',['deleteVectD',['../a00047.html#ae71084bb61b76cc9a1d35f2fea681067',1,'deleteVectD(vector&lt; double &gt; *v):&#160;_Util.h'],['../a00047.html#ae22d358040f63b6b87ec251013c2b43c',1,'deleteVectD(vector&lt; vector&lt; double &gt; &gt; *v):&#160;_Util.h'],['../a00047.html#a00f1134dcba5dca7b98b9184563f6757',1,'deleteVectD(vector&lt; vector&lt; vector&lt; double &gt; &gt; &gt; *v):&#160;_Util.h']]],
+  ['double_5',['DOUBLE',['../a00020.html#adfbe74497a2807bb235a36d6eae9c824a33465d1d419b1074fb259ef444609e92',1,'DataTypeC.h']]],
+  ['doublevect_6',['doubleVect',['../a00047.html#ad7f638fb97de0b55d1d2a21572f10bd9',1,'doubleVect(double **v, int num):&#160;_Util.h'],['../a00047.html#aace5436b2442b038db67e5a2f991bf7c',1,'doubleVect(double *ds, int num):&#160;_Util.h']]]
 ];

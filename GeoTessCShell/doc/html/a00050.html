@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>GeoTessCShelll: CpuTimerC Struct Reference</title>
+<title>GeoTessCPP: include/_ErrorCache.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,9 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">GeoTessCShelll<span id="projectnumber">&#160;2.6</span>
+   <div id="projectname">GeoTessCPP<span id="projectnumber">&#160;2.2</span>
    </div>
-   <div id="projectbrief">C Interface to the GeoTess C++ Library</div>
+   <div id="projectbrief">Software to facilitate storage and retrieval of 3D information about the Earth.</div>
   </td>
  </tr>
  </tbody>
@@ -61,71 +61,164 @@ $(function() {
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-attribs">Data Fields</a>  </div>
-  <div class="headertitle"><div class="title">CpuTimerC Struct Reference</div></div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">_ErrorCache.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Wall clock and cpu timing information.  
- <a href="a00050.html#details">More...</a></p>
-
-<p><code>#include &lt;CpuTimerC.h&gt;</code></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="a00029_source.html">bool.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00068_source.html">GeoTessCShellGlobals.h</a>&quot;</code><br />
+</div>
+<p><a href="a00050_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Data Fields</h2></td></tr>
-<tr class="memitem:a0b3d7b6444c11a686288a457dfcb5122"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00050.html#a0b3d7b6444c11a686288a457dfcb5122">c</a></td></tr>
-<tr class="memdesc:a0b3d7b6444c11a686288a457dfcb5122"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to a C++ CpuTimer object.  <a href="a00050.html#a0b3d7b6444c11a686288a457dfcb5122">More...</a><br /></td></tr>
-<tr class="separator:a0b3d7b6444c11a686288a457dfcb5122"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea98da852c1e92e34ebb7610fe8ca751"><td class="memItemLeft" align="right" valign="top">ErrorCache *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00050.html#aea98da852c1e92e34ebb7610fe8ca751">err</a></td></tr>
-<tr class="memdesc:aea98da852c1e92e34ebb7610fe8ca751"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error information.  <a href="a00050.html#aea98da852c1e92e34ebb7610fe8ca751">More...</a><br /></td></tr>
-<tr class="separator:aea98da852c1e92e34ebb7610fe8ca751"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00075.html">ErrorCache</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ad32f5f511137f9537f98ad43e18ad435"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> <a class="el" href="a00075.html">ErrorCache</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00050.html#ad32f5f511137f9537f98ad43e18ad435">ec_create</a> ()</td></tr>
+<tr class="memdesc:ad32f5f511137f9537f98ad43e18ad435"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an <a class="el" href="a00075.html">ErrorCache</a> struct that is dynamically allocated and initialized.  <a href="a00050.html#ad32f5f511137f9537f98ad43e18ad435">More...</a><br /></td></tr>
+<tr class="separator:ad32f5f511137f9537f98ad43e18ad435"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ef808a7b36a2170d7f28b3b05f7bf39"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00050.html#a7ef808a7b36a2170d7f28b3b05f7bf39">ec_destroy</a> (<a class="el" href="a00075.html">ErrorCache</a> *e)</td></tr>
+<tr class="memdesc:a7ef808a7b36a2170d7f28b3b05f7bf39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the given <a class="el" href="a00075.html">ErrorCache</a> and all of the messages inside it.  <a href="a00050.html#a7ef808a7b36a2170d7f28b3b05f7bf39">More...</a><br /></td></tr>
+<tr class="separator:a7ef808a7b36a2170d7f28b3b05f7bf39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a646c7b8378e26f57019ae50f529f84c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00050.html#a646c7b8378e26f57019ae50f529f84c2">ec_hasError</a> (<a class="el" href="a00075.html">ErrorCache</a> *e)</td></tr>
+<tr class="memdesc:a646c7b8378e26f57019ae50f529f84c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether or not (1 or 0) there are any messages in this cache.  <a href="a00050.html#a646c7b8378e26f57019ae50f529f84c2">More...</a><br /></td></tr>
+<tr class="separator:a646c7b8378e26f57019ae50f529f84c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a181eca4d1ba654eb8d173ea935bd2184"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00050.html#a181eca4d1ba654eb8d173ea935bd2184">ec_pop</a> (<a class="el" href="a00075.html">ErrorCache</a> *e)</td></tr>
+<tr class="memdesc:a181eca4d1ba654eb8d173ea935bd2184"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pops the last error message from the cache.  <a href="a00050.html#a181eca4d1ba654eb8d173ea935bd2184">More...</a><br /></td></tr>
+<tr class="separator:a181eca4d1ba654eb8d173ea935bd2184"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a053c6a53f83e6af640b057e0abd123b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00050.html#a053c6a53f83e6af640b057e0abd123b0">ec_push</a> (<a class="el" href="a00075.html">ErrorCache</a> *e, char *message)</td></tr>
+<tr class="memdesc:a053c6a53f83e6af640b057e0abd123b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes an error message onto the internal stack of this cache.  <a href="a00050.html#a053c6a53f83e6af640b057e0abd123b0">More...</a><br /></td></tr>
+<tr class="separator:a053c6a53f83e6af640b057e0abd123b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Wall clock and cpu timing information. </p>
-<p >Manages real (wall clock) and cpu timing information and elapsed timing information. </p>
-</div><h2 class="groupheader">Field Documentation</h2>
-<a id="a0b3d7b6444c11a686288a457dfcb5122" name="a0b3d7b6444c11a686288a457dfcb5122"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b3d7b6444c11a686288a457dfcb5122">&#9670;&nbsp;</a></span>c</h2>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ad32f5f511137f9537f98ad43e18ad435" name="ad32f5f511137f9537f98ad43e18ad435"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad32f5f511137f9537f98ad43e18ad435">&#9670;&nbsp;</a></span>ec_create()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* CpuTimerC::c</td>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> <a class="el" href="a00075.html">ErrorCache</a> * ec_create </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Pointer to a C++ CpuTimer object. </p>
+<p>Creates an <a class="el" href="a00075.html">ErrorCache</a> struct that is dynamically allocated and initialized. </p>
+<p >Use ec_destroy to properly free it. </p>
 
 </div>
 </div>
-<a id="aea98da852c1e92e34ebb7610fe8ca751" name="aea98da852c1e92e34ebb7610fe8ca751"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aea98da852c1e92e34ebb7610fe8ca751">&#9670;&nbsp;</a></span>err</h2>
+<a id="a7ef808a7b36a2170d7f28b3b05f7bf39" name="a7ef808a7b36a2170d7f28b3b05f7bf39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ef808a7b36a2170d7f28b3b05f7bf39">&#9670;&nbsp;</a></span>ec_destroy()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">ErrorCache* CpuTimerC::err</td>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void ec_destroy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00075.html">ErrorCache</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Error information. </p>
+<p>Frees the given <a class="el" href="a00075.html">ErrorCache</a> and all of the messages inside it. </p>
+<p >After calling this function, the given pointer is no longer valid. </p>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
-<li>include/<a class="el" href="a00026.html">CpuTimerC.h</a></li>
-</ul>
+<a id="a646c7b8378e26f57019ae50f529f84c2" name="a646c7b8378e26f57019ae50f529f84c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a646c7b8378e26f57019ae50f529f84c2">&#9670;&nbsp;</a></span>ec_hasError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> int ec_hasError </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00075.html">ErrorCache</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns whether or not (1 or 0) there are any messages in this cache. </p>
+
+</div>
+</div>
+<a id="a181eca4d1ba654eb8d173ea935bd2184" name="a181eca4d1ba654eb8d173ea935bd2184"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a181eca4d1ba654eb8d173ea935bd2184">&#9670;&nbsp;</a></span>ec_pop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> char * ec_pop </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00075.html">ErrorCache</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pops the last error message from the cache. </p>
+<p >It is the responsibility of the caller to manage the memory of the returned message. Returns NULL if there are no messages. </p>
+
+</div>
+</div>
+<a id="a053c6a53f83e6af640b057e0abd123b0" name="a053c6a53f83e6af640b057e0abd123b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a053c6a53f83e6af640b057e0abd123b0">&#9670;&nbsp;</a></span>ec_push()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void ec_push </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00075.html">ErrorCache</a> *&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pushes an error message onto the internal stack of this cache. </p>
+<p >If the maximum number of messages has been reached, then the oldest message on the stack will be taken off and freed. Thus, do not push messages into this cache if they are not dynamically allocated. </p>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 29 2021 06:31:44 for GeoTessCShelll by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
 </small></address>
 </body>
 </html>

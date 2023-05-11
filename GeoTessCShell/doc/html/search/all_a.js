@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['optimizationtypec_0',['OptimizationTypeC',['../a00038.html#a6363a00cc40c3ebb5efa388c3dbddb0d',1,'OptimizationTypeC.h']]],
-  ['optimizationtypec_2eh_1',['OptimizationTypeC.h',['../a00038.html',1,'']]],
-  ['opttype_5fgetname_2',['opttype_getName',['../a00038.html#a688bd5fffc62e8da6c93da327e5d6c97',1,'OptimizationTypeC.h']]],
-  ['opttype_5fsize_3',['opttype_size',['../a00038.html#a9b5dcc2a7578e0296a19b2efc5753886',1,'OptimizationTypeC.h']]]
+  ['natural_5fneighbor_0',['NATURAL_NEIGHBOR',['../a00008.html#a91a57f16d058f4c0e1d9c8941f22cef5a6a910d041166a5d1f7592234377118f7',1,'InterpolatorTypeC.h']]],
+  ['none_1',['NONE',['../a00020.html#adfbe74497a2807bb235a36d6eae9c824ac157bdf0b85a40d2619cbc8bc1ae5fe2',1,'DataTypeC.h']]]
 ];

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>GeoTessCShelll: include/DataTypeC.h File Reference</title>
+<title>GeoTessCPP: include/GeoTessUtilsC.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,9 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">GeoTessCShelll<span id="projectnumber">&#160;2.6</span>
+   <div id="projectname">GeoTessCPP<span id="projectnumber">&#160;2.2</span>
    </div>
-   <div id="projectbrief">C Interface to the GeoTess C++ Library</div>
+   <div id="projectbrief">Software to facilitate storage and retrieval of 3D information about the Earth.</div>
   </td>
  </tr>
  </tbody>
@@ -68,90 +68,1202 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">DataTypeC.h File Reference</div></div>
+  <div class="headertitle"><div class="title">GeoTessUtilsC.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="a00044.html">GeoTessCShellGlobals.h</a>&quot;</code><br />
-</div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:adfbe74497a2807bb235a36d6eae9c824"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#adfbe74497a2807bb235a36d6eae9c824">DataTypeC</a> { <br />
-&#160;&#160;<a class="el" href="a00017.html#adfbe74497a2807bb235a36d6eae9c824a33465d1d419b1074fb259ef444609e92">DOUBLE</a>
-, <a class="el" href="a00017.html#adfbe74497a2807bb235a36d6eae9c824a9cf4a0866224b0bb4a7a895da27c9c4c">FLOAT</a>
-, <a class="el" href="a00017.html#adfbe74497a2807bb235a36d6eae9c824aaee055c4a5aba7d55774e4f1c01dacea">LONG</a>
-, <a class="el" href="a00017.html#adfbe74497a2807bb235a36d6eae9c824afd5a5f51ce25953f3db2c7e93eb7864a">INT</a>
-, <br />
-&#160;&#160;<a class="el" href="a00017.html#adfbe74497a2807bb235a36d6eae9c824a7a1fe3ba88f0c16cb494922948a9597d">SHORT</a>
-, <a class="el" href="a00017.html#adfbe74497a2807bb235a36d6eae9c824aa7f492d725033c06576ac4ba21007297">BYTE</a>
-, <a class="el" href="a00017.html#adfbe74497a2807bb235a36d6eae9c824ac157bdf0b85a40d2619cbc8bc1ae5fe2">NONE</a>
-<br />
- }</td></tr>
-<tr class="separator:adfbe74497a2807bb235a36d6eae9c824"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
+<div class="textblock"><code>#include &quot;<a class="el" href="a00068_source.html">GeoTessCShellGlobals.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00029_source.html">bool.h</a>&quot;</code><br />
+</div>
+<p><a href="a00017_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a642f8f160bd0bc82ca05837081f2ab57"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00044.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a642f8f160bd0bc82ca05837081f2ab57">datatype_getName</a> (<a class="el" href="a00017.html#adfbe74497a2807bb235a36d6eae9c824">DataTypeC</a> dt)</td></tr>
-<tr class="memdesc:a642f8f160bd0bc82ca05837081f2ab57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a string representation for a given DataTypeC.  <a href="a00017.html#a642f8f160bd0bc82ca05837081f2ab57">More...</a><br /></td></tr>
-<tr class="separator:a642f8f160bd0bc82ca05837081f2ab57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3934c3fea7347deaca62377ffeb205de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00044.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a3934c3fea7347deaca62377ffeb205de">datatype_size</a> ()</td></tr>
-<tr class="memdesc:a3934c3fea7347deaca62377ffeb205de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of data type enum values.  <a href="a00017.html#a3934c3fea7347deaca62377ffeb205de">More...</a><br /></td></tr>
-<tr class="separator:a3934c3fea7347deaca62377ffeb205de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a862ae6f56e015a65c20cb3677178cf1a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a862ae6f56e015a65c20cb3677178cf1a">geoutils_angle</a> (const double *v0, const double *v1)</td></tr>
+<tr class="memdesc:a862ae6f56e015a65c20cb3677178cf1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the angular distance in radians between two unit vectors.  <a href="a00017.html#a862ae6f56e015a65c20cb3677178cf1a">More...</a><br /></td></tr>
+<tr class="separator:a862ae6f56e015a65c20cb3677178cf1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec7aafdaea873e71065e3bf41907882d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#aec7aafdaea873e71065e3bf41907882d">geoutils_angleDegrees</a> (const double *v0, const double *v1)</td></tr>
+<tr class="memdesc:aec7aafdaea873e71065e3bf41907882d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the angular distance in degrees between two unit vectors.  <a href="a00017.html#aec7aafdaea873e71065e3bf41907882d">More...</a><br /></td></tr>
+<tr class="separator:aec7aafdaea873e71065e3bf41907882d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d78cfaabd8e62554f5d3455b85c5af6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a7d78cfaabd8e62554f5d3455b85c5af6">geoutils_azimuth</a> (const double *v1, const double *v2, double errorValue)</td></tr>
+<tr class="memdesc:a7d78cfaabd8e62554f5d3455b85c5af6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the azimuth from unit vector v1 to unit vector v2.  <a href="a00017.html#a7d78cfaabd8e62554f5d3455b85c5af6">More...</a><br /></td></tr>
+<tr class="separator:a7d78cfaabd8e62554f5d3455b85c5af6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3f85d080ce8b15cb0cdf3e5cad17f06"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#ad3f85d080ce8b15cb0cdf3e5cad17f06">geoutils_azimuthDegrees</a> (const double *v1, const double *v2, double errorValue)</td></tr>
+<tr class="memdesc:ad3f85d080ce8b15cb0cdf3e5cad17f06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the azimuth from unit vector v1 to unit vector v2.  <a href="a00017.html#ad3f85d080ce8b15cb0cdf3e5cad17f06">More...</a><br /></td></tr>
+<tr class="separator:ad3f85d080ce8b15cb0cdf3e5cad17f06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fc8397b492c7eabf6e554cf0a98167b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a3fc8397b492c7eabf6e554cf0a98167b">geoutils_center</a> (double **v, int n, double *x)</td></tr>
+<tr class="memdesc:a3fc8397b492c7eabf6e554cf0a98167b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the normalized vector sum of the supplied unit vectors.  <a href="a00017.html#a3fc8397b492c7eabf6e554cf0a98167b">More...</a><br /></td></tr>
+<tr class="separator:a3fc8397b492c7eabf6e554cf0a98167b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1c5bec569f7e085a091d844d8fd04e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#ae1c5bec569f7e085a091d844d8fd04e1">geoutils_circumCenter</a> (const double *v0, const double *v1, const double *v2, double *vs)</td></tr>
+<tr class="memdesc:ae1c5bec569f7e085a091d844d8fd04e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given three unit vectors, v0, v1 and v2, find the circumcenter, vs.  <a href="a00017.html#ae1c5bec569f7e085a091d844d8fd04e1">More...</a><br /></td></tr>
+<tr class="separator:ae1c5bec569f7e085a091d844d8fd04e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86f8bcb517d3018cb237f611fce23416"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a86f8bcb517d3018cb237f611fce23416">geoutils_circumCenter2</a> (double **t, double *vs)</td></tr>
+<tr class="memdesc:a86f8bcb517d3018cb237f611fce23416"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given the three unit vectors, t[0], t[1] and t[2], find the circumcenter, vs.  <a href="a00017.html#a86f8bcb517d3018cb237f611fce23416">More...</a><br /></td></tr>
+<tr class="separator:a86f8bcb517d3018cb237f611fce23416"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa395681ffd0d3426d581323bd8958059"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#aa395681ffd0d3426d581323bd8958059">geoutils_cross</a> (const double *v1, const double *v2, double *rslt)</td></tr>
+<tr class="memdesc:aa395681ffd0d3426d581323bd8958059"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cross product of two 3-component vectors.  <a href="a00017.html#aa395681ffd0d3426d581323bd8958059">More...</a><br /></td></tr>
+<tr class="separator:aa395681ffd0d3426d581323bd8958059"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac94c3e734200d95716f3d7bf8606e663"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#ac94c3e734200d95716f3d7bf8606e663">geoutils_crossNormal</a> (const double *u, const double *v, double *w)</td></tr>
+<tr class="memdesc:ac94c3e734200d95716f3d7bf8606e663"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalized cross product of two 3-component unit vectors (u x v)  <a href="a00017.html#ac94c3e734200d95716f3d7bf8606e663">More...</a><br /></td></tr>
+<tr class="separator:ac94c3e734200d95716f3d7bf8606e663"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad821f35cfdaae21d9708b559cac418e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#ad821f35cfdaae21d9708b559cac418e7">geoutils_crossNorth</a> (const double *u, double *w)</td></tr>
+<tr class="memdesc:ad821f35cfdaae21d9708b559cac418e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalized cross product of a 3-component unit vector with the north pole.  <a href="a00017.html#ad821f35cfdaae21d9708b559cac418e7">More...</a><br /></td></tr>
+<tr class="separator:ad821f35cfdaae21d9708b559cac418e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53ddc8e139d74009fa04811e25d6083d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a53ddc8e139d74009fa04811e25d6083d">geoutils_dot</a> (const double *v0, const double *v1)</td></tr>
+<tr class="memdesc:a53ddc8e139d74009fa04811e25d6083d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dot product.  <a href="a00017.html#a53ddc8e139d74009fa04811e25d6083d">More...</a><br /></td></tr>
+<tr class="separator:a53ddc8e139d74009fa04811e25d6083d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2dcd66211a019ef0e4736c1033c94da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#ab2dcd66211a019ef0e4736c1033c94da">geoutils_getEarthRadius</a> (const double *vector)</td></tr>
+<tr class="memdesc:ab2dcd66211a019ef0e4736c1033c94da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Earth radius in km at the input 3D vector position using the parameters of the WGS84 ellipsoid.  <a href="a00017.html#ab2dcd66211a019ef0e4736c1033c94da">More...</a><br /></td></tr>
+<tr class="separator:ab2dcd66211a019ef0e4736c1033c94da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a14315414c2a6819f4d563864c6dc50"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a6a14315414c2a6819f4d563864c6dc50">geoutils_getGCPointsND</a> (double distance, double spacing, <a class="el" href="a00029.html#a7c6368b321bd9acd0149b030bb8275ed">boolean</a> onCenters)</td></tr>
+<tr class="memdesc:a6a14315414c2a6819f4d563864c6dc50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return number of points required to span specified great circle distance with points that have spacing not to exceed specified value.  <a href="a00017.html#a6a14315414c2a6819f4d563864c6dc50">More...</a><br /></td></tr>
+<tr class="separator:a6a14315414c2a6819f4d563864c6dc50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af28dab457c3237c1c7ad5d69437127ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#af28dab457c3237c1c7ad5d69437127ef">geoutils_getGreatCircle</a> (const double *v0, const double *v1, double **gc)</td></tr>
+<tr class="memdesc:af28dab457c3237c1c7ad5d69437127ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">A great circle is defined by two unit vectors that are 90 degrees apart.  <a href="a00017.html#af28dab457c3237c1c7ad5d69437127ef">More...</a><br /></td></tr>
+<tr class="separator:af28dab457c3237c1c7ad5d69437127ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7555dc8eda96048ec8d897f0f4950d08"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a7555dc8eda96048ec8d897f0f4950d08">geoutils_getGreatCircle1</a> (const double *v0, const double *v1)</td></tr>
+<tr class="memdesc:a7555dc8eda96048ec8d897f0f4950d08"><td class="mdescLeft">&#160;</td><td class="mdescRight">A great circle is defined by two unit vectors that are 90 degrees apart.  <a href="a00017.html#a7555dc8eda96048ec8d897f0f4950d08">More...</a><br /></td></tr>
+<tr class="separator:a7555dc8eda96048ec8d897f0f4950d08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afacaaf1d2ecf19eb6742c5b22b243fdb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#afacaaf1d2ecf19eb6742c5b22b243fdb">geoutils_getGreatCircleAz</a> (const double *v, double azimuth, double **gc)</td></tr>
+<tr class="memdesc:afacaaf1d2ecf19eb6742c5b22b243fdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">A great circle is defined by two unit vectors that are 90 degrees apart.  <a href="a00017.html#afacaaf1d2ecf19eb6742c5b22b243fdb">More...</a><br /></td></tr>
+<tr class="separator:afacaaf1d2ecf19eb6742c5b22b243fdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1df5ffaefb43550e36768c2ad1769cf1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a1df5ffaefb43550e36768c2ad1769cf1">geoutils_getGreatCirclePoint</a> (double **greatCircle, double distance, double *v)</td></tr>
+<tr class="memdesc:a1df5ffaefb43550e36768c2ad1769cf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the unit vector of a point that is located on the supplied greatCircle and which is located the sepcified distance from the first point of the greatCircle.  <a href="a00017.html#a1df5ffaefb43550e36768c2ad1769cf1">More...</a><br /></td></tr>
+<tr class="separator:a1df5ffaefb43550e36768c2ad1769cf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1aa891e929834da363d3063b6fdbcfff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a1aa891e929834da363d3063b6fdbcfff">geoutils_getGreatCirclePoints</a> (double *ptA, double *ptB, int npoints, <a class="el" href="a00029.html#a7c6368b321bd9acd0149b030bb8275ed">boolean</a> onCenters, double **points)</td></tr>
+<tr class="memdesc:a1aa891e929834da363d3063b6fdbcfff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the unit vectors of a bunch of points distributed along a great circle path between two points.  <a href="a00017.html#a1aa891e929834da363d3063b6fdbcfff">More...</a><br /></td></tr>
+<tr class="separator:a1aa891e929834da363d3063b6fdbcfff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f2d0457e14a287fb9faafb5584caa3d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a4f2d0457e14a287fb9faafb5584caa3d">geoutils_getGreatCirclePointsD</a> (double *ptA, double *ptB, double spacing, <a class="el" href="a00029.html#a7c6368b321bd9acd0149b030bb8275ed">boolean</a> onCenters, double **points, int *npoints)</td></tr>
+<tr class="memdesc:a4f2d0457e14a287fb9faafb5584caa3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the unit vectors of a bunch of points distributed along a great circle path between two points.  <a href="a00017.html#a4f2d0457e14a287fb9faafb5584caa3d">More...</a><br /></td></tr>
+<tr class="separator:a4f2d0457e14a287fb9faafb5584caa3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b3a0d5aa52e20dd09c7e80f35f49fad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a5b3a0d5aa52e20dd09c7e80f35f49fad">geoutils_getGreatCirclePointsN</a> (double *ptA, double *ptB, double spacing, <a class="el" href="a00029.html#a7c6368b321bd9acd0149b030bb8275ed">boolean</a> onCenters)</td></tr>
+<tr class="memdesc:a5b3a0d5aa52e20dd09c7e80f35f49fad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the number of points that would be required to populate a great circle path from point A to point B with equally spaced points given that the spacing can be no greater than delta.  <a href="a00017.html#a5b3a0d5aa52e20dd09c7e80f35f49fad">More...</a><br /></td></tr>
+<tr class="separator:a5b3a0d5aa52e20dd09c7e80f35f49fad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b6066ee7715ef6c150da1864cf7021a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a9b6066ee7715ef6c150da1864cf7021a">geoutils_getLat</a> (const double *vector)</td></tr>
+<tr class="memdesc:a9b6066ee7715ef6c150da1864cf7021a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return latitude in radians of specified unit vector computed using the parameters of the WGS84 ellipsoid.  <a href="a00017.html#a9b6066ee7715ef6c150da1864cf7021a">More...</a><br /></td></tr>
+<tr class="separator:a9b6066ee7715ef6c150da1864cf7021a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0931677329d20b78febb84016fc4217f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a0931677329d20b78febb84016fc4217f">geoutils_getLatDegrees</a> (const double *vector)</td></tr>
+<tr class="memdesc:a0931677329d20b78febb84016fc4217f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return latitude in degrees of specified unit vector computed using the parameters of the WGS84 ellipsoid.  <a href="a00017.html#a0931677329d20b78febb84016fc4217f">More...</a><br /></td></tr>
+<tr class="separator:a0931677329d20b78febb84016fc4217f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ed11511f50f5c0c657e0b7e1619fe54"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a9ed11511f50f5c0c657e0b7e1619fe54">geoutils_getLatLonString</a> (const double *vector)</td></tr>
+<tr class="memdesc:a9ed11511f50f5c0c657e0b7e1619fe54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return latitude / longitude as a string.  <a href="a00017.html#a9ed11511f50f5c0c657e0b7e1619fe54">More...</a><br /></td></tr>
+<tr class="separator:a9ed11511f50f5c0c657e0b7e1619fe54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5200b5c265e4f491c01249d8d3d8d582"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a5200b5c265e4f491c01249d8d3d8d582">geoutils_getLon</a> (const double *vector)</td></tr>
+<tr class="memdesc:a5200b5c265e4f491c01249d8d3d8d582"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return longitude in radians of specified unit vector.  <a href="a00017.html#a5200b5c265e4f491c01249d8d3d8d582">More...</a><br /></td></tr>
+<tr class="separator:a5200b5c265e4f491c01249d8d3d8d582"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add5782f3dd8b28d5c8d75481eedd8a4f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#add5782f3dd8b28d5c8d75481eedd8a4f">geoutils_getLonDegrees</a> (const double *vector)</td></tr>
+<tr class="memdesc:add5782f3dd8b28d5c8d75481eedd8a4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return longitude in degrees of specified unit vector.  <a href="a00017.html#add5782f3dd8b28d5c8d75481eedd8a4f">More...</a><br /></td></tr>
+<tr class="separator:add5782f3dd8b28d5c8d75481eedd8a4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6350e7920fcba065d80262ee4d416eeb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a6350e7920fcba065d80262ee4d416eeb">geoutils_getNaN_DOUBLE</a> ()</td></tr>
+<tr class="memdesc:a6350e7920fcba065d80262ee4d416eeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get NaN.  <a href="a00017.html#a6350e7920fcba065d80262ee4d416eeb">More...</a><br /></td></tr>
+<tr class="separator:a6350e7920fcba065d80262ee4d416eeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac385c06979b6c93c036eb804524cb0ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#ac385c06979b6c93c036eb804524cb0ed">geoutils_getNaN_FLOAT</a> ()</td></tr>
+<tr class="memdesc:ac385c06979b6c93c036eb804524cb0ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get NaN.  <a href="a00017.html#ac385c06979b6c93c036eb804524cb0ed">More...</a><br /></td></tr>
+<tr class="separator:ac385c06979b6c93c036eb804524cb0ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d21763873d2464c42b04bbe7a62de78"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a6d21763873d2464c42b04bbe7a62de78">geoutils_getTransform</a> (const double *u, const double *v, double **t)</td></tr>
+<tr class="memdesc:a6d21763873d2464c42b04bbe7a62de78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transform is a 3 x 3 matrix such that when a vector is multiplied by transform, the vector will be projected onto the plane of this GreatCircle.  <a href="a00017.html#a6d21763873d2464c42b04bbe7a62de78">More...</a><br /></td></tr>
+<tr class="separator:a6d21763873d2464c42b04bbe7a62de78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a015f61eeb08bbac197ff4203984e19e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a015f61eeb08bbac197ff4203984e19e0">geoutils_getTriangleArea</a> (const double *v0, const double *v1, const double *v2)</td></tr>
+<tr class="memdesc:a015f61eeb08bbac197ff4203984e19e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the area of a triangle is square radians (unitless).  <a href="a00017.html#a015f61eeb08bbac197ff4203984e19e0">More...</a><br /></td></tr>
+<tr class="separator:a015f61eeb08bbac197ff4203984e19e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4d51ad3f13581ec6badbf4ec6ba07b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#aa4d51ad3f13581ec6badbf4ec6ba07b1">geoutils_getVector</a> (double lat, double lon, double *v)</td></tr>
+<tr class="memdesc:aa4d51ad3f13581ec6badbf4ec6ba07b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert geographic lat, lon into a geocentric unit vector using the parameters of the WGS84 ellipsoid.  <a href="a00017.html#aa4d51ad3f13581ec6badbf4ec6ba07b1">More...</a><br /></td></tr>
+<tr class="separator:aa4d51ad3f13581ec6badbf4ec6ba07b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab4a99c093a91a312c3aaaffa5744442"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#aab4a99c093a91a312c3aaaffa5744442">geoutils_getVectorDegrees</a> (double lat, double lon, double *v)</td></tr>
+<tr class="memdesc:aab4a99c093a91a312c3aaaffa5744442"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert geographic lat, lon into a geocentric unit vector using the parameters of the WGS84 ellipsoid.  <a href="a00017.html#aab4a99c093a91a312c3aaaffa5744442">More...</a><br /></td></tr>
+<tr class="separator:aab4a99c093a91a312c3aaaffa5744442"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff7712f327850b5a97f06444ebabc149"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#aff7712f327850b5a97f06444ebabc149">geoutils_getVersion</a> ()</td></tr>
+<tr class="memdesc:aff7712f327850b5a97f06444ebabc149"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current GeoTess version.  <a href="a00017.html#aff7712f327850b5a97f06444ebabc149">More...</a><br /></td></tr>
+<tr class="separator:aff7712f327850b5a97f06444ebabc149"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac97d782cfa9b72e2577a2129584050bf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> <a class="el" href="a00029.html#a7c6368b321bd9acd0149b030bb8275ed">boolean</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#ac97d782cfa9b72e2577a2129584050bf">geoutils_isNaN_DOUBLE</a> (double x)</td></tr>
+<tr class="memdesc:ac97d782cfa9b72e2577a2129584050bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test value to see if it is NaN.  <a href="a00017.html#ac97d782cfa9b72e2577a2129584050bf">More...</a><br /></td></tr>
+<tr class="separator:ac97d782cfa9b72e2577a2129584050bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a986783246f31fc625612d3ca46332be1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> <a class="el" href="a00029.html#a7c6368b321bd9acd0149b030bb8275ed">boolean</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a986783246f31fc625612d3ca46332be1">geoutils_isNaN_FLOAT</a> (float x)</td></tr>
+<tr class="memdesc:a986783246f31fc625612d3ca46332be1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test value to see if it is NaN.  <a href="a00017.html#a986783246f31fc625612d3ca46332be1">More...</a><br /></td></tr>
+<tr class="separator:a986783246f31fc625612d3ca46332be1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ac0f37f2c9d4c912868250950e77471"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> <a class="el" href="a00029.html#a7c6368b321bd9acd0149b030bb8275ed">boolean</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a2ac0f37f2c9d4c912868250950e77471">geoutils_isPole</a> (const double *u)</td></tr>
+<tr class="memdesc:a2ac0f37f2c9d4c912868250950e77471"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if unit vector u is very close to [0, 0, +/- 1].  <a href="a00017.html#a2ac0f37f2c9d4c912868250950e77471">More...</a><br /></td></tr>
+<tr class="separator:a2ac0f37f2c9d4c912868250950e77471"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ad6e9789df781d8ae34a5f2c3e1c529"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a3ad6e9789df781d8ae34a5f2c3e1c529">geoutils_length</a> (const double *u)</td></tr>
+<tr class="memdesc:a3ad6e9789df781d8ae34a5f2c3e1c529"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the length of a 3-element vector.  <a href="a00017.html#a3ad6e9789df781d8ae34a5f2c3e1c529">More...</a><br /></td></tr>
+<tr class="separator:a3ad6e9789df781d8ae34a5f2c3e1c529"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa30c4f4463d0d10b66220de1a4a59021"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#aa30c4f4463d0d10b66220de1a4a59021">geoutils_move</a> (const double *w, const double *vtp, double a, double *u)</td></tr>
+<tr class="memdesc:aa30c4f4463d0d10b66220de1a4a59021"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move unit vector w in direction of vtp by distance a and store result in u.  <a href="a00017.html#aa30c4f4463d0d10b66220de1a4a59021">More...</a><br /></td></tr>
+<tr class="separator:aa30c4f4463d0d10b66220de1a4a59021"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abedec6373b5a1be6d800ce95774b6546"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> <a class="el" href="a00029.html#a7c6368b321bd9acd0149b030bb8275ed">boolean</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#abedec6373b5a1be6d800ce95774b6546">geoutils_moveDistAz</a> (const double *w, double distance, double azimuth, double *u)</td></tr>
+<tr class="memdesc:abedec6373b5a1be6d800ce95774b6546"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move unit vector w specified distance in direction given by azimuth and return the result in u.  <a href="a00017.html#abedec6373b5a1be6d800ce95774b6546">More...</a><br /></td></tr>
+<tr class="separator:abedec6373b5a1be6d800ce95774b6546"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0043b1730b8ecfa8a91d8c13c5a38ca6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> <a class="el" href="a00029.html#a7c6368b321bd9acd0149b030bb8275ed">boolean</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a0043b1730b8ecfa8a91d8c13c5a38ca6">geoutils_moveNorth</a> (const double *x, double distance, double *z)</td></tr>
+<tr class="memdesc:a0043b1730b8ecfa8a91d8c13c5a38ca6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a unit vector that is distance radians due north of position x.  <a href="a00017.html#a0043b1730b8ecfa8a91d8c13c5a38ca6">More...</a><br /></td></tr>
+<tr class="separator:a0043b1730b8ecfa8a91d8c13c5a38ca6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a253ba1d685c12d4b04db73a7099847c6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a253ba1d685c12d4b04db73a7099847c6">geoutils_normalize</a> (double *u)</td></tr>
+<tr class="memdesc:a253ba1d685c12d4b04db73a7099847c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalize input vector.  <a href="a00017.html#a253ba1d685c12d4b04db73a7099847c6">More...</a><br /></td></tr>
+<tr class="separator:a253ba1d685c12d4b04db73a7099847c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a004bbc2ee6db82f04fe7f627fb329886"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> <a class="el" href="a00029.html#a7c6368b321bd9acd0149b030bb8275ed">boolean</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a004bbc2ee6db82f04fe7f627fb329886">geoutils_parallel</a> (const double *u, const double *v)</td></tr>
+<tr class="memdesc:a004bbc2ee6db82f04fe7f627fb329886"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if unit vector u and v are parallel or very close to it.  <a href="a00017.html#a004bbc2ee6db82f04fe7f627fb329886">More...</a><br /></td></tr>
+<tr class="separator:a004bbc2ee6db82f04fe7f627fb329886"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a222670604cd7956adb272681439bdb85"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a222670604cd7956adb272681439bdb85">geoutils_rotate</a> (const double *x, const double *p, double a, double *z)</td></tr>
+<tr class="memdesc:a222670604cd7956adb272681439bdb85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate unit vector x clockwise around unit vector p, by angle a.  <a href="a00017.html#a222670604cd7956adb272681439bdb85">More...</a><br /></td></tr>
+<tr class="separator:a222670604cd7956adb272681439bdb85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ef6e50ec867f2c5620c806e2ad342a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a4ef6e50ec867f2c5620c806e2ad342a4">geoutils_scalarTripleProduct</a> (const double *v0, const double *v1, const double *v2)</td></tr>
+<tr class="memdesc:a4ef6e50ec867f2c5620c806e2ad342a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scalar triple product (v0 x v1) .  <a href="a00017.html#a4ef6e50ec867f2c5620c806e2ad342a4">More...</a><br /></td></tr>
+<tr class="separator:a4ef6e50ec867f2c5620c806e2ad342a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7605437c04449fb51978a6cb8723c623"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a7605437c04449fb51978a6cb8723c623">geoutils_transform</a> (const double *x, double **transform, double *g)</td></tr>
+<tr class="memdesc:a7605437c04449fb51978a6cb8723c623"><td class="mdescLeft">&#160;</td><td class="mdescRight">Project vector x onto the plane of a great circle.  <a href="a00017.html#a7605437c04449fb51978a6cb8723c623">More...</a><br /></td></tr>
+<tr class="separator:a7605437c04449fb51978a6cb8723c623"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71fe87142940e32fb62b8965b2910585"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> <a class="el" href="a00029.html#a7c6368b321bd9acd0149b030bb8275ed">boolean</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a71fe87142940e32fb62b8965b2910585">geoutils_vectorTripleProduct</a> (const double *v0, const double *v1, const double *v2, double *rslt)</td></tr>
+<tr class="memdesc:a71fe87142940e32fb62b8965b2910585"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the normalized vector triple product (v0 x v1) x v2 and store result in rslt.  <a href="a00017.html#a71fe87142940e32fb62b8965b2910585">More...</a><br /></td></tr>
+<tr class="separator:a71fe87142940e32fb62b8965b2910585"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadaff871ab843dc72c8a3090ed126fae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> <a class="el" href="a00029.html#a7c6368b321bd9acd0149b030bb8275ed">boolean</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#aadaff871ab843dc72c8a3090ed126fae">geoutils_vectorTripleProductNorthPole</a> (const double *u, double *w)</td></tr>
+<tr class="memdesc:aadaff871ab843dc72c8a3090ed126fae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the normalized vector triple product (u x northPole) x u and store result in w.  <a href="a00017.html#aadaff871ab843dc72c8a3090ed126fae">More...</a><br /></td></tr>
+<tr class="separator:aadaff871ab843dc72c8a3090ed126fae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="adfbe74497a2807bb235a36d6eae9c824" name="adfbe74497a2807bb235a36d6eae9c824"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adfbe74497a2807bb235a36d6eae9c824">&#9670;&nbsp;</a></span>DataTypeC</h2>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a862ae6f56e015a65c20cb3677178cf1a" name="a862ae6f56e015a65c20cb3677178cf1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a862ae6f56e015a65c20cb3677178cf1a">&#9670;&nbsp;</a></span>geoutils_angle()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="a00017.html#adfbe74497a2807bb235a36d6eae9c824">DataTypeC</a></td>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double geoutils_angle </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v1</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="adfbe74497a2807bb235a36d6eae9c824a33465d1d419b1074fb259ef444609e92" name="adfbe74497a2807bb235a36d6eae9c824a33465d1d419b1074fb259ef444609e92"></a>DOUBLE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="adfbe74497a2807bb235a36d6eae9c824a9cf4a0866224b0bb4a7a895da27c9c4c" name="adfbe74497a2807bb235a36d6eae9c824a9cf4a0866224b0bb4a7a895da27c9c4c"></a>FLOAT&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="adfbe74497a2807bb235a36d6eae9c824aaee055c4a5aba7d55774e4f1c01dacea" name="adfbe74497a2807bb235a36d6eae9c824aaee055c4a5aba7d55774e4f1c01dacea"></a>LONG&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="adfbe74497a2807bb235a36d6eae9c824afd5a5f51ce25953f3db2c7e93eb7864a" name="adfbe74497a2807bb235a36d6eae9c824afd5a5f51ce25953f3db2c7e93eb7864a"></a>INT&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="adfbe74497a2807bb235a36d6eae9c824a7a1fe3ba88f0c16cb494922948a9597d" name="adfbe74497a2807bb235a36d6eae9c824a7a1fe3ba88f0c16cb494922948a9597d"></a>SHORT&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="adfbe74497a2807bb235a36d6eae9c824aa7f492d725033c06576ac4ba21007297" name="adfbe74497a2807bb235a36d6eae9c824aa7f492d725033c06576ac4ba21007297"></a>BYTE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="adfbe74497a2807bb235a36d6eae9c824ac157bdf0b85a40d2619cbc8bc1ae5fe2" name="adfbe74497a2807bb235a36d6eae9c824ac157bdf0b85a40d2619cbc8bc1ae5fe2"></a>NONE&#160;</td><td class="fielddoc"></td></tr>
-</table>
+
+<p>Return the angular distance in radians between two unit vectors. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v0</td><td>unit vector </td></tr>
+    <tr><td class="paramname">v1</td><td>unit vector </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the angular distance in radians between two unit vectors. </dd></dl>
 
 </div>
 </div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a642f8f160bd0bc82ca05837081f2ab57" name="a642f8f160bd0bc82ca05837081f2ab57"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a642f8f160bd0bc82ca05837081f2ab57">&#9670;&nbsp;</a></span>datatype_getName()</h2>
+<a id="aec7aafdaea873e71065e3bf41907882d" name="aec7aafdaea873e71065e3bf41907882d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec7aafdaea873e71065e3bf41907882d">&#9670;&nbsp;</a></span>geoutils_angleDegrees()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00044.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> const char * datatype_getName </td>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double geoutils_angleDegrees </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="a00017.html#adfbe74497a2807bb235a36d6eae9c824">DataTypeC</a>&#160;</td>
-          <td class="paramname"><em>dt</em></td><td>)</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v1</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return the angular distance in degrees between two unit vectors. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v0</td><td>unit vector </td></tr>
+    <tr><td class="paramname">v1</td><td>unit vector </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the angular distance in degrees between two unit vectors. </dd></dl>
+
+</div>
+</div>
+<a id="a7d78cfaabd8e62554f5d3455b85c5af6" name="a7d78cfaabd8e62554f5d3455b85c5af6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d78cfaabd8e62554f5d3455b85c5af6">&#9670;&nbsp;</a></span>geoutils_azimuth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double geoutils_azimuth </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>errorValue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return the azimuth from unit vector v1 to unit vector v2. </p>
+<p >Units are radians clockwise from north.</p>
+<p >This method will fail if v1 is coincident with north or south pole. If this happens, this function will return errorValue. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v1</td><td>unit vector </td></tr>
+    <tr><td class="paramname">v2</td><td>unitVector </td></tr>
+    <tr><td class="paramname">errorValue</td><td>value to return when an invalid condition occurs. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>azimuth from v1 to v2 in radians clockwise from north, or errorValue. </dd></dl>
+
+</div>
+</div>
+<a id="ad3f85d080ce8b15cb0cdf3e5cad17f06" name="ad3f85d080ce8b15cb0cdf3e5cad17f06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3f85d080ce8b15cb0cdf3e5cad17f06">&#9670;&nbsp;</a></span>geoutils_azimuthDegrees()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double geoutils_azimuthDegrees </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>errorValue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return the azimuth from unit vector v1 to unit vector v2. </p>
+<p >Units are degrees clockwise from north.</p>
+<p >This method will fail if v1 is coincident with north or south pole. If this happens, this function will return errorValue. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v1</td><td>unit vector </td></tr>
+    <tr><td class="paramname">v2</td><td>unitVector </td></tr>
+    <tr><td class="paramname">errorValue</td><td>value to return when an invalid condition occurs. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>azimuth from v1 to v2 in degrees clockwise from north, or errorValue. </dd></dl>
+
+</div>
+</div>
+<a id="a3fc8397b492c7eabf6e554cf0a98167b" name="a3fc8397b492c7eabf6e554cf0a98167b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fc8397b492c7eabf6e554cf0a98167b">&#9670;&nbsp;</a></span>geoutils_center()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void geoutils_center </td>
+          <td>(</td>
+          <td class="paramtype">double **&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return the normalized vector sum of the supplied unit vectors. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>one or more unit vectors </td></tr>
+    <tr><td class="paramname">n</td><td>size of v </td></tr>
+    <tr><td class="paramname">x</td><td>the normalized vector sum of the supplied unit vectors. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae1c5bec569f7e085a091d844d8fd04e1" name="ae1c5bec569f7e085a091d844d8fd04e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1c5bec569f7e085a091d844d8fd04e1">&#9670;&nbsp;</a></span>geoutils_circumCenter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void geoutils_circumCenter </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>vs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Given three unit vectors, v0, v1 and v2, find the circumcenter, vs. </p>
+<p >The circumcenter is the unit vector of the center of a small circle that has all three unit vectors on its circumference.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v0</td><td></td></tr>
+    <tr><td class="paramname">v1</td><td></td></tr>
+    <tr><td class="paramname">v2</td><td></td></tr>
+    <tr><td class="paramname">vs</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a86f8bcb517d3018cb237f611fce23416" name="a86f8bcb517d3018cb237f611fce23416"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86f8bcb517d3018cb237f611fce23416">&#9670;&nbsp;</a></span>geoutils_circumCenter2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void geoutils_circumCenter2 </td>
+          <td>(</td>
+          <td class="paramtype">double **&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>vs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Given the three unit vectors, t[0], t[1] and t[2], find the circumcenter, vs. </p>
+<p >The circumcenter is the unit vector of the center of a small circle that has all three unit vectors on its circumference.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>a 3 x 3 array of doubles that contains the three unit vectors of a triangle. </td></tr>
+    <tr><td class="paramname">vs</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa395681ffd0d3426d581323bd8958059" name="aa395681ffd0d3426d581323bd8958059"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa395681ffd0d3426d581323bd8958059">&#9670;&nbsp;</a></span>geoutils_cross()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void geoutils_cross </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>rslt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cross product of two 3-component vectors. </p>
+<p >Result is not normalized.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v1</td><td>vector&lt;double&gt; vector one. </td></tr>
+    <tr><td class="paramname">v2</td><td>vector&lt;double&gt; vector two. </td></tr>
+    <tr><td class="paramname">rslt</td><td>set to v1 cross v2 Result is not a unit vector. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac94c3e734200d95716f3d7bf8606e663" name="ac94c3e734200d95716f3d7bf8606e663"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac94c3e734200d95716f3d7bf8606e663">&#9670;&nbsp;</a></span>geoutils_crossNormal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double geoutils_crossNormal </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>w</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Normalized cross product of two 3-component unit vectors (u x v) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>vector one (input) </td></tr>
+    <tr><td class="paramname">v</td><td>vector two (input) </td></tr>
+    <tr><td class="paramname">w</td><td>unit vector (output). Will be [0,0,0] if u and v are parallel. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>length of cross product before normalization. Will equal 0 if u and v are parallel </dd></dl>
+
+</div>
+</div>
+<a id="ad821f35cfdaae21d9708b559cac418e7" name="ad821f35cfdaae21d9708b559cac418e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad821f35cfdaae21d9708b559cac418e7">&#9670;&nbsp;</a></span>geoutils_crossNorth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double geoutils_crossNorth </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>w</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Normalized cross product of a 3-component unit vector with the north pole. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>vector&lt;double&gt; vector one. </td></tr>
+    <tr><td class="paramname">w</td><td>set to u cross north, normalized to unit length. If u cross north has zero length, w will equal (0,0,0). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the length of u cross north prior to normalization. Guaranteed &gt;= 0. </dd></dl>
+
+</div>
+</div>
+<a id="a53ddc8e139d74009fa04811e25d6083d" name="a53ddc8e139d74009fa04811e25d6083d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53ddc8e139d74009fa04811e25d6083d">&#9670;&nbsp;</a></span>geoutils_dot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double geoutils_dot </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v1</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dot product. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v0</td><td>vector </td></tr>
+    <tr><td class="paramname">v1</td><td>vector </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>dot product </dd></dl>
+
+</div>
+</div>
+<a id="ab2dcd66211a019ef0e4736c1033c94da" name="ab2dcd66211a019ef0e4736c1033c94da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2dcd66211a019ef0e4736c1033c94da">&#9670;&nbsp;</a></span>geoutils_getEarthRadius()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double geoutils_getEarthRadius </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>vector</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns a string representation for a given DataTypeC. </p>
+<p>Returns the Earth radius in km at the input 3D vector position using the parameters of the WGS84 ellipsoid. </p>
+<p >If you are working with a GeoTessModel then it is advisable to use method geomodel_getEarthRadius() instead of this method because the model may reference an ellipsoid other than WGS84. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vector</td><td>3-component unit vector </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Earth radius in km </dd></dl>
 
 </div>
 </div>
-<a id="a3934c3fea7347deaca62377ffeb205de" name="a3934c3fea7347deaca62377ffeb205de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3934c3fea7347deaca62377ffeb205de">&#9670;&nbsp;</a></span>datatype_size()</h2>
+<a id="a6a14315414c2a6819f4d563864c6dc50" name="a6a14315414c2a6819f4d563864c6dc50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a14315414c2a6819f4d563864c6dc50">&#9670;&nbsp;</a></span>geoutils_getGCPointsND()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00044.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> int datatype_size </td>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> int geoutils_getGCPointsND </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>distance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>spacing</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00029.html#a7c6368b321bd9acd0149b030bb8275ed">boolean</a>&#160;</td>
+          <td class="paramname"><em>onCenters</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return number of points required to span specified great circle distance with points that have spacing not to exceed specified value. </p>
+<p >If onCenters is true then points will reside in the centers of equal sized intervals. If onCenters is false (default), then first point coincides with start of great circle, last point coincides with end of great circle and other points are equally spaced in between. Actual spacing of points will generally be less than requested spacing so that integral number of equally spaced points will span the great circle. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">distance</td><td>length of great circle path in radians </td></tr>
+    <tr><td class="paramname">spacing</td><td>maximum spacing between points in radians. </td></tr>
+    <tr><td class="paramname">onCenters</td><td>if true, points in middle of intervals, other wise points at boundaries of intervals. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af28dab457c3237c1c7ad5d69437127ef" name="af28dab457c3237c1c7ad5d69437127ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af28dab457c3237c1c7ad5d69437127ef">&#9670;&nbsp;</a></span>geoutils_getGreatCircle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void geoutils_getGreatCircle </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double **&#160;</td>
+          <td class="paramname"><em>gc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A great circle is defined by two unit vectors that are 90 degrees apart. </p>
+<p >A great circle is stored in a double[2][3] array, which is the structure returned by this method. A great circle can be passed to the method getGreatCirclePoint() to retrieve a unit vector that is on the great circle and located some distance from the first point of the great circle. </p>
+<p >Fails if v0 and v1 are parallel. </p>
+<p >This method returns a great circle that is computed from two unit vectors that are not necessarily 90 degrees apart.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v0</td><td>the first point on the great circle </td></tr>
+    <tr><td class="paramname">v1</td><td>some other point that is also on the great circle but which is not necessarily 90 degrees away from v0. </td></tr>
+    <tr><td class="paramname">gc</td><td>a 2 x 3 array specifying two unit vectors. The first one is a clone of unit vector v0 passed as first argument to this method. The second is located 90 degrees away from v0. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7555dc8eda96048ec8d897f0f4950d08" name="a7555dc8eda96048ec8d897f0f4950d08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7555dc8eda96048ec8d897f0f4950d08">&#9670;&nbsp;</a></span>geoutils_getGreatCircle1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double ** geoutils_getGreatCircle1 </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v1</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A great circle is defined by two unit vectors that are 90 degrees apart. </p>
+<p >A great circle is stored in a double[2][3] array, which is the structure returned by this method. A great circle can be passed to the method getGreatCirclePoint() to retrieve a unit vector that is on the great circle and located some distance from the first point of the great circle. </p>
+<p >Fails if v0 and v1 are parallel. </p>
+<p >This method returns a great circle that is computed from two unit vectors that are not necessarily 90 degrees apart.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v0</td><td>the first point on the great circle </td></tr>
+    <tr><td class="paramname">v1</td><td>some other point that is also on the great circle but which is not necessarily 90 degrees away from v0. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a 2 x 3 array specifying two unit vectors. The first one is a clone of unit vector v0 passed as first argument to this method. The second is located 90 degrees away from v0. </dd></dl>
+
+</div>
+</div>
+<a id="afacaaf1d2ecf19eb6742c5b22b243fdb" name="afacaaf1d2ecf19eb6742c5b22b243fdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afacaaf1d2ecf19eb6742c5b22b243fdb">&#9670;&nbsp;</a></span>geoutils_getGreatCircleAz()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void geoutils_getGreatCircleAz </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>azimuth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double **&#160;</td>
+          <td class="paramname"><em>gc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A great circle is defined by two unit vectors that are 90 degrees apart. </p>
+<p >A great circle is stored in a double[2][3] array, which is the structure returned by this method. A great circle can be passed to the method getGreatCirclePoint() to retrieve a unit vector that is on the great circle and located some distance from the first point of the great circle. </p>
+<p >This method returns a great circle that is defined by an initial point and an azimuth.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>a unit vector that will be the first point on the great circle. </td></tr>
+    <tr><td class="paramname">azimuth</td><td>a direction, in radians, in which to move relative to v in order to define the great circle </td></tr>
+    <tr><td class="paramname">gc</td><td>a 2 x 3 array specifying two unit vectors. The first one is a clone of unit vector v passed as an argument to this method. The second is located 90 degrees away from v in the direction specified by azimuth. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">GeoTessException</td><td>if v is located at north or south pole. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1df5ffaefb43550e36768c2ad1769cf1" name="a1df5ffaefb43550e36768c2ad1769cf1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1df5ffaefb43550e36768c2ad1769cf1">&#9670;&nbsp;</a></span>geoutils_getGreatCirclePoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void geoutils_getGreatCirclePoint </td>
+          <td>(</td>
+          <td class="paramtype">double **&#160;</td>
+          <td class="paramname"><em>greatCircle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>distance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieve the unit vector of a point that is located on the supplied greatCircle and which is located the sepcified distance from the first point of the greatCircle. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">greatCircle</td><td>a 2x3 element array defining two unit vectors that are PI/2 radians apart. </td></tr>
+    <tr><td class="paramname">distance</td><td>the distance in radians from first point of great circle to the position of the desired point. </td></tr>
+    <tr><td class="paramname">v</td><td>unit vector that will be populated with the position of the desired point. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1aa891e929834da363d3063b6fdbcfff" name="a1aa891e929834da363d3063b6fdbcfff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1aa891e929834da363d3063b6fdbcfff">&#9670;&nbsp;</a></span>geoutils_getGreatCirclePoints()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double geoutils_getGreatCirclePoints </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>ptA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>ptB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>npoints</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00029.html#a7c6368b321bd9acd0149b030bb8275ed">boolean</a>&#160;</td>
+          <td class="paramname"><em>onCenters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double **&#160;</td>
+          <td class="paramname"><em>points</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieve the unit vectors of a bunch of points distributed along a great circle path between two points. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptA</td><td>unit vector of first point on great circle (input) </td></tr>
+    <tr><td class="paramname">ptB</td><td>unit vector of last point on great circle (input) </td></tr>
+    <tr><td class="paramname">npoints</td><td>the number of points to distribute along the great circle path (input) </td></tr>
+    <tr><td class="paramname">onCenters</td><td>if true, returned points will be located in the centers of equal size path increments. If false, first point will coincide with ptA, last point will coincide with ptB and the remaining points will be equally spaced in between. (input) </td></tr>
+    <tr><td class="paramname">points</td><td>npoints by 3 array that will be populated with computed points. Must be large enough to hold all the computed points (output) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>actual point spacing in radians </dd></dl>
+
+</div>
+</div>
+<a id="a4f2d0457e14a287fb9faafb5584caa3d" name="a4f2d0457e14a287fb9faafb5584caa3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f2d0457e14a287fb9faafb5584caa3d">&#9670;&nbsp;</a></span>geoutils_getGreatCirclePointsD()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double geoutils_getGreatCirclePointsD </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>ptA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>ptB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>spacing</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00029.html#a7c6368b321bd9acd0149b030bb8275ed">boolean</a>&#160;</td>
+          <td class="paramname"><em>onCenters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double **&#160;</td>
+          <td class="paramname"><em>points</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>npoints</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieve the unit vectors of a bunch of points distributed along a great circle path between two points. </p>
+<p >Caller specifies desired spacing of the points, not the number of points. The actual spacing will generally be somewhat less than the request spacing in order that an integral number of points can be equally spaced along the path. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptA</td><td>unit vector of first point on great circle (input) </td></tr>
+    <tr><td class="paramname">ptB</td><td>unit vector of last point on great circle (input) </td></tr>
+    <tr><td class="paramname">spacing</td><td>desired point spacing in radians (input) </td></tr>
+    <tr><td class="paramname">onCenters</td><td>if true, returned points will be located in the centers of equal size path increments. If false, first point will coincide with ptA, last point will coincide with ptB and the remaining points will be equally spaced in between. (input) </td></tr>
+    <tr><td class="paramname">points</td><td>an npoints by 3 array that will be populated with computed points. Must be large enough to hold all the computed points. </td></tr>
+    <tr><td class="paramname">npoints</td><td>the number of points being returned. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>actual point spacing in radians </dd></dl>
+
+</div>
+</div>
+<a id="a5b3a0d5aa52e20dd09c7e80f35f49fad" name="a5b3a0d5aa52e20dd09c7e80f35f49fad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b3a0d5aa52e20dd09c7e80f35f49fad">&#9670;&nbsp;</a></span>geoutils_getGreatCirclePointsN()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> int geoutils_getGreatCirclePointsN </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>ptA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>ptB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>spacing</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00029.html#a7c6368b321bd9acd0149b030bb8275ed">boolean</a>&#160;</td>
+          <td class="paramname"><em>onCenters</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieve the number of points that would be required to populate a great circle path from point A to point B with equally spaced points given that the spacing can be no greater than delta. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptA</td><td>unit vector of first point on great circle (input) </td></tr>
+    <tr><td class="paramname">ptB</td><td>unit vector of last point on great circle (input) </td></tr>
+    <tr><td class="paramname">spacing</td><td>desired point spacing in radians (input) </td></tr>
+    <tr><td class="paramname">onCenters</td><td>if true, returned points will be located in the centers of equal size path increments. If false, first point will coincide with ptA, last point will coincide with ptB and the remaining points will be equally spaced in between. (input) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>number of points required </dd></dl>
+
+</div>
+</div>
+<a id="a9b6066ee7715ef6c150da1864cf7021a" name="a9b6066ee7715ef6c150da1864cf7021a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b6066ee7715ef6c150da1864cf7021a">&#9670;&nbsp;</a></span>geoutils_getLat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double geoutils_getLat </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>vector</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return latitude in radians of specified unit vector computed using the parameters of the WGS84 ellipsoid. </p>
+<p >If you are working with a GeoTessModel then it is advisable to use method geomodel_getLat() instead of this method because the model may reference an ellipsoid other than WGS84. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vector</td><td>3-component unit vector </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>latitude in radians </dd></dl>
+
+</div>
+</div>
+<a id="a0931677329d20b78febb84016fc4217f" name="a0931677329d20b78febb84016fc4217f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0931677329d20b78febb84016fc4217f">&#9670;&nbsp;</a></span>geoutils_getLatDegrees()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double geoutils_getLatDegrees </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>vector</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return latitude in degrees of specified unit vector computed using the parameters of the WGS84 ellipsoid. </p>
+<p >If you are working with a GeoTessModel then it is advisable to use method geomodel_getLatDegrees() instead of this method because the model may reference an ellipsoid other than WGS84. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vector</td><td>3-component unit vector </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>latitude in degrees </dd></dl>
+
+</div>
+</div>
+<a id="a9ed11511f50f5c0c657e0b7e1619fe54" name="a9ed11511f50f5c0c657e0b7e1619fe54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ed11511f50f5c0c657e0b7e1619fe54">&#9670;&nbsp;</a></span>geoutils_getLatLonString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> char * geoutils_getLatLonString </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>vector</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return latitude / longitude as a string. </p>
+<p >computed using the parameters of the WGS84 ellipsoid. </p>
+<p >If you are working with a GeoTessModel then it is advisable to use method geomodel_getLatLonString() instead of this method because the model may reference an ellipsoid other than WGS84. </p>
+<p >It is the responsibility of the user to deallocate the returned string. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vector</td><td>3-component unit vector </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>latitude and longitude in degrees in a string </dd></dl>
+
+</div>
+</div>
+<a id="a5200b5c265e4f491c01249d8d3d8d582" name="a5200b5c265e4f491c01249d8d3d8d582"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5200b5c265e4f491c01249d8d3d8d582">&#9670;&nbsp;</a></span>geoutils_getLon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double geoutils_getLon </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>vector</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return longitude in radians of specified unit vector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vector</td><td>3-component unit vector </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>longitude in radians </dd></dl>
+
+</div>
+</div>
+<a id="add5782f3dd8b28d5c8d75481eedd8a4f" name="add5782f3dd8b28d5c8d75481eedd8a4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add5782f3dd8b28d5c8d75481eedd8a4f">&#9670;&nbsp;</a></span>geoutils_getLonDegrees()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double geoutils_getLonDegrees </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>vector</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return longitude in degrees of specified unit vector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vector</td><td>3-component unit vector </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>longitude in degrees </dd></dl>
+
+</div>
+</div>
+<a id="a6350e7920fcba065d80262ee4d416eeb" name="a6350e7920fcba065d80262ee4d416eeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6350e7920fcba065d80262ee4d416eeb">&#9670;&nbsp;</a></span>geoutils_getNaN_DOUBLE()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double geoutils_getNaN_DOUBLE </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -159,14 +1271,784 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns the number of data type enum values. </p>
+<p>Get NaN. </p>
+<dl class="section return"><dt>Returns</dt><dd>quiet NaN </dd></dl>
+
+</div>
+</div>
+<a id="ac385c06979b6c93c036eb804524cb0ed" name="ac385c06979b6c93c036eb804524cb0ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac385c06979b6c93c036eb804524cb0ed">&#9670;&nbsp;</a></span>geoutils_getNaN_FLOAT()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> float geoutils_getNaN_FLOAT </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get NaN. </p>
+<dl class="section return"><dt>Returns</dt><dd>quiet NaN </dd></dl>
+
+</div>
+</div>
+<a id="a6d21763873d2464c42b04bbe7a62de78" name="a6d21763873d2464c42b04bbe7a62de78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d21763873d2464c42b04bbe7a62de78">&#9670;&nbsp;</a></span>geoutils_getTransform()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void geoutils_getTransform </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double **&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Transform is a 3 x 3 matrix such that when a vector is multiplied by transform, the vector will be projected onto the plane of this GreatCircle. </p>
+<p >The z direction will point out of the plane of the great circle in the direction of the observer (lastPoint cross firstPoint; parallel to normal). The y direction will correspond to the mean of firstPoint and lastPoint. The x direction will correspond to y cross z, forming a right handed coordinate system. </p>
+
+</div>
+</div>
+<a id="a015f61eeb08bbac197ff4203984e19e0" name="a015f61eeb08bbac197ff4203984e19e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a015f61eeb08bbac197ff4203984e19e0">&#9670;&nbsp;</a></span>geoutils_getTriangleArea()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double geoutils_getTriangleArea </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieve the area of a triangle is square radians (unitless). </p>
+<p >Multiply this number by radius squared in order to convert to km^2. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v0</td><td>first corner of triangle </td></tr>
+    <tr><td class="paramname">v1</td><td>second corner of triangle </td></tr>
+    <tr><td class="paramname">v2</td><td>third corner of triangle </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the area of a triangle defined by three 3-component vectors </dd></dl>
+
+</div>
+</div>
+<a id="aa4d51ad3f13581ec6badbf4ec6ba07b1" name="aa4d51ad3f13581ec6badbf4ec6ba07b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4d51ad3f13581ec6badbf4ec6ba07b1">&#9670;&nbsp;</a></span>geoutils_getVector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void geoutils_getVector </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lon</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert geographic lat, lon into a geocentric unit vector using the parameters of the WGS84 ellipsoid. </p>
+<p >If you are working with a GeoTessModel then it is advisable to use method geomodel_getVector() instead of this method because the model may reference an ellipsoid other than WGS84. </p>
+<p >It is the responsibility of the user to deallocate the returned array. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lat</td><td>latitude in radians (input) </td></tr>
+    <tr><td class="paramname">lon</td><td>longitude in radians (input) </td></tr>
+    <tr><td class="paramname">v</td><td>3-component unit vector (output) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aab4a99c093a91a312c3aaaffa5744442" name="aab4a99c093a91a312c3aaaffa5744442"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab4a99c093a91a312c3aaaffa5744442">&#9670;&nbsp;</a></span>geoutils_getVectorDegrees()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void geoutils_getVectorDegrees </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lon</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert geographic lat, lon into a geocentric unit vector using the parameters of the WGS84 ellipsoid. </p>
+<p >If you are working with a GeoTessModel then it is advisable to use method geomodel_getVector() instead of this method because the model may reference an ellipsoid other than WGS84. </p>
+<p >It is the responsibility of the user to deallocate the returned array. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lat</td><td>latitude in degrees (input) </td></tr>
+    <tr><td class="paramname">lon</td><td>longitude in degrees (input) </td></tr>
+    <tr><td class="paramname">v</td><td>3-component unit vector (output) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aff7712f327850b5a97f06444ebabc149" name="aff7712f327850b5a97f06444ebabc149"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff7712f327850b5a97f06444ebabc149">&#9670;&nbsp;</a></span>geoutils_getVersion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> char * geoutils_getVersion </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The current GeoTess version. </p>
+<p >It is the responsibility of the user to deallocate the returned string. </p>
+
+</div>
+</div>
+<a id="ac97d782cfa9b72e2577a2129584050bf" name="ac97d782cfa9b72e2577a2129584050bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac97d782cfa9b72e2577a2129584050bf">&#9670;&nbsp;</a></span>geoutils_isNaN_DOUBLE()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> <a class="el" href="a00029.html#a7c6368b321bd9acd0149b030bb8275ed">boolean</a> geoutils_isNaN_DOUBLE </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Test value to see if it is NaN. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>value to test </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>boolean TRUE if value is NaN </dd></dl>
+
+</div>
+</div>
+<a id="a986783246f31fc625612d3ca46332be1" name="a986783246f31fc625612d3ca46332be1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a986783246f31fc625612d3ca46332be1">&#9670;&nbsp;</a></span>geoutils_isNaN_FLOAT()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> <a class="el" href="a00029.html#a7c6368b321bd9acd0149b030bb8275ed">boolean</a> geoutils_isNaN_FLOAT </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Test value to see if it is NaN. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>value to test </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>boolean TRUE if value is NaN </dd></dl>
+
+</div>
+</div>
+<a id="a2ac0f37f2c9d4c912868250950e77471" name="a2ac0f37f2c9d4c912868250950e77471"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ac0f37f2c9d4c912868250950e77471">&#9670;&nbsp;</a></span>geoutils_isPole()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> <a class="el" href="a00029.html#a7c6368b321bd9acd0149b030bb8275ed">boolean</a> geoutils_isPole </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>u</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns true if unit vector u is very close to [0, 0, +/- 1]. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>unit vector </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if unit vector u is very close to [0, 0, +/- 1] </dd></dl>
+
+</div>
+</div>
+<a id="a3ad6e9789df781d8ae34a5f2c3e1c529" name="a3ad6e9789df781d8ae34a5f2c3e1c529"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ad6e9789df781d8ae34a5f2c3e1c529">&#9670;&nbsp;</a></span>geoutils_length()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double geoutils_length </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>u</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Find the length of a 3-element vector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>3-component vector </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the length of the vector. Guaranteed to be &gt;= 0. </dd></dl>
+
+</div>
+</div>
+<a id="aa30c4f4463d0d10b66220de1a4a59021" name="aa30c4f4463d0d10b66220de1a4a59021"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa30c4f4463d0d10b66220de1a4a59021">&#9670;&nbsp;</a></span>geoutils_move()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void geoutils_move </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>vtp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>u</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Move unit vector w in direction of vtp by distance a and store result in u. </p>
+<p >vtp is assumed to be a unit vector normal to w on input.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>unit vector </td></tr>
+    <tr><td class="paramname">vtp</td><td>unit vector normal to w </td></tr>
+    <tr><td class="paramname">a</td><td>distance to move in radians </td></tr>
+    <tr><td class="paramname">u</td><td>unit vector </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abedec6373b5a1be6d800ce95774b6546" name="abedec6373b5a1be6d800ce95774b6546"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abedec6373b5a1be6d800ce95774b6546">&#9670;&nbsp;</a></span>geoutils_moveDistAz()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> <a class="el" href="a00029.html#a7c6368b321bd9acd0149b030bb8275ed">boolean</a> geoutils_moveDistAz </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>distance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>azimuth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>u</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Move unit vector w specified distance in direction given by azimuth and return the result in u. </p>
+<p >If w is north or south pole, u will be equal to the same pole and method returns false.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>unit vector of starting position </td></tr>
+    <tr><td class="paramname">distance</td><td>distance to move in radians </td></tr>
+    <tr><td class="paramname">azimuth</td><td>direction to move in radians </td></tr>
+    <tr><td class="paramname">u</td><td>unit vector of resulting position. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if successful, false if w is north or south pole </dd></dl>
+
+</div>
+</div>
+<a id="a0043b1730b8ecfa8a91d8c13c5a38ca6" name="a0043b1730b8ecfa8a91d8c13c5a38ca6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0043b1730b8ecfa8a91d8c13c5a38ca6">&#9670;&nbsp;</a></span>geoutils_moveNorth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> <a class="el" href="a00029.html#a7c6368b321bd9acd0149b030bb8275ed">boolean</a> geoutils_moveNorth </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>distance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>z</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return a unit vector that is distance radians due north of position x. </p>
+<p >If x is the north or south pole, then z is set equal to x.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>unit vector of the position to be moved. </td></tr>
+    <tr><td class="paramname">distance</td><td>the distance, in radians, that x is to be moved toward the north. </td></tr>
+    <tr><td class="paramname">z</td><td>the 3-element unit vector representing the position after having moved distance north. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if operation successful, false if x is north or south pole. </dd></dl>
+
+</div>
+</div>
+<a id="a253ba1d685c12d4b04db73a7099847c6" name="a253ba1d685c12d4b04db73a7099847c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a253ba1d685c12d4b04db73a7099847c6">&#9670;&nbsp;</a></span>geoutils_normalize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double geoutils_normalize </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>u</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Normalize input vector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>vector (input) and unit vector (output) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>length of u before normalization. </dd></dl>
+
+</div>
+</div>
+<a id="a004bbc2ee6db82f04fe7f627fb329886" name="a004bbc2ee6db82f04fe7f627fb329886"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a004bbc2ee6db82f04fe7f627fb329886">&#9670;&nbsp;</a></span>geoutils_parallel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> <a class="el" href="a00029.html#a7c6368b321bd9acd0149b030bb8275ed">boolean</a> geoutils_parallel </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns true if unit vector u and v are parallel or very close to it. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>a unit vector </td></tr>
+    <tr><td class="paramname">v</td><td>another unit vector </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1.-abs(dot(u,v)) &lt; 2e-15 </dd></dl>
+
+</div>
+</div>
+<a id="a222670604cd7956adb272681439bdb85" name="a222670604cd7956adb272681439bdb85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a222670604cd7956adb272681439bdb85">&#9670;&nbsp;</a></span>geoutils_rotate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void geoutils_rotate </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>z</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rotate unit vector x clockwise around unit vector p, by angle a. </p>
+<p >x and z may be references to the same array. Clockwise rotation as viewed from outside the unit sphere is positive.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>unit vector to be rotated </td></tr>
+    <tr><td class="paramname">p</td><td>unit vector of pole about which rotation is to occur. </td></tr>
+    <tr><td class="paramname">a</td><td>double the amount of rotation, in radians. </td></tr>
+    <tr><td class="paramname">z</td><td>the rotated unit vector, normalized to unit length. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4ef6e50ec867f2c5620c806e2ad342a4" name="a4ef6e50ec867f2c5620c806e2ad342a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ef6e50ec867f2c5620c806e2ad342a4">&#9670;&nbsp;</a></span>geoutils_scalarTripleProduct()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> double geoutils_scalarTripleProduct </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Scalar triple product (v0 x v1) . </p>
+<p >v2 </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v0</td><td>vector </td></tr>
+    <tr><td class="paramname">v1</td><td>vector </td></tr>
+    <tr><td class="paramname">v2</td><td>vector </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>dot product </dd></dl>
+
+</div>
+</div>
+<a id="a7605437c04449fb51978a6cb8723c623" name="a7605437c04449fb51978a6cb8723c623"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7605437c04449fb51978a6cb8723c623">&#9670;&nbsp;</a></span>geoutils_transform()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> void geoutils_transform </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double **&#160;</td>
+          <td class="paramname"><em>transform</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>g</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Project vector x onto the plane of a great circle. </p>
+<p >Consider a great circle defined by two unti vectors, u and v. Find the transform of x by calling t = getTransform(u, v). Then call this method: transform(x, t, g), which will calculate unit vector g such that </p><ul>
+<li>
+g[2] is the z direction, i.e., the component of x that points out of the plane of the great circle, toward the observer (v cross u). </li>
+<li>
+g[1] is the y direction, i.e., the mean of u and v, and </li>
+<li>
+g[0] is the x direction, i.e, g[1] cross g2. </li>
+</ul>
+
+</div>
+</div>
+<a id="a71fe87142940e32fb62b8965b2910585" name="a71fe87142940e32fb62b8965b2910585"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71fe87142940e32fb62b8965b2910585">&#9670;&nbsp;</a></span>geoutils_vectorTripleProduct()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> <a class="el" href="a00029.html#a7c6368b321bd9acd0149b030bb8275ed">boolean</a> geoutils_vectorTripleProduct </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>v2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>rslt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compute the normalized vector triple product (v0 x v1) x v2 and store result in rslt. </p>
+<p >It is ok if rslt is a reference to one of the input vectors. Local variables are used to ensure memory is not corrupted.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v0</td><td>unit vector </td></tr>
+    <tr><td class="paramname">v1</td><td>unit vector </td></tr>
+    <tr><td class="paramname">v2</td><td>unit vector </td></tr>
+    <tr><td class="paramname">rslt</td><td>unit vector </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if rslt has finite length, false if length(rslt) is zero. </dd></dl>
+
+</div>
+</div>
+<a id="aadaff871ab843dc72c8a3090ed126fae" name="aadaff871ab843dc72c8a3090ed126fae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadaff871ab843dc72c8a3090ed126fae">&#9670;&nbsp;</a></span>geoutils_vectorTripleProductNorthPole()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> <a class="el" href="a00029.html#a7c6368b321bd9acd0149b030bb8275ed">boolean</a> geoutils_vectorTripleProductNorthPole </td>
+          <td>(</td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>w</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compute the normalized vector triple product (u x northPole) x u and store result in w. </p>
+<p >Returns false is u is north or south pole.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>unit vector </td></tr>
+    <tr><td class="paramname">w</td><td>unit vector </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if w has finite length, false if length(w) is zero. </dd></dl>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 29 2021 06:31:43 for GeoTessCShelll by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
 </small></address>
 </body>
 </html>

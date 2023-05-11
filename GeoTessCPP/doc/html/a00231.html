@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">GeoTessCPP<span id="projectnumber">&#160;2.6</span>
+   <div id="projectname">GeoTessCPP<span id="projectnumber">&#160;2.2</span>
    </div>
    <div id="projectbrief">Software to facilitate storage and retrieval of 3D information about the Earth.</div>
   </td>
@@ -101,6 +101,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5e008d7f7793c85d7bbb7705344d0db8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00231.html#a5e008d7f7793c85d7bbb7705344d0db8">copyVector</a> (double *u)</td></tr>
 <tr class="memdesc:a5e008d7f7793c85d7bbb7705344d0db8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy the contents of the unit vector that corresponds to the current position into the supplied double* which must have at least 3 elements.  <a href="a00231.html#a5e008d7f7793c85d7bbb7705344d0db8">More...</a><br /></td></tr>
 <tr class="separator:a5e008d7f7793c85d7bbb7705344d0db8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72b7defde6721ec3c99a366c18066ce3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00231.html#a72b7defde6721ec3c99a366c18066ce3">getBorehole</a> (const double &amp;rSpacing, bool computeDepth, vector&lt; int &gt; &amp;layers, vector&lt; double &gt; &amp;radii, vector&lt; vector&lt; double &gt; &gt; &amp;attributes)</td></tr>
+<tr class="memdesc:a72b7defde6721ec3c99a366c18066ce3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute radii and attribute values at the current geographic position.  <a href="a00231.html#a72b7defde6721ec3c99a366c18066ce3">More...</a><br /></td></tr>
+<tr class="separator:a72b7defde6721ec3c99a366c18066ce3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6a591a69c826733f3f6d5bfc5354e95"><td class="memItemLeft" align="right" valign="top">const double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00231.html#ab6a591a69c826733f3f6d5bfc5354e95">getClosestVertex</a> () const</td></tr>
 <tr class="memdesc:ab6a591a69c826733f3f6d5bfc5354e95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the unit vector of the vertex wiht the highest interpolation coefficient.  <a href="a00231.html#ab6a591a69c826733f3f6d5bfc5354e95">More...</a><br /></td></tr>
 <tr class="separator:ab6a591a69c826733f3f6d5bfc5354e95"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -390,6 +393,73 @@ the interpolation coefficients used to interpolate data </li>
 
 </div>
 </div>
+<a id="a72b7defde6721ec3c99a366c18066ce3" name="a72b7defde6721ec3c99a366c18066ce3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72b7defde6721ec3c99a366c18066ce3">&#9670;&nbsp;</a></span>getBorehole()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void geotess::GeoTessPosition::getBorehole </td>
+          <td>(</td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>rSpacing</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>computeDepth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>layers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>radii</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; vector&lt; double &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>attributes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Compute radii and attribute values at the current geographic position. </p>
+<p >The radii will be monotonically increasing values with spacing less than or equal to rSpacing. There will be radius values at the top and bottom of each layer, which implies there will be duplicate radii at interfaces with attribute values interpolated in layers below and above the interface. <br  />
+Upon return from this function, output vectors layers, radii and attributes will all have the same size. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rSpacing</td><td>the radial spacing of sample points in km. Actual spacing will be less than or equal to the specified value such that an integral number of equally spaced points will be generated between the bottom and top of each layer. </td></tr>
+    <tr><td class="paramname">computeDepth</td><td>if true, parameter radii will be populated with depths instead of radii. </td></tr>
+    <tr><td class="paramname">layers</td><td>will be populated with the layer index of each point in the borehole </td></tr>
+    <tr><td class="paramname">radii</td><td>will be populated with radius or depth of each borehole point, in km </td></tr>
+    <tr><td class="paramname">attributes</td><td>will be populated with the attribute values at each borehole point. Units will be same as the units specified in the model metadata. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ab6a591a69c826733f3f6d5bfc5354e95" name="ab6a591a69c826733f3f6d5bfc5354e95"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab6a591a69c826733f3f6d5bfc5354e95">&#9670;&nbsp;</a></span>getClosestVertex()</h2>
 
@@ -476,7 +546,6 @@ the interpolation coefficients used to interpolate data </li>
 </div><div class="memdoc">
 
 <p>Retrieve the depth of the current position in km. </p>
-<p >Assumes GRS80 ellipsoid.</p>
 <dl class="section return"><dt>Returns</dt><dd>the depth of the current position in km. </dd></dl>
 
 </div>
@@ -631,7 +700,6 @@ the interpolation coefficients used to interpolate data </li>
 </div><div class="memdoc">
 
 <p>Retrieve the radius of the Earth at this position, in km. </p>
-<p >Assumes GRS80 ellipsoid.</p>
 <dl class="section return"><dt>Returns</dt><dd>the radius of the Earth at this position, in km. </dd></dl>
 
 </div>
@@ -1843,9 +1911,6 @@ If there is already an entry for the current pointIndex, add interpolation coeff
 </div><div class="memdoc">
 
 <p>Set the interpolation point to specified latitude and and longitude in degrees and depth in km below sea level. </p>
-<p >This method will perform a walking triangle search for the triangle in which the specified position is located and compute the associated interpolation coefficients. </p>
-<p >This method is pretty expensive compared to the other version of setPosition where the position is specified as a unit vector and a radius. </p>
-<p >Assumes GRS80 ellipsoid.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">lat</td><td>in degrees. </td></tr>
@@ -1898,7 +1963,6 @@ If there is already an entry for the current pointIndex, add interpolation coeff
 </div><div class="memdoc">
 
 <p>Set the interpolation point. </p>
-<p >This method will perform a walking triangle search for the triangle in which the specified position is located and compute the associated 2D and radial interpolation coefficients.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">layid</td><td>the index of the layer of the model in which the position is to be constrained. </td></tr>
@@ -1957,9 +2021,6 @@ If there is already an entry for the current pointIndex, add interpolation coeff
 </div><div class="memdoc">
 
 <p>Set the interpolation point to specified latitude and longitude in degrees and depth in km below sea level. </p>
-<p >This method will perform a walking triangle search for the triangle in which the specified position is located and compute the associated interpolation coefficients. </p>
-<p >This method is pretty expensive compared to the other version of setPosition where the position is specified as a unit vector and a radius. </p>
-<p >Assumes GRS80 ellipsoid.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">layid</td><td>the index of the layer of the model in which the position is to be constrained. </td></tr>

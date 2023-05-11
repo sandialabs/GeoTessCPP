@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">GeoTessCPP<span id="projectnumber">&#160;2.6</span>
+   <div id="projectname">GeoTessCPP<span id="projectnumber">&#160;2.2</span>
    </div>
    <div id="projectbrief">Software to facilitate storage and retrieval of 3D information about the Earth.</div>
   </td>
@@ -87,9 +87,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1a51db389061d83bd4ccee187ccbbd1f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00175.html#a1a51db389061d83bd4ccee187ccbbd1f">GeoTessGrid</a> ()</td></tr>
 <tr class="memdesc:a1a51db389061d83bd4ccee187ccbbd1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="a00175.html#a1a51db389061d83bd4ccee187ccbbd1f">More...</a><br /></td></tr>
 <tr class="separator:a1a51db389061d83bd4ccee187ccbbd1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8420efd53e2bf013d5099869ef18c7d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00175.html#ae8420efd53e2bf013d5099869ef18c7d">GeoTessGrid</a> (<a class="el" href="a00175.html">GeoTessGrid</a> &amp;other)</td></tr>
-<tr class="memdesc:ae8420efd53e2bf013d5099869ef18c7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <a href="a00175.html#ae8420efd53e2bf013d5099869ef18c7d">More...</a><br /></td></tr>
-<tr class="separator:ae8420efd53e2bf013d5099869ef18c7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3c59099922c5e2c1bc711142ab54b7c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00175.html#ab3c59099922c5e2c1bc711142ab54b7c">GeoTessGrid</a> (<a class="el" href="a00175.html">GeoTessGrid</a> &amp;other, double **eulerRotationMatrix=NULL)</td></tr>
+<tr class="memdesc:ab3c59099922c5e2c1bc711142ab54b7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <a href="a00175.html#ab3c59099922c5e2c1bc711142ab54b7c">More...</a><br /></td></tr>
+<tr class="separator:ab3c59099922c5e2c1bc711142ab54b7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae38bc0a995f88b6c5982f1305b5997c6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00175.html#ae38bc0a995f88b6c5982f1305b5997c6">GeoTessGrid</a> (<a class="el" href="a00279.html">IFStreamAscii</a> &amp;input)</td></tr>
 <tr class="memdesc:ae38bc0a995f88b6c5982f1305b5997c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Standard constructor.  <a href="a00175.html#ae38bc0a995f88b6c5982f1305b5997c6">More...</a><br /></td></tr>
 <tr class="separator:ae38bc0a995f88b6c5982f1305b5997c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -226,7 +226,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:af6e2bc4a6df8918d7c927f202ea1c68d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the unit vector of the vertex that occupies the specified position in the hierarchy.  <a href="a00175.html#af6e2bc4a6df8918d7c927f202ea1c68d">More...</a><br /></td></tr>
 <tr class="separator:af6e2bc4a6df8918d7c927f202ea1c68d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0283d8cb417e0d0fc11e9a8323a3a09"><td class="memItemLeft" align="right" valign="top">const double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00175.html#af0283d8cb417e0d0fc11e9a8323a3a09">getVertex</a> (int vertex) const</td></tr>
-<tr class="memdesc:af0283d8cb417e0d0fc11e9a8323a3a09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the unit vector that corresponds to the specified vertex.  <a href="a00175.html#af0283d8cb417e0d0fc11e9a8323a3a09">More...</a><br /></td></tr>
+<tr class="memdesc:af0283d8cb417e0d0fc11e9a8323a3a09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve a reference to the unit vector that corresponds to the specified vertex.  <a href="a00175.html#af0283d8cb417e0d0fc11e9a8323a3a09">More...</a><br /></td></tr>
 <tr class="separator:af0283d8cb417e0d0fc11e9a8323a3a09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa19693485d22cb2952ba0dc86e01f902"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00175.html#aa19693485d22cb2952ba0dc86e01f902">getVertexIndex</a> (const double *u)</td></tr>
 <tr class="memdesc:aa19693485d22cb2952ba0dc86e01f902"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the index of the vertex that is colocated with the supplied unit vector.  <a href="a00175.html#aa19693485d22cb2952ba0dc86e01f902">More...</a><br /></td></tr>
@@ -267,9 +267,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a20f7a4f79a4eaa7819d82734b9f807e5"><td class="memItemLeft" align="right" valign="top">double const *const *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00175.html#a20f7a4f79a4eaa7819d82734b9f807e5">getVertices</a> () const</td></tr>
 <tr class="memdesc:a20f7a4f79a4eaa7819d82734b9f807e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve a reference to all of the vertices.  <a href="a00175.html#a20f7a4f79a4eaa7819d82734b9f807e5">More...</a><br /></td></tr>
 <tr class="separator:a20f7a4f79a4eaa7819d82734b9f807e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1df06d94ddc5735432605a16590c34da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00175.html#a1df06d94ddc5735432605a16590c34da">getVertices</a> (const int &amp;tessellation, const int &amp;level, set&lt; const double * &gt; &amp;vectors)</td></tr>
-<tr class="memdesc:a1df06d94ddc5735432605a16590c34da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a set containing the unit vectors of all the vertices that are connected together by triangles on the specified tessellation and level.  <a href="a00175.html#a1df06d94ddc5735432605a16590c34da">More...</a><br /></td></tr>
-<tr class="separator:a1df06d94ddc5735432605a16590c34da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acee1a85ceba4293624c55a1331fe701e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00175.html#acee1a85ceba4293624c55a1331fe701e">getVertices</a> (const int &amp;tessellation, const int &amp;level, set&lt; const double * &gt; &amp;vectors, double **eulerGridToModel=NULL)</td></tr>
+<tr class="memdesc:acee1a85ceba4293624c55a1331fe701e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a set containing the unit vectors of all the vertices that are connected together by triangles on the specified tessellation and level.  <a href="a00175.html#acee1a85ceba4293624c55a1331fe701e">More...</a><br /></td></tr>
+<tr class="separator:acee1a85ceba4293624c55a1331fe701e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:affd91927d0f96f0d7de54c38314df3fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00175.html#affd91927d0f96f0d7de54c38314df3fe">getVerticesTopLevel</a> (const int &amp;tessellation, set&lt; const double * &gt; &amp;vectors)</td></tr>
 <tr class="memdesc:affd91927d0f96f0d7de54c38314df3fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve a set containing the unit vectors of all the vertices that are connected together by triangles on the top level of the specified tessellation.  <a href="a00175.html#affd91927d0f96f0d7de54c38314df3fe">More...</a><br /></td></tr>
 <tr class="separator:affd91927d0f96f0d7de54c38314df3fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -477,8 +477,8 @@ information about which triangles reside on which tessellation level </li>
 
 </div>
 </div>
-<a id="ae8420efd53e2bf013d5099869ef18c7d" name="ae8420efd53e2bf013d5099869ef18c7d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae8420efd53e2bf013d5099869ef18c7d">&#9670;&nbsp;</a></span>GeoTessGrid() <span class="overload">[5/5]</span></h2>
+<a id="ab3c59099922c5e2c1bc711142ab54b7c" name="ab3c59099922c5e2c1bc711142ab54b7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3c59099922c5e2c1bc711142ab54b7c">&#9670;&nbsp;</a></span>GeoTessGrid() <span class="overload">[5/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -487,16 +487,27 @@ information about which triangles reside on which tessellation level </li>
           <td class="memname">geotess::GeoTessGrid::GeoTessGrid </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="a00175.html">GeoTessGrid</a> &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
+          <td class="paramname"><em>other</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">double **&#160;</td>
+          <td class="paramname"><em>eulerRotationMatrix</em> = <code>NULL</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Copy constructor. </p>
-<p >Makes a deep copy </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Makes a deep copy. If eulerRotationMatrix is specified and is not NULL, then the vertices of the grid are rotated according to the 3x3 rotation matrix and the gridID of the new grid will be set to "-". </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">other</td><td>the other <a class="el" href="a00175.html" title="Manages the geometry and topology of one or more multi-level triangular tessellations of a unit spher...">GeoTessGrid</a> whose values are to be duplicated here. </td></tr>
+    <tr><td class="paramname">eulerRotationMatrix</td><td>a 3x3 matrix. When a unit vetor is multiplied by this matrix it is rotated into a new coordinate system. </td></tr>
   </table>
   </dd>
 </dl>
@@ -2235,7 +2246,7 @@ information about which triangles reside on which tessellation level </li>
 </table>
 </div><div class="memdoc">
 
-<p>Retrieve the unit vector that corresponds to the specified vertex. </p>
+<p>Retrieve a reference to the unit vector that corresponds to the specified vertex. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">vertex</td><td>the index of the vertex </td></tr>
@@ -2853,8 +2864,8 @@ information about which triangles reside on which tessellation level </li>
 
 </div>
 </div>
-<a id="a1df06d94ddc5735432605a16590c34da" name="a1df06d94ddc5735432605a16590c34da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1df06d94ddc5735432605a16590c34da">&#9670;&nbsp;</a></span>getVertices() <span class="overload">[2/2]</span></h2>
+<a id="acee1a85ceba4293624c55a1331fe701e" name="acee1a85ceba4293624c55a1331fe701e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acee1a85ceba4293624c55a1331fe701e">&#9670;&nbsp;</a></span>getVertices() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2875,7 +2886,13 @@ information about which triangles reside on which tessellation level </li>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">set&lt; const double * &gt; &amp;&#160;</td>
-          <td class="paramname"><em>vectors</em>&#160;</td>
+          <td class="paramname"><em>vectors</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double **&#160;</td>
+          <td class="paramname"><em>eulerGridToModel</em> = <code>NULL</code>&#160;</td>
         </tr>
         <tr>
           <td></td>

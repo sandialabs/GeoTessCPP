@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">GeoTessCPP<span id="projectnumber">&#160;2.6</span>
+   <div id="projectname">GeoTessCPP<span id="projectnumber">&#160;2.2</span>
    </div>
    <div id="projectbrief">Software to facilitate storage and retrieval of 3D information about the Earth.</div>
   </td>
@@ -130,6 +130,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5099548788ca8da9fa837e2bd5def100"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="a00175.html">GeoTessGrid</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00203.html#a5099548788ca8da9fa837e2bd5def100">getGrid</a> () const</td></tr>
 <tr class="memdesc:a5099548788ca8da9fa837e2bd5def100"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a reference to the grid object.  <a href="a00203.html#a5099548788ca8da9fa837e2bd5def100">More...</a><br /></td></tr>
 <tr class="separator:a5099548788ca8da9fa837e2bd5def100"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f6a418272db13ff9ed6a8708805c94f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00175.html">GeoTessGrid</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00203.html#a3f6a418272db13ff9ed6a8708805c94f">getGridRotated</a> ()</td></tr>
+<tr class="memdesc:a3f6a418272db13ff9ed6a8708805c94f"><td class="mdescLeft">&#160;</td><td class="mdescRight">If this model and the associated grid have different coordinate systems then retrieve a deep copy of the grid rotated into the model coordinate system.  <a href="a00203.html#a3f6a418272db13ff9ed6a8708805c94f">More...</a><br /></td></tr>
+<tr class="separator:a3f6a418272db13ff9ed6a8708805c94f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c68a42d8bbbe122bc99c993f3a66f28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00203.html#a2c68a42d8bbbe122bc99c993f3a66f28">getLayerCount</a> (bool activeOnly, int *layerCount)</td></tr>
 <tr class="memdesc:a2c68a42d8bbbe122bc99c993f3a66f28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the number of points in each layer of the model.  <a href="a00203.html#a2c68a42d8bbbe122bc99c993f3a66f28">More...</a><br /></td></tr>
 <tr class="separator:a2c68a42d8bbbe122bc99c993f3a66f28"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -241,6 +244,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a296fdb3c3cc94ad1351d8b73fc4a1243"><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00203.html#a296fdb3c3cc94ad1351d8b73fc4a1243">getValueShort</a> (int vertexId, int layerId, int nodeId, int attributeIndex)</td></tr>
 <tr class="memdesc:a296fdb3c3cc94ad1351d8b73fc4a1243"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the value of the attribute at the specified vertexId, layerId, nodeId, attributeIndex, cast to a short if necessary.  <a href="a00203.html#a296fdb3c3cc94ad1351d8b73fc4a1243">More...</a><br /></td></tr>
 <tr class="separator:a296fdb3c3cc94ad1351d8b73fc4a1243"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77f564591153362d3af546239931a387"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00203.html#a77f564591153362d3af546239931a387">getVertex</a> (int i, double *v)</td></tr>
+<tr class="memdesc:a77f564591153362d3af546239931a387"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 3 elements of the unit vector at the specified vertex are copied into the first 3 elements of the supplied double array.  <a href="a00203.html#a77f564591153362d3af546239931a387">More...</a><br /></td></tr>
+<tr class="separator:a77f564591153362d3af546239931a387"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19b0e2b2974785ba43935f94ba82e9b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00203.html#a19b0e2b2974785ba43935f94ba82e9b0">getWeights</a> (const double *pointA, const double *pointB, const double &amp;pointSpacing, const double &amp;radius, const <a class="el" href="a00195.html">GeoTessInterpolatorType</a> &amp;horizontalType, map&lt; int, double &gt; &amp;weights)</td></tr>
 <tr class="memdesc:a19b0e2b2974785ba43935f94ba82e9b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the weights on each model point that results from interpolating positions along the specified ray path.  <a href="a00203.html#a19b0e2b2974785ba43935f94ba82e9b0">More...</a><br /></td></tr>
 <tr class="separator:a19b0e2b2974785ba43935f94ba82e9b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -326,9 +332,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2de43765ebdc70b87d2873f563a92fef"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00203.html#a2de43765ebdc70b87d2873f563a92fef">setValue</a> (int vertexId, int layerId, int nodeId, int attributeIndex, T value)</td></tr>
 <tr class="memdesc:a2de43765ebdc70b87d2873f563a92fef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modify the attribute value stored at the specified vertex, layer, node, attribute.  <a href="a00203.html#a2de43765ebdc70b87d2873f563a92fef">More...</a><br /></td></tr>
 <tr class="separator:a2de43765ebdc70b87d2873f563a92fef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b35419034dd8011849362b3dad2d5a8"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00203.html#a4b35419034dd8011849362b3dad2d5a8">toString</a> ()</td></tr>
-<tr class="memdesc:a4b35419034dd8011849362b3dad2d5a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">To string method.  <a href="a00203.html#a4b35419034dd8011849362b3dad2d5a8">More...</a><br /></td></tr>
-<tr class="separator:a4b35419034dd8011849362b3dad2d5a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b79bcdc558926dabe0cf096396fc713"><td class="memItemLeft" align="right" valign="top">virtual string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00203.html#a4b79bcdc558926dabe0cf096396fc713">toString</a> ()</td></tr>
+<tr class="memdesc:a4b79bcdc558926dabe0cf096396fc713"><td class="mdescLeft">&#160;</td><td class="mdescRight">To string method.  <a href="a00203.html#a4b79bcdc558926dabe0cf096396fc713">More...</a><br /></td></tr>
+<tr class="separator:a4b79bcdc558926dabe0cf096396fc713"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48a65539f5bdfde1d62b05541bf9cfd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00203.html#a48a65539f5bdfde1d62b05541bf9cfd1">writeModel</a> (const string &amp;outputFile, const string &amp;gridFileName=&quot;*&quot;)</td></tr>
 <tr class="memdesc:a48a65539f5bdfde1d62b05541bf9cfd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the model to file.  <a href="a00203.html#a48a65539f5bdfde1d62b05541bf9cfd1">More...</a><br /></td></tr>
 <tr class="separator:a48a65539f5bdfde1d62b05541bf9cfd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1025,6 +1031,34 @@ IERS2003_RCONST - Conversion between geographic and geocentric latitudes are per
 
 <p>Return a reference to the grid object. </p>
 <dl class="section return"><dt>Returns</dt><dd>a reference to the grid object that cannot be modified. </dd></dl>
+
+</div>
+</div>
+<a id="a3f6a418272db13ff9ed6a8708805c94f" name="a3f6a418272db13ff9ed6a8708805c94f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f6a418272db13ff9ed6a8708805c94f">&#9670;&nbsp;</a></span>getGridRotated()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00175.html">GeoTessGrid</a> * geotess::GeoTessModel::getGridRotated </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>If this model and the associated grid have different coordinate systems then retrieve a deep copy of the grid rotated into the model coordinate system. </p>
+<p >If the grid and model coordinate systems are equal, returns null. </p><dl class="section return"><dt>Returns</dt><dd>a deep copy of this model's grid, rotated into the model coordinate system. </dd></dl>
 
 </div>
 </div>
@@ -2805,6 +2839,51 @@ find the interpolation coefficients of all the model points that are 'touched' b
 
 </div>
 </div>
+<a id="a77f564591153362d3af546239931a387" name="a77f564591153362d3af546239931a387"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77f564591153362d3af546239931a387">&#9670;&nbsp;</a></span>getVertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void geotess::GeoTessModel::getVertex </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The 3 elements of the unit vector at the specified vertex are copied into the first 3 elements of the supplied double array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>the index of the vertex </td></tr>
+    <tr><td class="paramname">v</td><td>the double array into which to copy the 3-element vertex. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a19b0e2b2974785ba43935f94ba82e9b0" name="a19b0e2b2974785ba43935f94ba82e9b0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a19b0e2b2974785ba43935f94ba82e9b0">&#9670;&nbsp;</a></span>getWeights() <span class="overload">[1/4]</span></h2>
 
@@ -4168,19 +4247,27 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="a4b35419034dd8011849362b3dad2d5a8" name="a4b35419034dd8011849362b3dad2d5a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b35419034dd8011849362b3dad2d5a8">&#9670;&nbsp;</a></span>toString()</h2>
+<a id="a4b79bcdc558926dabe0cf096396fc713" name="a4b79bcdc558926dabe0cf096396fc713"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b79bcdc558926dabe0cf096396fc713">&#9670;&nbsp;</a></span>toString()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">string geotess::GeoTessModel::toString </td>
+          <td class="memname">virtual string geotess::GeoTessModel::toString </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>To string method. </p>

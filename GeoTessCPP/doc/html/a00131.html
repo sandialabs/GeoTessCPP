@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">GeoTessCPP<span id="projectnumber">&#160;2.6</span>
+   <div id="projectname">GeoTessCPP<span id="projectnumber">&#160;2.2</span>
    </div>
    <div id="projectbrief">Software to facilitate storage and retrieval of 3D information about the Earth.</div>
   </td>
@@ -173,10 +173,16 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:afa744dbc162aaf6b1e01401539a8f338"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00131.html#afa744dbc162aaf6b1e01401539a8f338">removePathSeparator</a> (string &amp;path)</td></tr>
 <tr class="memdesc:afa744dbc162aaf6b1e01401539a8f338"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the supplied path ends with a path separator, remove it.  <a href="a00131.html#afa744dbc162aaf6b1e01401539a8f338">More...</a><br /></td></tr>
 <tr class="separator:afa744dbc162aaf6b1e01401539a8f338"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6daa72b50e8cb116bb5eef8d6bc2b651"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00131.html#a6daa72b50e8cb116bb5eef8d6bc2b651">replace</a> (const string &amp;s, const string &amp;r, const string &amp;n)</td></tr>
+<tr class="memdesc:a6daa72b50e8cb116bb5eef8d6bc2b651"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modify a copy of string s by replacing the first occurrence of string r with string n and return the copy.  <a href="a00131.html#a6daa72b50e8cb116bb5eef8d6bc2b651">More...</a><br /></td></tr>
+<tr class="separator:a6daa72b50e8cb116bb5eef8d6bc2b651"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3412bfa8b920c630c877018a73121be"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:aa3412bfa8b920c630c877018a73121be"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00131.html#aa3412bfa8b920c630c877018a73121be">resetArray</a> (int n, T *array, T val)</td></tr>
 <tr class="memdesc:aa3412bfa8b920c630c877018a73121be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets all n entries in array to val.  <a href="a00131.html#aa3412bfa8b920c630c877018a73121be">More...</a><br /></td></tr>
 <tr class="separator:aa3412bfa8b920c630c877018a73121be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae565fb97b829773413b62e375b649c1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00131.html#aae565fb97b829773413b62e375b649c1">split</a> (const string &amp;s, const string &amp;delim, vector&lt; string &gt; &amp;tokens)</td></tr>
+<tr class="memdesc:aae565fb97b829773413b62e375b649c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Split string s into substrings using string delim as the delimiter.  <a href="a00131.html#aae565fb97b829773413b62e375b649c1">More...</a><br /></td></tr>
+<tr class="separator:aae565fb97b829773413b62e375b649c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2940f3e46df7b3e2b88b29e4f1d32e2e"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00131.html#a2940f3e46df7b3e2b88b29e4f1d32e2e">stob</a> (const string &amp;b)</td></tr>
 <tr class="separator:a2940f3e46df7b3e2b88b29e4f1d32e2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d0c1cac97fa2fb4144f4b1acad84d29"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00131.html#a4d0c1cac97fa2fb4144f4b1acad84d29">stod</a> (const string &amp;d, const string &amp;frmt=&quot;%lf&quot;)</td></tr>
@@ -1212,6 +1218,59 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a id="a6daa72b50e8cb116bb5eef8d6bc2b651" name="a6daa72b50e8cb116bb5eef8d6bc2b651"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6daa72b50e8cb116bb5eef8d6bc2b651">&#9670;&nbsp;</a></span>replace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string geotess::CPPUtils::replace </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Modify a copy of string s by replacing the first occurrence of string r with string n and return the copy. </p>
+<p >This method functions much like the similarly named method in Java. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>the string to be modified </td></tr>
+    <tr><td class="paramname">r</td><td>the substring in s that is to be replaced </td></tr>
+    <tr><td class="paramname">n</td><td>the new substring that is to replace substring r in s. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a new string that is a copy of s with substring r replaced with substring n </dd></dl>
+
+</div>
+</div>
 <a id="aa3412bfa8b920c630c877018a73121be" name="aa3412bfa8b920c630c877018a73121be"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa3412bfa8b920c630c877018a73121be">&#9670;&nbsp;</a></span>resetArray()</h2>
 
@@ -1255,6 +1314,58 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Resets all n entries in array to val. </p>
+
+</div>
+</div>
+<a id="aae565fb97b829773413b62e375b649c1" name="aae565fb97b829773413b62e375b649c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae565fb97b829773413b62e375b649c1">&#9670;&nbsp;</a></span>split()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void geotess::CPPUtils::split </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>delim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>tokens</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Split string s into substrings using string delim as the delimiter. </p>
+<p >This method functions much like the similarly named method in Java. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>the string to be split </td></tr>
+    <tr><td class="paramname">delim</td><td>the delimiter </td></tr>
+    <tr><td class="paramname">tokens</td><td>the vector of substrings. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

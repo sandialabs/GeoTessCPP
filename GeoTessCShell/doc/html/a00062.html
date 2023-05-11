@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>GeoTessCShelll: GeoTessMetaDataC Struct Reference</title>
+<title>GeoTessCPP: include/OptimizationTypeC.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,9 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">GeoTessCShelll<span id="projectnumber">&#160;2.6</span>
+   <div id="projectname">GeoTessCPP<span id="projectnumber">&#160;2.2</span>
    </div>
-   <div id="projectbrief">C Interface to the GeoTess C++ Library</div>
+   <div id="projectbrief">Software to facilitate storage and retrieval of 3D information about the Earth.</div>
   </td>
  </tr>
  </tbody>
@@ -61,97 +61,104 @@ $(function() {
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-attribs">Data Fields</a>  </div>
-  <div class="headertitle"><div class="title">GeoTessMetaDataC Struct Reference</div></div>
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">OptimizationTypeC.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Basic metadata information about a GeoTessModel.  
- <a href="a00062.html#details">More...</a></p>
-
-<p><code>#include &lt;GeoTessMetaDataC.h&gt;</code></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="a00068_source.html">GeoTessCShellGlobals.h</a>&quot;</code><br />
+</div>
+<p><a href="a00062_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Data Fields</h2></td></tr>
-<tr class="memitem:a635ac72536da7a204157ee6baf2daf2b"><td class="memItemLeft" align="right" valign="top">ErrorCache *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a635ac72536da7a204157ee6baf2daf2b">err</a></td></tr>
-<tr class="memdesc:a635ac72536da7a204157ee6baf2daf2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error information.  <a href="a00062.html#a635ac72536da7a204157ee6baf2daf2b">More...</a><br /></td></tr>
-<tr class="separator:a635ac72536da7a204157ee6baf2daf2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5200c15245e838a86bc79ff153e513a8"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a5200c15245e838a86bc79ff153e513a8">md</a></td></tr>
-<tr class="memdesc:a5200c15245e838a86bc79ff153e513a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to a C++ GeoTessMetaData object.  <a href="a00062.html#a5200c15245e838a86bc79ff153e513a8">More...</a><br /></td></tr>
-<tr class="separator:a5200c15245e838a86bc79ff153e513a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a6363a00cc40c3ebb5efa388c3dbddb0d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a6363a00cc40c3ebb5efa388c3dbddb0d">OptimizationTypeC</a> { <a class="el" href="a00062.html#a6363a00cc40c3ebb5efa388c3dbddb0da1fb3554200c1173d24e97e9d32283ead">SPEED</a>
+, <a class="el" href="a00062.html#a6363a00cc40c3ebb5efa388c3dbddb0daa0f690187a3a023c04b409b4f653a4a1">MEMORY</a>
+ }</td></tr>
+<tr class="memdesc:a6363a00cc40c3ebb5efa388c3dbddb0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optimize for speed or memory.  <a href="a00062.html#a6363a00cc40c3ebb5efa388c3dbddb0d">More...</a><br /></td></tr>
+<tr class="separator:a6363a00cc40c3ebb5efa388c3dbddb0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a688bd5fffc62e8da6c93da327e5d6c97"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a688bd5fffc62e8da6c93da327e5d6c97">opttype_getName</a> (<a class="el" href="a00062.html#a6363a00cc40c3ebb5efa388c3dbddb0d">OptimizationTypeC</a> ot)</td></tr>
+<tr class="memdesc:a688bd5fffc62e8da6c93da327e5d6c97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a string representation for a given OptimizationTypeC.  <a href="a00062.html#a688bd5fffc62e8da6c93da327e5d6c97">More...</a><br /></td></tr>
+<tr class="separator:a688bd5fffc62e8da6c93da327e5d6c97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b5dcc2a7578e0296a19b2efc5753886"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00062.html#a9b5dcc2a7578e0296a19b2efc5753886">opttype_size</a> ()</td></tr>
+<tr class="memdesc:a9b5dcc2a7578e0296a19b2efc5753886"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of optimization type enum values.  <a href="a00062.html#a9b5dcc2a7578e0296a19b2efc5753886">More...</a><br /></td></tr>
+<tr class="separator:a9b5dcc2a7578e0296a19b2efc5753886"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Basic metadata information about a GeoTessModel. </p>
-<p >GeoTessMetaData stores basic information about a GeoTessModel, including: </p><ul>
-<li>
-Description of the model. </li>
-<li>
-The names of the layers that comprise the model. </li>
-<li>
-Map from layer index to grid tessellation index. </li>
-<li>
-The names of the attributes supported by the model. </li>
-<li>
-The units of the attributes </li>
-<li>
-The DataType of the attributes (DOUBLE, FLOAT, LONG_INT, INT, SHORT, BYTE). </li>
-<li>
-The OptimizationType specified in the model constructor (SPEED or MEMORY). </li>
-<li>
-The name and version number of the software that generated the model. </li>
-<li>
-The date that the model was generated. </li>
-<li>
-The computer platform upon which the code was compiled. </li>
-<li>
-The name of the file from which the model was loaded. </li>
-<li>
-The amount of time required to load the model from file. </li>
-</ul>
-<p>Each GeoTessModel has a single instance of MetaData that it passes around to wherever the information is needed. </p>
-</div><h2 class="groupheader">Field Documentation</h2>
-<a id="a635ac72536da7a204157ee6baf2daf2b" name="a635ac72536da7a204157ee6baf2daf2b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a635ac72536da7a204157ee6baf2daf2b">&#9670;&nbsp;</a></span>err</h2>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a6363a00cc40c3ebb5efa388c3dbddb0d" name="a6363a00cc40c3ebb5efa388c3dbddb0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6363a00cc40c3ebb5efa388c3dbddb0d">&#9670;&nbsp;</a></span>OptimizationTypeC</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">ErrorCache* GeoTessMetaDataC::err</td>
+          <td class="memname">enum <a class="el" href="a00062.html#a6363a00cc40c3ebb5efa388c3dbddb0d">OptimizationTypeC</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Error information. </p>
+<p>Optimize for speed or memory. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a6363a00cc40c3ebb5efa388c3dbddb0da1fb3554200c1173d24e97e9d32283ead" name="a6363a00cc40c3ebb5efa388c3dbddb0da1fb3554200c1173d24e97e9d32283ead"></a>SPEED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a6363a00cc40c3ebb5efa388c3dbddb0daa0f690187a3a023c04b409b4f653a4a1" name="a6363a00cc40c3ebb5efa388c3dbddb0daa0f690187a3a023c04b409b4f653a4a1"></a>MEMORY&#160;</td><td class="fielddoc"></td></tr>
+</table>
 
 </div>
 </div>
-<a id="a5200c15245e838a86bc79ff153e513a8" name="a5200c15245e838a86bc79ff153e513a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5200c15245e838a86bc79ff153e513a8">&#9670;&nbsp;</a></span>md</h2>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a688bd5fffc62e8da6c93da327e5d6c97" name="a688bd5fffc62e8da6c93da327e5d6c97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a688bd5fffc62e8da6c93da327e5d6c97">&#9670;&nbsp;</a></span>opttype_getName()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* GeoTessMetaDataC::md</td>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> const char * opttype_getName </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00062.html#a6363a00cc40c3ebb5efa388c3dbddb0d">OptimizationTypeC</a>&#160;</td>
+          <td class="paramname"><em>ot</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Pointer to a C++ GeoTessMetaData object. </p>
+<p>Returns a string representation for a given OptimizationTypeC. </p>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
-<li>include/<a class="el" href="a00023.html">GeoTessMetaDataC.h</a></li>
-</ul>
+<a id="a9b5dcc2a7578e0296a19b2efc5753886" name="a9b5dcc2a7578e0296a19b2efc5753886"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b5dcc2a7578e0296a19b2efc5753886">&#9670;&nbsp;</a></span>opttype_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00068.html#a276f70905204ce421652f626e4555da6">GEO_TESS_EXPORT_C</a> int opttype_size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the number of optimization type enum values. </p>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 29 2021 06:31:44 for GeoTessCShelll by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
 </small></address>
 </body>
 </html>

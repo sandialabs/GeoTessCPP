@@ -108,7 +108,7 @@ int main(int argc, char** argv)
 	// e.g., ("core", "mantle", "crust"), specified in order of increasing
 	// radius.  2D models may only have one layer, but the name of the layer
 	// must be specified.
-	geometadata_setLayerNames1(metaData, (char*)"Surface");
+	geometadata_setLayerNames1(metaData, "Surface");
 
 	// specify the names of the attributes and the units of the attributes in
 	// two Strings.  This model only includes one attribute.  If this model were
@@ -127,7 +127,7 @@ int main(int argc, char** argv)
 	// specify the name of the software that is going to generate
 	// the model.  This gets stored in the model for future reference.
 	// This can really help to find the code that generated a model after a long time.
-	geometadata_setModelSoftwareVersion(metaData, (char*)"GeoTessCExamples.PopulateModel2D 1.0.0");
+	geometadata_setModelSoftwareVersion(metaData, "GeoTessCExamples.PopulateModel2D 1.0.0");
 
 	// specify the date when the model was generated.  This gets
 	// stored in the model for future reference.
@@ -234,7 +234,7 @@ int main(int argc, char** argv)
 	earthshape_getVectorDegrees(ellipsoid, lat, lon, v);
 	geoposition_setTop1(position, layerID, v);
 
-	sprintf(ss, "Interpolation lat, lon, depth = %7.3f deg, %7.3f deg",
+	snprintf(ss, 300,"Interpolation lat, lon, depth = %7.3f deg, %7.3f deg",
 			earthshape_getLatDegrees(ellipsoid, geoposition_getVector(position)),
 			earthshape_getLonDegrees(ellipsoid, geoposition_getVector(position)));
 	printf("%s\n", ss);
@@ -244,16 +244,16 @@ int main(int argc, char** argv)
 
 	// Output the interpolated distance from the position specified in the GeoTessPosition
 	// object to station ANMO, in degrees.
-	sprintf(ss, "Interpolated distance from station ANMO = %1.3f degrees", distance);
+	snprintf(ss, 300,"Interpolated distance from station ANMO = %1.3f degrees", distance);
 	//CPPUtils::toDegrees(distance));
 	printf("%s\n", ss);
 	// compute actual distance from ANMO to the position of interest.
 	actualDistance = geoutils_angleDegrees(anmo, geoposition_getVector(position));
 
-	sprintf(ss, "Actual distance from station ANMO       = %1.3f degrees", actualDistance);
+	snprintf(ss, 300,"Actual distance from station ANMO       = %1.3f degrees", actualDistance);
 	printf("%s\n", ss);
 	// print out the index of the triangle in which point resides.
-	sprintf(ss, "Interpolated point resides in triangle index = %d", geoposition_getTriangle(position));
+	snprintf(ss, 300,"Interpolated point resides in triangle index = %d", geoposition_getTriangle(position));
 	printf("%s\n", ss);
 
 	// print out a table with the node indexes, node lat, node lon and
@@ -269,7 +269,7 @@ int main(int argc, char** argv)
 	gridnew = geomodel_getGrid(model);
 	for (j = 0; j < nx; ++j)
 	{
-		sprintf(ss, "%6d %10.4f %10.4f %10.6f", x[j],
+		snprintf(ss, 300,"%6d %10.4f %10.4f %10.6f", x[j],
 				earthshape_getLatDegrees(ellipsoid, geogrid_getVertex(gridnew, x[j])),
 				earthshape_getLonDegrees(ellipsoid, geogrid_getVertex(gridnew, x[j])), coef[j]);
 		printf("%s\n", ss);

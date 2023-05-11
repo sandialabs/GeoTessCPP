@@ -123,7 +123,7 @@ string CPPUtils::itos(int i, const string& frmt)
 {
   char s[300];
 
-  sprintf(s, frmt.c_str(), i);
+  snprintf(s, 300, frmt.c_str(), i);
   return s;
 }
 
@@ -163,7 +163,7 @@ string CPPUtils::ltos(LONG_INT l, const string& frmt)
 {
   char s[300];
 
-  sprintf(s, frmt.c_str(), l);
+  snprintf(s, 300, frmt.c_str(), l);
   return s;
 }
 
@@ -192,7 +192,7 @@ string CPPUtils::ftos(float f, const string& frmt)
 {
   char s[300];
 
-  sprintf(s, frmt.c_str(), f);
+  snprintf(s, 300, frmt.c_str(), f);
   return s;
 }
 
@@ -221,7 +221,7 @@ string CPPUtils::dtos(double d, const string& frmt)
 {
   char s[300];
 
-  sprintf(s, frmt.c_str(), d);
+  snprintf(s, 300, frmt.c_str(), d);
   return s;
 }
 
@@ -503,6 +503,43 @@ void CPPUtils::tokenizeString(const string& str, const string& delim,
     else
       end_pos = string::npos;
   }
+}
+
+void CPPUtils::split(const string& s, const string& delim, vector<string>& tokens)
+{
+	tokens.clear();
+	if (s.size() > 0)
+	{
+		if (delim.size() == 0)
+		{
+			tokens.push_back(s);
+			return;
+		}
+		string newString = s;
+		size_t pos = newString.find(delim);
+		while (pos != string::npos)
+		{
+			tokens.push_back(newString.substr(0, pos));
+			newString = newString.substr(pos+delim.size());
+			pos = newString.find(delim);
+		}
+		tokens.push_back(newString);
+	}
+}
+
+string CPPUtils::replace(const string& s, const string& r, const string& n)
+{
+	string newString = s;
+	if (s.size() > 0 && r.size() > 0)
+	{
+		size_t pos = newString.find(r);
+		if (pos != string::npos)
+		{
+			newString = newString.replace(pos, r.size(), n);
+			pos = newString.find(r);
+		}
+	}
+	return newString;
 }
 
 } // end namespace geotess

@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['geotessgridc_0',['GeoTessGridC',['../struct_geo_tess_grid_c.html',1,'']]],
-  ['geotessmetadatac_1',['GeoTessMetaDataC',['../struct_geo_tess_meta_data_c.html',1,'']]],
-  ['geotessmodelc_2',['GeoTessModelC',['../struct_geo_tess_model_c.html',1,'']]],
-  ['geotesspositionc_3',['GeoTessPositionC',['../struct_geo_tess_position_c.html',1,'']]]
+  ['geotessgridc_0',['GeoTessGridC',['../a00087.html',1,'']]],
+  ['geotessmetadatac_1',['GeoTessMetaDataC',['../a00091.html',1,'']]],
+  ['geotessmodelc_2',['GeoTessModelC',['../a00095.html',1,'']]],
+  ['geotesspositionc_3',['GeoTessPositionC',['../a00099.html',1,'']]]
 ];

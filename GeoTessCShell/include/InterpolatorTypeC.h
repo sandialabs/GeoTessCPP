@@ -49,6 +49,8 @@ extern "C"
 * be applied to vertices in the 2D grid, and 1D interpolation algorithms
 * that will be applied to nodes distributed along radial profiles.
 *
+* @author sballar
+*
 */
 typedef enum{LINEAR, NATURAL_NEIGHBOR, SPLINE} InterpolatorTypeC;
 

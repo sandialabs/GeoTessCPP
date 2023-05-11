@@ -192,7 +192,6 @@ class GEOTESS_EXP_IMP GeoTessProfileEmpty : virtual public GeoTessProfile
 			return true;
 		}
 
-		// *** TODO added 7/20/2012
 		/**
 		 * Retrieve the value of the specified attribute at the top of the layer.
 		 *
@@ -204,7 +203,6 @@ class GEOTESS_EXP_IMP GeoTessProfileEmpty : virtual public GeoTessProfile
 			return NaN_DOUBLE;
 		}
 
-		// *** TODO added 7/20/2012
 		/**
 		 * Retrieve the value of the specified attribute at the bottom of the layer.
 		 *
@@ -261,7 +259,6 @@ class GEOTESS_EXP_IMP GeoTessProfileEmpty : virtual public GeoTessProfile
 		virtual void					setData(const vector<GeoTessData*>& inData)
 													{/* do nothing*/ };
 
-		// TODO: added by sb 9/27/2012
 		/**
 		 * Replace the radii currently associated with this Profile with new values.
 		 */
@@ -280,7 +277,7 @@ class GEOTESS_EXP_IMP GeoTessProfileEmpty : virtual public GeoTessProfile
 				break;
 			}
 		}
-		// *** TODO added 7/19/2012
+
 		/**
 		 * Resets the data object at index to the new input data.
 		 */
@@ -335,7 +332,6 @@ class GEOTESS_EXP_IMP GeoTessProfileEmpty : virtual public GeoTessProfile
 														ofs.writeString(" ");
 														ofs.writeFloatNL(radiusTop); };
 
-		// *** TODO added 7/20/2012
 		/**
 		 * Find the index of the node in this Profile that has radius closest to the
 		 * supplied radius.
@@ -347,7 +343,6 @@ class GEOTESS_EXP_IMP GeoTessProfileEmpty : virtual public GeoTessProfile
 		virtual int						findClosestRadiusIndex(double radius) const
 		{	return abs(radiusTop - radius) < abs(radiusBottom - radius) ? 1 : 0; }
 
-		// *** TODO added 7/20/2012
 		/**
 		 * Set the pointIndex that corresponds to the supplied nodeIndex.
 		 * <p>There is a node index for each Data object in a profile and they are indexed from 0 to
@@ -360,7 +355,6 @@ class GEOTESS_EXP_IMP GeoTessProfileEmpty : virtual public GeoTessProfile
 			// do nothing.  empty profiles have no data, hence pointIndex is always -1.
 		}
 
-		// *** TODO added 10/14/2012
 		/**
 		 * Reset all the pointIndex values to -1.
 		 * <p>There is a node index for each Data object in a profile and they are indexed from 0 to
@@ -370,7 +364,6 @@ class GEOTESS_EXP_IMP GeoTessProfileEmpty : virtual public GeoTessProfile
 		 */
 		virtual void resetPointIndices() { /* empty profiles have no data, hence pointIndex is always -1. */ }
 
-		// *** TODO added 7/20/2012
 		/**
 		 * Get the pointIndex that corresponds to the supplied nodeIndex.
 		 * <p>There is a node index for each Data object in a profile and they are indexed from 0 to
@@ -381,7 +374,6 @@ class GEOTESS_EXP_IMP GeoTessProfileEmpty : virtual public GeoTessProfile
 		virtual int						getPointIndex(int nodeIndex) const
 													{ return -1; }
 
-		// *** TODO added 7/20/2012
 		/**
 		 * Add dkm * hcoefficient to the weight of this point index into the input map.
 		 * This works for Profile types Constant, Thin and Surface since they only have
@@ -394,7 +386,6 @@ class GEOTESS_EXP_IMP GeoTessProfileEmpty : virtual public GeoTessProfile
 			// do nothing.
 		}
 
-		// *** TODO added 7/26/2012
 		/**
 		 *
 		 */
@@ -413,7 +404,6 @@ class GEOTESS_EXP_IMP GeoTessProfileEmpty : virtual public GeoTessProfile
 			coefficients.push_back(NaN_DOUBLE);
 		}
 
-		// *** TODO added 8/20/2012
 		/**
 		 * Returns a deep copy of this profile.
 		 */

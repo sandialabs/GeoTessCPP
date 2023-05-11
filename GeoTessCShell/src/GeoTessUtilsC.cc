@@ -47,7 +47,7 @@ GEO_TESS_EXPORT_C char* geoutils_getVersion(){
 		return getCharsFromString(GeoTessUtils::getVersion());
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return NULL;
@@ -58,7 +58,7 @@ GEO_TESS_EXPORT_C double geoutils_angle(const double* v0, const double* v1){
 		return GeoTessUtils::angle(v0, v1);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return -1;
@@ -69,7 +69,7 @@ GEO_TESS_EXPORT_C double geoutils_angleDegrees(const double* v0, const double* v
 		return GeoTessUtils::angleDegrees(v0, v1);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return -1;
@@ -80,7 +80,7 @@ GEO_TESS_EXPORT_C double geoutils_dot(const double* v0, const double* v1){
 		return GeoTessUtils::dot(v0, v1);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return -1;
@@ -91,7 +91,7 @@ GEO_TESS_EXPORT_C double geoutils_scalarTripleProduct(const double* v0, const do
 		return GeoTessUtils::scalarTripleProduct(v0, v1, v2);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return -1;
@@ -102,7 +102,7 @@ GEO_TESS_EXPORT_C double geoutils_getEarthRadius(const double* vector){
 		return GeoTessUtils::getEarthRadius(vector);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return -1;
@@ -113,7 +113,7 @@ GEO_TESS_EXPORT_C double geoutils_getLat(const double* vector){
 		return GeoTessUtils::getLat(vector);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return -1;
@@ -124,7 +124,7 @@ GEO_TESS_EXPORT_C double geoutils_getLon(const double* vector){
 		return GeoTessUtils::getLon(vector);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return -1;
@@ -135,7 +135,7 @@ GEO_TESS_EXPORT_C double geoutils_getLatDegrees(const double* vector){
 		return GeoTessUtils::getLatDegrees(vector);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return -1;
@@ -146,7 +146,7 @@ GEO_TESS_EXPORT_C double geoutils_getLonDegrees(const double* vector){
 		return GeoTessUtils::getLonDegrees(vector);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return -1;
@@ -157,7 +157,7 @@ GEO_TESS_EXPORT_C char* geoutils_getLatLonString(const double* vector){
 		return getCharsFromString(GeoTessUtils::getLatLonString(vector));
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return NULL;
@@ -168,7 +168,7 @@ GEO_TESS_EXPORT_C void geoutils_getVector(double lat, double lon, double* v){
 		GeoTessUtils::getVector(lat,lon,v);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 }
@@ -178,7 +178,7 @@ GEO_TESS_EXPORT_C void geoutils_getVectorDegrees(double lat, double lon, double*
 		GeoTessUtils::getVectorDegrees(lat, lon, v);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 }
@@ -188,7 +188,7 @@ GEO_TESS_EXPORT_C double geoutils_azimuthDegrees(const double* v1, const double*
 		return GeoTessUtils::azimuthDegrees(v1, v2, errorValue);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return -1;
@@ -199,7 +199,7 @@ GEO_TESS_EXPORT_C double geoutils_azimuth(const double* v1, const double* v2, do
 		return GeoTessUtils::azimuth(v1,v2,errorValue);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return -1;
@@ -210,7 +210,7 @@ GEO_TESS_EXPORT_C double geoutils_normalize(double* u){
 		return GeoTessUtils::normalize(u);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return -1;
@@ -221,7 +221,7 @@ GEO_TESS_EXPORT_C void geoutils_cross(const double* v1, const double* v2, double
 		GeoTessUtils::cross(v1, v2, rslt);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 }
@@ -231,7 +231,7 @@ GEO_TESS_EXPORT_C double geoutils_crossNormal(const double* u, const double* v, 
 		return GeoTessUtils::crossNormal(u,v,w);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return -1;
@@ -242,7 +242,7 @@ GEO_TESS_EXPORT_C double geoutils_crossNorth(const double* u, double* w){
 		return GeoTessUtils::crossNorth(u,w);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return -1;
@@ -253,7 +253,7 @@ GEO_TESS_EXPORT_C boolean geoutils_vectorTripleProduct(const double* v0, const d
 		return GeoTessUtils::vectorTripleProduct(v0,v1,v2,rslt) ? TRUE : FALSE;
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return FALSE;
@@ -264,7 +264,7 @@ GEO_TESS_EXPORT_C boolean geoutils_vectorTripleProductNorthPole(const double* u,
 		return GeoTessUtils::vectorTripleProductNorthPole(u,w) ? TRUE : FALSE;
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return FALSE;
@@ -275,7 +275,7 @@ GEO_TESS_EXPORT_C void geoutils_circumCenter(const double* v0, const double* v1,
 		GeoTessUtils::circumCenter(v0,v1,v2,vs);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 }
@@ -285,7 +285,7 @@ GEO_TESS_EXPORT_C void geoutils_circumCenter2(double** t, double* vs){
 		GeoTessUtils::circumCenter(t[0], t[1], t[2],vs);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 }
@@ -295,7 +295,7 @@ GEO_TESS_EXPORT_C boolean geoutils_moveDistAz(const double* w, double distance, 
 		return GeoTessUtils::moveDistAz(w, distance, azimuth, u) ? TRUE:FALSE;
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return FALSE;
@@ -306,7 +306,7 @@ GEO_TESS_EXPORT_C void geoutils_move(const double* w, const double* vtp, double 
 		GeoTessUtils::move(w, vtp, a,u);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 }
@@ -316,7 +316,7 @@ GEO_TESS_EXPORT_C boolean geoutils_moveNorth(const double* x, double distance,	d
 		return GeoTessUtils::moveNorth(x, distance, z) ? TRUE:FALSE;
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return FALSE;
@@ -327,7 +327,7 @@ GEO_TESS_EXPORT_C void geoutils_rotate(const double* x, const double* p, double 
 		return GeoTessUtils::rotate(x,p,a,z);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 }
@@ -341,7 +341,7 @@ GEO_TESS_EXPORT_C double** geoutils_getGreatCircle1(const double* v0, const doub
 		return gc;
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return NULL;
@@ -352,7 +352,7 @@ GEO_TESS_EXPORT_C void geoutils_getGreatCircle(const double* v0, const double* v
 		GeoTessUtils::getGreatCircle(v0,v1,gc);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 }
@@ -366,7 +366,7 @@ GEO_TESS_EXPORT_C void geoutils_getGreatCircleAz(const double* v, double azimuth
 		delete[] tgc;
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 }
@@ -376,7 +376,7 @@ GEO_TESS_EXPORT_C void geoutils_getGreatCirclePoint(double** greatCircle, double
 		GeoTessUtils::getGreatCirclePoint(greatCircle, distance, v);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 }
@@ -387,7 +387,7 @@ GEO_TESS_EXPORT_C double geoutils_getGreatCirclePoints(double* ptA, double* ptB,
 		return GeoTessUtils::getGreatCirclePoints(ptA, ptB, npoints, onCenters == TRUE, points);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 		return NaN_DOUBLE;
 	}
@@ -399,7 +399,7 @@ GEO_TESS_EXPORT_C double geoutils_getGreatCirclePointsD(double* ptA, double* ptB
 		return GeoTessUtils::getGreatCirclePoints(ptA, ptB, spacing, onCenters == TRUE, points, *npoints);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 		return NaN_DOUBLE;
 	}
@@ -411,7 +411,7 @@ GEO_TESS_EXPORT_C int geoutils_getGreatCirclePointsN(double* ptA, double* ptB, d
 		return GeoTessUtils::getGreatCirclePoints(ptA, ptB, spacing, onCenters == TRUE);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 		return -1;
 	}
@@ -423,7 +423,7 @@ GEO_TESS_EXPORT_C int geoutils_getGCPointsND(double distance, double spacing,
 		return GeoTessGreatCircle::getNPoints(distance, spacing, onCenters == TRUE);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 		return -1;
 	}
@@ -434,7 +434,7 @@ GEO_TESS_EXPORT_C double geoutils_getTriangleArea(const double* v0, const double
 		return GeoTessUtils::getTriangleArea(v0,v1,v2);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return -1;
@@ -447,7 +447,7 @@ GEO_TESS_EXPORT_C void geoutils_center(double** v, int n, double* x){
 		delete[] tx;
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 }
@@ -457,7 +457,7 @@ GEO_TESS_EXPORT_C double geoutils_length(const double* u){
 		return GeoTessUtils::length(u);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return -1;
@@ -468,7 +468,7 @@ GEO_TESS_EXPORT_C boolean geoutils_isPole(const double* u){
 		return GeoTessUtils::isPole(u) ? TRUE : FALSE;
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return FALSE;
@@ -479,7 +479,7 @@ GEO_TESS_EXPORT_C boolean geoutils_parallel(const double* u, const double* v){
 		return GeoTessUtils::parallel(u,v) ? TRUE : FALSE;
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 	return FALSE;
@@ -490,7 +490,7 @@ GEO_TESS_EXPORT_C void geoutils_getTransform(const double* u, const double* v, d
 		return GeoTessUtils::getTransform(u, v, t);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 }
@@ -500,7 +500,7 @@ GEO_TESS_EXPORT_C void geoutils_transform(const double* x,	double** transform,	d
 		GeoTessUtils::transform(x,transform,g);
 	}catch(...){
 		char* msg = (char*)malloc(sizeof(char) * SIZE);
-		sprintf(msg, "Exception occurred in %s: %d", __FILE__, __LINE__);
+		snprintf(msg, 128,"Exception occurred in %s: %d", __FILE__, __LINE__);
 		ec_push(e, msg);
 	}
 }

@@ -584,4 +584,3 @@ GEO_TESS_EXPORT_C boolean gtamp_isSupportedBand(GeoTessModelC* cmodel, char* sta
 	}
 	return FALSE;
 }
-

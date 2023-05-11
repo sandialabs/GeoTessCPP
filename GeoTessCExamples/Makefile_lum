@@ -36,18 +36,11 @@
 #To change between building 64 and 32 bit binaries, specify on the command line a value for ARCH.
 #Can be either "32bit" or "64bit".  Default is 64bit.  Example: "make ARCH=32bit"
 #
+APP=GeoTessCExamples
+INCLUDES		= -Iinclude  -I../GeoTessCShell/include
+LIBS			= -L../lib -lgeotesscpp -lgeotesscshell
 
-CRUST=src/TestCrust20.c
-CRUST_OUT=bin/crust
-
-POP2D=src/PopulateModel2D.c
-POP2D_OUT=bin/populate2d
-
-POP3D=src/PopulateModel3D.c
-POP3D_OUT=bin/populate3d
-
-TOMO2D=src/Tomography2D.c
-TOMO2D_OUT=bin/tomography2d
+BIN=bin
 
 ifeq ($(ARCH),32bit)
 MACHINE=-m32
@@ -55,52 +48,77 @@ else
 MACHINE=-m64
 endif
 
-LFLAGS= -L../GeoTessCPP/lib -lgeotesscpp -L../GeoTessCShell/lib -lgeotesscshell -I include  -I ../GeoTessCShell/include
-
 OS := $(shell uname -s)
+# OS-specific compiler variables
+ifeq ($(OS),SunOS)
+	CC = CC
+	CCFLAGS = $(MACHINE) -Kpic -xO5 -dalign -fns -fsimple=2 -ftrap=%none
+	COMPILE = ${CC} ${CCFLAGS} $(INCLUDES) -c
+	LINK_PREFIX = ${CC} $(MACHINE)
+	LINK_POSTFIX = $(LIBS) -lstdc++ -lm
+	VERSION_FLAG = -V
+endif
 ifeq ($(OS),Linux)
 	CC = gcc
-	CFLAGS= $(MACHINE) -O3  -z defs
+	CCFLAGS = $(MACHINE) -O3 -fPIC -ffast-math -fno-trapping-math
+	COMPILE = ${CC} ${CCFLAGS} $(INCLUDES) -c
+	LINK_PREFIX = ${CC} $(CCFLAGS)
+	LINK_POSTFIX = $(LIBS) -lstdc++ -lm
+	VERSION_FLAG = --version
 endif
-ifeq (${OS},Darwin)
+ifeq ($(OS),Darwin)
 	CC = gcc
-	CFLAGS= $(MACHINE) -O3
-endif
-ifeq (${OS},SunOS)
-	CC = CC
-	CFLAGS= $(MACHINE)  -z defs
+	COMPILE = ${CC} ${MACHINE} -O3 $(INCLUDES) -c
+	LINK_PREFIX = ${CC} $(MACHINE)
+	LINK_POSTFIX = $(LIBS) -lstdc++ -lm
+	VERSION_FLAG = --version
 endif
 
-all: info makedir crust populate2d populate3d tomography2d
+#-------------------------------------------------------------------------------
+all : info makedir Integrate2D PopulateModel2D PopulateModel3D TestCrust20 Tomography2D link done
+
+Integrate2D :
+	${COMPILE} src/Integrate2D.c
+
+PopulateModel2D :
+	${COMPILE} src/PopulateModel2D.c
+	
+PopulateModel3D :
+	${COMPILE} src/PopulateModel3D.c
+	
+TestCrust20 :
+	${COMPILE} src/TestCrust20.c
+
+Tomography2D :
+	${COMPILE} src/Tomography2D.c
+
+link :
+	@echo
+	@echo "linking executables"
+	${LINK_PREFIX} -o $(BIN)/integrate3d Integrate2D.o ${LINK_POSTFIX}
+	${LINK_PREFIX} -o $(BIN)/populatemodel2d PopulateModel2D.o ${LINK_POSTFIX}
+	${LINK_PREFIX} -o $(BIN)/populatemodel3d PopulateModel3D.o ${LINK_POSTFIX}
+	${LINK_PREFIX} -o $(BIN)/testcrust20 TestCrust20.o ${LINK_POSTFIX}
+	${LINK_PREFIX} -o $(BIN)/tomography2d Tomography2D.o ${LINK_POSTFIX}
+	@echo
 
 makedir:
-	-mkdir bin
-
-crust: $(CRUST)
-	$(CC) $(CRUST) $(CFLAGS) -o $(CRUST_OUT) $(LFLAGS)
-
-populate2d: $(POP2D)
-	${CC} $(POP2D) $(CFLAGS) -o $(POP2D_OUT) $(LFLAGS)
-
-populate3d: $(POP3D)
-	${CC} $(POP3D) $(CFLAGS) -o $(POP3D_OUT) $(LFLAGS)
-
-tomography2d: $(TOMO2D)
-	${CC} $(TOMO2D) $(CFLAGS) -o $(TOMO2D_OUT) $(LFLAGS)
-
-clean:
-	-rm $(CRUST_OUT)
-	-rm $(POP2D_OUT)
-	-rm $(POP3D_OUT)
-	-rm $(TOMO2D_OUT)
+	@mkdir -p $(BIN)
 
 clean_objs:
-	@ echo "removing object files"
-	rm -f src/*.o
-	@ echo ""
+	@echo "removing object files $(APP)/src/*.o"
+	@rm -f *.o
 
-info:
-	@ echo " "
+clean: clean_objs
+	@echo "removing bin directory"
+	@rm -rf $(BIN)
+
+info :
 	@ echo "========================================="
-	@echo "Building GeoTess C Examples on" $(OS) "with" $(MACHINE)
-	@ echo ""
+	@ echo "Building $(APP) on" $(OS) "with" $(MACHINE)
+	@ $(CC) $(VERSION_FLAG)
+	@ echo
+
+done :
+	@ echo
+	@echo "Done building $(APP)"

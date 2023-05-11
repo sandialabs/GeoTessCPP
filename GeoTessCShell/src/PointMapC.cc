@@ -660,4 +660,3 @@ GEO_TESS_EXPORT_C void geopoint_setActiveRegionAll(PointMapC* pm){
 
 GEO_TESS_EXPORT_C PolygonC* geopoint_getPolygon(PointMapC* pm)
 { return create_polygon(getcpp(pm)->getPolygon()); }
-

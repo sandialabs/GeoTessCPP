@@ -165,7 +165,7 @@ int main(int argc, char** argv)
 	geometadata_setDescription(metaData, s);
 
 	// Specify a list of layer names.
-	geometadata_setLayerNames1(metaData, (char*)"INNER_CORE; OUTER_CORE; LOWER_MANTLE; TRANSITION_ZONE; UPPER_MANTLE; LOWER_CRUST; UPPER_CRUST");
+	geometadata_setLayerNames1(metaData, "INNER_CORE; OUTER_CORE; LOWER_MANTLE; TRANSITION_ZONE; UPPER_MANTLE; LOWER_CRUST; UPPER_CRUST");
 
 	// Specify the relationship between grid tessellations and model layers.
 	// the list has nLayers elements where each element specifies the
@@ -202,7 +202,7 @@ int main(int argc, char** argv)
 
 	// specify the name of the software that is going to generate
 	// the model.  This gets stored in the model for future reference.
-	geometadata_setModelSoftwareVersion(metaData, (char*)"GeoTessCExamples.PopulateModel3D 1.0.0");
+	geometadata_setModelSoftwareVersion(metaData, "GeoTessCExamples.PopulateModel3D 1.0.0");
 
 	// specify the date when the model was generated.  This gets
 	// stored in the model for future reference.

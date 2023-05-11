@@ -59,6 +59,11 @@
  * GeoTessData object can be shared among all the threads in a multi-threaded application and each
  * thread will have it's own instance of a GeoTessPosition object that references the common
  * GeoTessGrid + GeoTessData combination.
+ *
+ * <p>
+ * References Ballard, S., J. R. Hipp and C. J. Young, 2009, Efficient and Accurate Calculation of
+ * Ray Theory Seismic Travel Time Through Variable Resolution 3D Earth Models, Seismological
+ * Research Letters, v.80, n. 6 p. 989-999.
  */
 typedef struct{
 	/**

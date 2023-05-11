@@ -2198,4 +2198,3 @@ GEO_TESS_EXPORT_C double geomodel_getPathIntegral2DW(GeoTessModelC* gtm,
 //				NULL, numPoints, horizontalType, radialType,
 //				pointIndices, weights, allocatedSize, actualSize);
 //}
-

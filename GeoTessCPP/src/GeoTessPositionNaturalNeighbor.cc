@@ -1,15 +1,15 @@
 //- ****************************************************************************
-//-
+//- 
 //- Copyright 2009 Sandia Corporation. Under the terms of Contract
 //- DE-AC04-94AL85000 with Sandia Corporation, the U.S. Government
 //- retains certain rights in this software.
-//-
+//- 
 //- BSD Open Source License.
 //- All rights reserved.
-//-
+//- 
 //- Redistribution and use in source and binary forms, with or without
 //- modification, are permitted provided that the following conditions are met:
-//-
+//- 
 //-    * Redistributions of source code must retain the above copyright notice,
 //-      this list of conditions and the following disclaimer.
 //-    * Redistributions in binary form must reproduce the above copyright
@@ -18,7 +18,7 @@
 //-    * Neither the name of Sandia National Laboratories nor the names of its
 //-      contributors may be used to endorse or promote products derived from
 //-      this software without specific prior written permission.
-//-
+//- 
 //- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 //- AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 //- IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -32,8 +32,6 @@
 //- POSSIBILITY OF SUCH DAMAGE.
 //-
 //- ****************************************************************************
-
-// **** _LOCAL INCLUDES_ *******************************************************
 
 #include "GeoTessPositionNaturalNeighbor.h"
 #include "CPPUtils.h"
@@ -77,7 +75,7 @@ GeoTessPositionNaturalNeighbor::~GeoTessPositionNaturalNeighbor()
  * by Sibson, R. (1980), A Vector Identity For Dirichlet Tessellation, Proc. Cambridge
  * Philosophical Society, 87, 151-155.
  */
-void GeoTessPositionNaturalNeighbor::update2D(int tessId)
+void GeoTessPositionNaturalNeighbor::update2D(int tessId, const double* const uVector)
 {
 	int vertex;
 	int nnTriangle = getTriangle(tessId);
@@ -91,7 +89,7 @@ void GeoTessPositionNaturalNeighbor::update2D(int tessId)
 		vertex = triangleVertices[corner];
 
 		// if the interpolation point falls on a grid node:
-		if (GeoTessUtils::dot(unitVector, grid.getVertex(vertex)) > cos(1e-7))
+		if (GeoTessUtils::dot(uVector, grid.getVertex(vertex)) > cos(1e-7))
 		{
 			// the interpolation point coincides with one of the corners of
 			// the triangle in which the interpolation point resides.
@@ -207,7 +205,7 @@ void GeoTessPositionNaturalNeighbor::update2D(int tessId)
 					<< "It is likely that this is not a Delaunay tessellation." << endl
 					<< "TessID=" << tessid << "  Level=" << tessLevel << "  Triangle=" << nnTriangle << endl
 					<< "Layer " << model->getMetaData().getLastLayer(tessid) << "  "
-					<< "Interpolation point = " << GeoTessUtils::getLatLonString(unitVector) << endl;
+					<< "Interpolation point = " << GeoTessUtils::getLatLonString(uVector) << endl;
 			throw GeoTessException(os, __FILE__, __LINE__, 1003);
 
 		}
@@ -230,7 +228,7 @@ void GeoTessPositionNaturalNeighbor::update2D(int tessId)
 		weight = 0;
 
 		// set ip1 to the virtual veronoi vertex of the triangle formed by interpolationPoint and preEdge
-		GeoTessUtils::circumCenter(unitVector, gridVrtcs[vertex], gridVrtcs[preEdge->vk], ip1);
+		GeoTessUtils::circumCenter(uVector, gridVrtcs[vertex], gridVrtcs[preEdge->vk], ip1);
 
 		// access a random spoke emanating from vertex.
 		spoke = gridSpokeList[vertex];
@@ -256,7 +254,7 @@ void GeoTessPositionNaturalNeighbor::update2D(int tessId)
 			{
 				// set ip3 to the virtual veronoi vertex of the triangle
 				// formed by interpolationPoint and spoke
-				GeoTessUtils::circumCenter(unitVector, gridVrtcs[spoke->vk],
+				GeoTessUtils::circumCenter(uVector, gridVrtcs[spoke->vk],
 						gridVrtcs[vertex], ip3);
 
 				weight += GeoTessUtils::getTriangleArea(ip1, ip2, ip3, work1, work2, work3);

@@ -39,6 +39,7 @@
 // **** _SYSTEM INCLUDES_ ******************************************************
 
 #include <cstdio>
+#include <set>
 
 // use standard library objects
 using namespace std;
@@ -102,7 +103,7 @@ private:
 	 * Each GeoTessModel has a single instance of MetaData that it passes around to wherever the
 	 * information is needed.
 	 */
-	GeoTessMetaData& metaData;
+	GeoTessMetaData& metaData ;
 
 	GeoTessPolygon* polygon;
 
@@ -614,7 +615,7 @@ public:
 	{
 		char s[100];
 		string frmt = "%8.3f";
-		sprintf(s, frmt.c_str(), getPointDepth(pointIndex));
+		snprintf(s, 100, frmt.c_str(), getPointDepth(pointIndex));
 		return GeoTessUtils::getLatLonString(getPointUnitVector(pointIndex))
 				+ " " + s;
 	}

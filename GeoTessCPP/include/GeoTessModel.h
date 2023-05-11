@@ -36,6 +36,17 @@
 #ifndef GEOTESSMODEL_OBJECT_H
 #define GEOTESSMODEL_OBJECT_H
 
+/*! \mainpage
+ *GeoTess is a model parameterization and software support system that implements the construction,
+ *population, storage and interrogation of data stored in 3D Earth models.\n
+ *This document describes the C++ version of GeoTess.  There is also a
+ *<a href="https://github.com/sandialabs/GeoTessJava">Java version</a> and a
+ *<a href="https://sandialabs.github.io/GeoTessCPP/GeoTessCShell/doc/html/index.html">
+ *C interface</a> to this C++ version.\n
+ *The top level class in GeoTessCPP is
+ *<a href="https://sandialabs.github.io/GeoTessCPP/GeoTessCPP/doc/html/a00203.html">GeoTessModel</a>
+ */
+
 // **** _SYSTEM INCLUDES_ ******************************************************
 
 #include <iostream>
@@ -567,6 +578,7 @@ public:
 						memory += profiles[i][j]->getMemory();
 		if (pointMap)
 			memory += pointMap->getMemory();
+
 		return memory;
 	}
 
@@ -674,6 +686,19 @@ public:
 	 * @return a reference to the grid object.
 	 */
 	GeoTessGrid& getGrid(){ return *grid; }
+
+	/**
+	 * If this model and the associated grid have different coordinate systems
+	 * then retrieve a deep copy of the grid rotated into the model coordinate
+	 * system.  If the grid and model coordinate systems are equal, returns null.
+	 * @return a deep copy of this model's grid, rotated into the model coordinate
+	 * system.
+	 */
+	GeoTessGrid* getGridRotated(){
+		if (metaData->getEulerGridToModel() == NULL)
+			return NULL;
+		return new GeoTessGrid(*grid, metaData->getEulerGridToModel());
+	}
 
 	/**
 	 * Return a reference to the GeoTessMetaData object associated with this
@@ -1058,19 +1083,6 @@ public:
 	}
 
 	/**
-	 * Return a reference to the set<int> of the indexes of all the vertices that are
-	 * connected together by triangles in the specified layer of the model.
-	 *
-	 * @param layerIndex
-	 * @return a reference to the set<int> of the indexes of all the vertices that are
-	 * connected together by triangles in the specified layer of the model.
-	 */
-	const set<int>& getConnectedVertices(int layerIndex)
-	{
-		return grid->getVertexIndicesTopLevel(metaData->getTessellation(layerIndex));
-	}
-
-	/**
 	 * Set the active region such that it encompasses all the nodes in the model.
 	 * @return a reference to the updated PointMap that has been configured to
 	 * support the specified active region.
@@ -1157,6 +1169,34 @@ public:
 					layerCount[layer] += pp[layer]->getNData();
 			}
 		}
+	}
+
+	/**
+	 * Return a reference to the set<int> of the indexes of all the vertices that are
+	 * connected together by triangles in the specified layer of the model.
+	 *
+	 * @param layerIndex
+	 * @return a reference to the set<int> of the indexes of all the vertices that are
+	 * connected together by triangles in the specified layer of the model.
+	 */
+	const set<int>& getConnectedVertices(int layerIndex)
+	{
+		return grid->getVertexIndicesTopLevel(metaData->getTessellation(layerIndex));
+	}
+
+	/**
+	 * The 3 elements of the unit vector at the specified vertex are copied
+	 * into the first 3 elements of the supplied double array
+	 * @param i the index of the vertex
+	 * @param v the double array into which to copy the 3-element vertex.
+	 */
+	void getVertex(int i, double* v)
+	{
+		const double* u = grid->getVertex(i);
+		if (metaData->getEulerGridToModel() == NULL)
+		{ v[0] = u[0]; v[1] = u[1]; v[2] = u[2]; }
+		else
+			GeoTessUtils::eulerRotation(u, metaData->getEulerGridToModel(), v);
 	}
 
 	/**
@@ -1323,7 +1363,7 @@ public:
 	 * To string method.
 	 * @return string with information about this model.
 	 */
-	string toString();
+	virtual string toString();
 
 	/**
 	 * Retrieve the number of points in each layer of the model.

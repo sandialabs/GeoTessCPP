@@ -1,15 +1,15 @@
 //- ****************************************************************************
-//-
+//- 
 //- Copyright 2009 Sandia Corporation. Under the terms of Contract
 //- DE-AC04-94AL85000 with Sandia Corporation, the U.S. Government
 //- retains certain rights in this software.
-//-
+//- 
 //- BSD Open Source License.
 //- All rights reserved.
-//-
+//- 
 //- Redistribution and use in source and binary forms, with or without
 //- modification, are permitted provided that the following conditions are met:
-//-
+//- 
 //-    * Redistributions of source code must retain the above copyright notice,
 //-      this list of conditions and the following disclaimer.
 //-    * Redistributions in binary form must reproduce the above copyright
@@ -18,7 +18,7 @@
 //-    * Neither the name of Sandia National Laboratories nor the names of its
 //-      contributors may be used to endorse or promote products derived from
 //-      this software without specific prior written permission.
-//-
+//- 
 //- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 //- AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 //- IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -46,18 +46,13 @@ namespace geotess {
 
 // **** _FUNCTION IMPLEMENTATIONS_ *********************************************
 
-GeoTessMetaData::GeoTessMetaData(const GeoTessMetaData& other) :
-				description(other.description), nLayers(other.nLayers), nVertices(other.nVertices),
-				layerNames(NULL), layerTessIds(NULL), dataType(other.dataType),
-				nAttributes(other.nAttributes), attributeNames(NULL), attributeUnits(NULL),
-				boolAttributeFilter(other.boolAttributeFilter),
-				attributeFilterString(other.attributeFilterString),
-				inputModelFile(other.inputModelFile),
-				inputGridFile(other.inputGridFile), loadTimeModel(other.loadTimeModel),
-				outputModelFile(other.outputModelFile), outputGridFile(other.outputGridFile),
-				writeTimeModel(other.writeTimeModel), refCount(0),
-				reuseGrids(true), modelSoftwareVersion(other.modelSoftwareVersion),
-				modelGenerationDate(other.modelGenerationDate)
+GeoTessMetaData::GeoTessMetaData(const GeoTessMetaData& other)
+		: earthShape(NULL), modelFileFormat(3), description(""), nLayers(0), nVertices(0), layerNames(NULL), layerTessIds(NULL),
+		  dataType(&GeoTessDataType::NONE), nAttributes(-1), attributeNames(NULL),
+		  attributeUnits(NULL), boolAttributeFilter(false), attributeFilterString(""),
+		  inputModelFile("none"), inputGridFile("none"), loadTimeModel(-1.0),
+		  outputModelFile("none"), outputGridFile("none"), writeTimeModel(-1.0), refCount(0),
+		  reuseGrids(true), modelSoftwareVersion(""), modelGenerationDate("")
 {
 	if (nLayers > 0)
 	{
@@ -85,35 +80,6 @@ GeoTessMetaData::GeoTessMetaData(const GeoTessMetaData& other) :
 		for (int i=0; i<(int)other.attributeFilter.size(); ++i)
 			attributeFilter.push_back(other.attributeFilter[i]);
 
-}
-
-GeoTessMetaData::GeoTessMetaData(const string& inputFile)
-: description(""), nLayers(0), nVertices(0), layerNames(NULL), layerTessIds(NULL),
-  dataType(&GeoTessDataType::NONE), nAttributes(-1), attributeNames(NULL),
-  attributeUnits(NULL), boolAttributeFilter(false), attributeFilterString(""),
-  inputModelFile("none"), inputGridFile("none"), loadTimeModel(-1.0),
-  outputModelFile("none"), outputGridFile("none"), writeTimeModel(-1.0), refCount(0),
-  reuseGrids(true), modelSoftwareVersion(""), modelGenerationDate("")
-{
-	CpuTimer timr;
-	setInputModelFile(inputFile);
-
-	if (inputFile.find(".ascii", inputFile.length() - 6) != string::npos)
-	{
-		IFStreamAscii input;
-		input.openForRead(inputFile);
-		loadMetaData(input);
-		input.close();
-	}
-	else
-	{
-		IFStreamBinary ifs(inputFile);
-		ifs.setBoundaryAlignment(false);
-		ifs.resetPos();
-		loadMetaData(ifs);
-	}
-
-	setLoadTimeModel(timr.realTime() * 1e-3);
 }
 
 GeoTessMetaData& GeoTessMetaData::operator=(const GeoTessMetaData& other)
@@ -204,11 +170,12 @@ GeoTessMetaData::~GeoTessMetaData()
 		delete [] layerNames;
 		layerNames = NULL;
 	}
-	if (layerTessIds != NULL) \
-			{
+	if (layerTessIds != NULL)
+	{
 		delete [] layerTessIds;
 		layerTessIds = NULL;
-			}
+	}
+	setEulerRotationAngles(NULL);
 }
 
 bool GeoTessMetaData::operator==(const GeoTessMetaData& other)
@@ -415,7 +382,7 @@ string GeoTessMetaData::getAttributeNamesString() const
 {
 	string s = attributeNames[0];
 	for (int i = 1; i < nAttributes; ++i)
-		s += "; " + attributeNames[i];
+		s += ";" + attributeNames[i];
 	return s;
 }
 
@@ -428,7 +395,7 @@ string GeoTessMetaData::getAttributeUnitsString() const
 {
 	string s = attributeUnits[0];
 	for (int i = 1; i < nAttributes; ++i)
-		s += "; " + attributeUnits[i];
+		s += ";" + attributeUnits[i];
 	return s;
 }
 
@@ -603,12 +570,12 @@ void GeoTessMetaData::setDataType(const string& dt)
 }
 
 string GeoTessMetaData::toString() const
-{ return toString(class_name(), -1L); }
+{ return toString(class_name(), -1, -1); }
 
 /**
  * To string function.
  */
-string GeoTessMetaData::toString(const string& className, LONG_INT memory) const
+string GeoTessMetaData::toString(const string& className, LONG_INT modelMemory, LONG_INT gridMemory) const
 {
 	int nbits = sizeof(10L) == 8 ? 64 : sizeof(10L) == 4 ? 32 : -1;
 
@@ -622,8 +589,13 @@ string GeoTessMetaData::toString(const string& className, LONG_INT memory) const
 	<< "  " << modelGenerationDate << endl
 	<< "Model Load Time: " << CPPUtils::dtos(loadTimeModel, "%.3f sec") << endl;
 
-	if (memory >= 0)
-		os << "Memory footprint: " << memory/1024./1024. << " MB" << endl;
+	os << endl;
+
+	os << "Model memory: " << setw(6) << fixed << setprecision(2) << modelMemory/1024./1024. << " MB" << endl;
+
+	os << "Grid memory:  " << setw(6) << fixed << setprecision(2) << gridMemory/1024./1024. << " MB" << endl;
+
+	os << "Total memory: " << setw(6) << fixed << setprecision(2) << (modelMemory+gridMemory)/1024./1024. << " MB" << endl;
 
 	if (outputModelFile != "none")
 	{
@@ -660,6 +632,8 @@ string GeoTessMetaData::toString(const string& className, LONG_INT memory) const
 		<< "     " << layerNames[i] << endl;
 	}
 	os << endl;
+
+	os << "eulerRotationAngles: " << getEulerRotationAnglesString() << endl;
 
 	return os.str();
 }
@@ -723,14 +697,7 @@ void GeoTessMetaData::loadMetaData(IFStreamBinary &input)
 			properties[key] = CPPUtils::stringReplaceAll("<NEWLINE>", CPPUtils::NEWLINE,
 					CPPUtils::trim(value));
 		}
-
-		setModelSoftwareVersion(properties["modelSoftwareVersion"]);
-		setModelGenerationDate(properties["modelGenerationDate"]);
-		setEarthShape(properties["earthShape"]);
-		setAttributes(properties["attributeNames"], properties["attributeUnits"]);
-		setDataType(properties["dataType"]);
-		setLayerNames(properties["layerNames"]);
-
+		readProperties();
 	}
 	else
 	{
@@ -805,14 +772,7 @@ void GeoTessMetaData::writeMetaData(IFStreamBinary& output, const string& modelC
 		// supported by modelFileFormat 3.  If modelFileFormat is > 3,
 		// all the properties read from the input file will still be in
 		// properties map and will be written out right here.
-		properties["modelDescription"] = getDescription();
-		properties["modelSoftwareVersion"] = getModelSoftwareVersion();
-		properties["modelGenerationDate"] = getModelGenerationDate();
-		properties["earthShape"] = getEarthShape().getShapeName();
-		properties["attributeNames"] = getAttributeNamesString();
-		properties["attributeUnits"] = getAttributeUnitsString();
-		properties["dataType"] = getDataType().toString();
-		properties["layerNames"] = getLayerNamesString();
+		updateProperties();
 
 		output.writeInt(properties.size());
 		for (std::map<string, string>::iterator it=properties.begin(); it!=properties.end(); ++it)
@@ -862,14 +822,7 @@ void GeoTessMetaData::writeMetaData(IFStreamAscii& output, const string& modelCl
 		// supported by modelFileFormat 3.  If modelFileFormat is > 3,
 		// all the properties read from the input file will still be in
 		// properties map and will be written out right here.
-		properties["modelDescription"] = getDescription();
-		properties["modelSoftwareVersion"] = getModelSoftwareVersion();
-		properties["modelGenerationDate"] = getModelGenerationDate();
-		properties["earthShape"] = getEarthShape().getShapeName();
-		properties["attributeNames"] = getAttributeNamesString();
-		properties["attributeUnits"] = getAttributeUnitsString();
-		properties["dataType"] = getDataType().toString();
-		properties["layerNames"] = getLayerNamesString();
+		updateProperties();
 
 		string key, value;
 		for (std::map<string, string>::iterator it=properties.begin();
@@ -914,9 +867,6 @@ void GeoTessMetaData::loadMetaData(IFStreamAscii &input)
 	// get the GeoTess name (GEOTESSMODEL) and validate
 	string s;
 	input.readLine(s);
-	// cout << endl << "READLINE LENGTH: "<< s.length() << endl;
-	// remove the newline at the end of the input string
-	// s = std::regex_replace(s, std::regex("(\r\n|\r|\n)"), "");
 
 	if (s.compare("GEOTESSMODEL") != 0)
 	{
@@ -975,15 +925,7 @@ void GeoTessMetaData::loadMetaData(IFStreamAscii &input)
 			input.getline(s);
 			s = CPPUtils::trim(s);
 		}
-
-		setDescription(properties["modelDescription"]);
-		setModelSoftwareVersion(properties["modelSoftwareVersion"]);
-		setModelGenerationDate(properties["modelGenerationDate"]);
-		setEarthShape(properties["earthShape"]);
-		setAttributes(properties["attributeNames"], properties["attributeUnits"]);
-		setDataType(properties["dataType"]);
-		setLayerNames(properties["layerNames"]);
-
+		readProperties();
 	}
 	else
 	{
@@ -1054,7 +996,7 @@ void GeoTessMetaData::loadMetaData(IFStreamAscii &input)
 					<< units << endl;
 			throw GeoTessException(os, __FILE__, __LINE__, 6027);
 		}
-		units = CPPUtils::trim(tokens[1]);
+		units = tokens[1];
 
 		setAttributes(attributes, units);
 
@@ -1091,6 +1033,57 @@ void GeoTessMetaData::loadMetaData(IFStreamAscii &input)
 	}
 	++nTess;
 	setLayerTessIds(tessellations);
+}
+
+/**
+ * make sure properties are up-to-date with all parameters
+ * supported by modelFileFormat 3.  If modelFileFormat is > 3,
+ * all the properties read from the input file will still be in
+ * properties map.
+ */
+void GeoTessMetaData::updateProperties()
+{
+	properties["modelDescription"] = getDescription();
+	properties["modelSoftwareVersion"] = getModelSoftwareVersion();
+	properties["modelGenerationDate"] = getModelGenerationDate();
+	properties["earthShape"] = getEarthShape().getShapeName();
+	properties["attributeNames"] = getAttributeNamesString();
+	properties["attributeUnits"] = getAttributeUnitsString();
+	properties["dataType"] = getDataType().toString();
+	properties["layerNames"] = getLayerNamesString();
+	properties["eulerRotationAngles"] = getEulerRotationAnglesString();
+}
+
+/**
+ * After loading properties from the input file, call this method
+ * to extract metaData information from the properties object.
+ * @throws IOException
+ */
+void GeoTessMetaData::readProperties()
+{
+	setModelSoftwareVersion(properties["modelSoftwareVersion"]);
+	setModelGenerationDate(properties["modelGenerationDate"]);
+	setEarthShape(properties["earthShape"]);
+	setAttributes(properties["attributeNames"], properties["attributeUnits"]);
+	setDataType(properties["dataType"]);
+	setLayerNames(properties["layerNames"]);
+
+	map<string, string>::iterator it = properties.find("eulerRotationAngles");
+	if (it != properties.end())
+	{
+		string s = it->second;
+		if (CPPUtils::uppercase_string(s) != "NULL")
+		{
+			vector<string> tokens;
+			CPPUtils::tokenizeString(s, ",  ", tokens);
+			double* angles = new double[3];
+			angles[0] = CPPUtils::stod(tokens[0]);
+			angles[1] = CPPUtils::stod(tokens[1]);
+			angles[2] = CPPUtils::stod(tokens[2]);
+			setEulerRotationAngles(angles);
+		}
+	}
+
 }
 
 } // end namespace geotess

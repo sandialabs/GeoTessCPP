@@ -1,214 +1,44 @@
-#- ****************************************************************************
-#- 
-#- Copyright 2009 Sandia Corporation. Under the terms of Contract
-#- DE-AC04-94AL85000 with Sandia Corporation, the U.S. Government
-#- retains certain rights in this software.
-#- 
-#- BSD Open Source License.
-#- All rights reserved.
-#- 
-#- Redistribution and use in source and binary forms, with or without
-#- modification, are permitted provided that the following conditions are met:
-#- 
-#-    * Redistributions of source code must retain the above copyright notice,
-#-      this list of conditions and the following disclaimer.
-#-    * Redistributions in binary form must reproduce the above copyright
-#-      notice, this list of conditions and the following disclaimer in the
-#-      documentation and/or other materials provided with the distribution.
-#-    * Neither the name of Sandia National Laboratories nor the names of its
-#-      contributors may be used to endorse or promote products derived from
-#-      this software without specific prior written permission.
-#- 
-#- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-#- AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-#- IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-#- ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
-#- LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-#- CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-#- SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-#- INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-#- CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-#- ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-#- POSSIBILITY OF SUCH DAMAGE.
-#-
-#- ****************************************************************************
-
+# ****************************************************************************
 #
-#To change between building 64 and 32 bit binaries, specify on the command line a value for ARCH.
-#Can be either "32bit" or "64bit".  Default is 64bit.  Example: "make ARCH=32bit"
+# Copyright 2009 Sandia Corporation. Under the terms of Contract
+# DE-AC04-94AL85000 with Sandia Corporation, the U.S. Government
+# retains certain rights in this software.
 #
-
-SRC=src/_CreatorsAmplitude.cc \
-src/GeoTessModelAmplitudeC.cc \
-
-OBJECTS=$(SRC:.cc=.o)
-
-ifeq ($(ARCH),32bit)
-MACHINE=-m32
-else
-MACHINE=-m64
-endif
-
-# Must have defined environment variable GEOTESS_ROOT to point to
-# the directory where the main GeoTessCPP directory resides.
-
-INCLUDE=-Iinclude -I${GEOTESS_ROOT}/GeoTessCPP/include -I${GEOTESS_ROOT}/GeoTessCShell/include -I../GeoTessAmplitudeCPP/include
-LIBS=-L${GEOTESS_ROOT}/GeoTessCPP/lib/ -L${GEOTESS_ROOT}/GeoTessCShell/lib/ -L../GeoTessAmplitudeCPP/lib/ -lgeotesscpp -lgeotesscshell -lgeotessamplitudecpp
-
-# Determine OS
-OS := $(shell uname -s)
-
-# OS-specific compiler variables
-ifeq ($(OS),SunOS)
-	OUTPUT=lib/libgeotessamplitudecshell.so
-	CCFLAGS = -D$(OS) $(MACHINE) -KPIC -xO5 -dalign -fns -fsimple=2 -ftrap=%none
-	COMPILE = CC ${CCFLAGS} ${INCLUDE} -o $@ -c
-	LINK = CC ${CCFLAGS} -G -Bdynamic ${LIBS} -o $(OUTPUT)  ${OBJECTS} -lm -lc -lCrun -lCstd -z defs
-	VERSION = CC -V
-endif
-ifeq ($(OS),Linux)
-	OUTPUT=lib/libgeotessamplitudecshell.so
-	CCFLAGS = -D$(OS) $(MACHINE) -O3 -fPIC -ffast-math -fno-trapping-math
-	COMPILE = gcc ${CCFLAGS} ${INCLUDE} -o $@ -c
-	LINK = gcc ${CCFLAGS} -shared -o $(OUTPUT)  ${OBJECTS} -lstdc++ -lm -z defs ${LIBS}
-	VERSION = gcc --version
-endif
-ifeq ($(OS),Darwin)
-	OUTPUT=lib/libgeotessamplitudecshell.dylib
-	CCFLAGS= -D$(OS) $(MACHINE) -O3
-	COMPILE = g++ ${CCFLAGS} ${INCLUDE} -o $@ -c
-	LINK = g++ ${CCFLAGS} -shared ${LIBS} -o $(OUTPUT)  ${OBJECTS} -lstdc++
-	VERSION = g++ --version
-endif
-
-
-#-------------------------------------------------------------------------------
-# targets
-#-------------------------------------------------------------------------------
-
-
-all : info makedir cpp done
-	@echo
-
-%.o: $($*:.o=.cc)
-	${COMPILE} $*.cc
-
-cpp : ${OBJECTS}
-	@echo
-	@echo "linking shared library"
-	${LINK}
-	@echo ""
-
-# make sure lib subdirectory exist
-makedir:
-	-mkdir lib
-
-clean: clean_objs
-	@echo "removing" $(OUTPUT)
-	@rm -f $(OUTPUT)
-	@echo
-
-clean_objs:
-	@echo "removing object files"
-	@rm -f src/*.o
-	@echo
-
-info :
-	@ echo
-	@ echo "Building GeoTessAmplitudeCShell on" $(OS) "with" $(MACHINE)
-	@$(VERSION)
-	@ echo ""
-
-done :
-	@echo "Done building GeoTessAmplitudeCShell"
-	@echo ""
-
+# BSD Open Source License.
+# All rights reserved.
 #
-#To change between building 64 and 32 bit binaries, specify on the command line a value for ARCH.
-#Can be either "32bit" or "64bit".  Default is 64bit.  Example: "make ARCH=32bit"
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
 #
+#    * Redistributions of source code must retain the above copyright notice,
+#      this list of conditions and the following disclaimer.
+#    * Redistributions in binary form must reproduce the above copyright
+#      notice, this list of conditions and the following disclaimer in the
+#      documentation and/or other materials provided with the distribution.
+#    * Neither the name of Sandia National Laboratories nor the names of its
+#      contributors may be used to endorse or promote products derived from
+#      this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# POSSIBILITY OF SUCH DAMAGE.
+#
+# ****************************************************************************
 
-SRC=src/_CreatorsAmplitude.cc \
-src/GeoTessModelAmplitudeC.cc \
+APP=GeoTessAmplitudeCShell
+TARGET=geotessamplitudecshell
+LIB=../lib
+INCLUDES=-Iinclude -I../GeoTessCPP/include -I../GeoTessCShell/include -I../GeoTessAmplitudeCPP/include
+DEPENDENCIES=-L$(LIB) -lgeotesscpp -lgeotesscshell -lgeotessamplitudecpp
 
-OBJECTS=$(SRC:.cc=.o)
+SRC=src/_CreatorsAmplitude.cc src/GeoTessModelAmplitudeC.cc
 
-ifeq ($(ARCH),32bit)
-MACHINE=-m32
-else
-MACHINE=-m64
-endif
-
-# Must have defined environment variable GEOTESS_ROOT to point to
-# the directory where the main GeoTessCPP directory resides.
-
-INCLUDE=-Iinclude -I${GEOTESS_ROOT}/GeoTessCPP/include -I${GEOTESS_ROOT}/GeoTessCShell/include -I../GeoTessAmplitudeCPP/include
-LIBS=-L${GEOTESS_ROOT}/GeoTessCPP/lib/ -L${GEOTESS_ROOT}/GeoTessCShell/lib/ -L../GeoTessAmplitudeCPP/lib/ -lgeotesscpp -lgeotesscshell -lgeotessamplitudecpp
-
-# Determine OS
-OS := $(shell uname -s)
-
-# OS-specific compiler variables
-ifeq ($(OS),SunOS)
-	OUTPUT=lib/libgeotessamplitudecshell.so
-	CCFLAGS = -D$(OS) $(MACHINE) -KPIC -xO5 -dalign -fns -fsimple=2 -ftrap=%none
-	COMPILE = CC ${CCFLAGS} ${INCLUDE} -o $@ -c
-	LINK = CC ${CCFLAGS} -G -Bdynamic ${LIBS} -o $(OUTPUT)  ${OBJECTS} -lm -lc -lCrun -lCstd -z defs
-	VERSION = CC -V
-endif
-ifeq ($(OS),Linux)
-	OUTPUT=lib/libgeotessamplitudecshell.so
-	CCFLAGS = -D$(OS) $(MACHINE) -O3 -fPIC -ffast-math -fno-trapping-math
-	COMPILE = gcc ${CCFLAGS} ${INCLUDE} -o $@ -c
-	LINK = gcc ${CCFLAGS} -shared -o $(OUTPUT)  ${OBJECTS} -lstdc++ -lm -z defs ${LIBS}
-	VERSION = gcc --version
-endif
-ifeq ($(OS),Darwin)
-	OUTPUT=lib/libgeotessamplitudecshell.dylib
-	CCFLAGS= -D$(OS) $(MACHINE) -O3
-	COMPILE = g++ ${CCFLAGS} ${INCLUDE} -o $@ -c
-	LINK = g++ ${CCFLAGS} -shared ${LIBS} -o $(OUTPUT)  ${OBJECTS} -lstdc++
-	VERSION = g++ --version
-endif
-
-
-#-------------------------------------------------------------------------------
-# targets
-#-------------------------------------------------------------------------------
-
-
-all : info makedir cpp done
-	@echo
-
-%.o: $($*:.o=.cc)
-	${COMPILE} $*.cc
-
-cpp : ${OBJECTS}
-	@echo
-	@echo "linking shared library"
-	${LINK}
-	@echo ""
-
-# make sure lib subdirectory exist
-makedir:
-	-mkdir lib
-
-clean: clean_objs
-	@echo "removing" $(OUTPUT)
-	@rm -f $(OUTPUT)
-	@echo
-
-clean_objs:
-	@echo "removing object files"
-	@rm -f src/*.o
-	@echo
-
-info :
-	@ echo
-	@ echo "Building GeoTessAmplitudeCShell on" $(OS) "with" $(MACHINE)
-	@$(VERSION)
-	@ echo ""
-
-done :
-	@echo "Done building GeoTessAmplitudeCShell"
-	@echo ""
+include ../Makefile_common

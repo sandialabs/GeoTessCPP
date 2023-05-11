@@ -69,6 +69,9 @@ const double GeoTessPosition::TWALK_TOLERANCE = -1e-15;
 GeoTessPosition::GeoTessPosition(GeoTessModel* m, const GeoTessInterpolatorType& radialType) :
 		refCount(0), maxTessLevel(NULL), tessLevels(NULL), triangle(NULL),
 		errorValue(NaN_DOUBLE),
+		radius(-1.),
+		depthSpecified(false),
+		earthRadius(-1),
 		layerId(-1), tessid(-1),
 		radialInterpolatorType(radialType),
 		model(m),
@@ -82,10 +85,6 @@ GeoTessPosition::GeoTessPosition(GeoTessModel* m, const GeoTessInterpolatorType&
 		radiusOutOfRangeAllowed(true)
 {
 	unitVector[0] = unitVector[1] = unitVector[2] = 0.0;
-
-	radius = -1.0;
-	tessid = -1;
-
 	layerRadii.resize(nLayers + 1);
 	for (int i = 0; i < nLayers + 1; ++i) layerRadii[i] = -1.0;
 
@@ -276,11 +275,6 @@ void GeoTessPosition::updatePosition2D(int lid, const double* const uVector)
 		// triangle[tessid], lienarCoefficients[tessid] and tessLevels[tessid]
 		getContainingTriangle(tessid);
 
-		// determine vertices and coefficients for interpolation in geographic
-		// dimensions. This is an abstract method so the results depend on the
-		// interpolator type.
-		update2D(tessid);
-
 		// nullify previously computed earth radius.
 		earthRadius = -1;
 
@@ -315,15 +309,21 @@ void GeoTessPosition::getContainingTriangle(int tid)
 	vector<double>& c = linearCoefficients[tid];
 	int maxTess = maxTessLevel[tid];
 
+	double u[] = {unitVector[0], unitVector[1], unitVector[2]};
+
+	if (model->getMetaData().getEulerModelToGrid() != NULL)
+		GeoTessUtils::eulerRotation(unitVector, model->getMetaData().getEulerModelToGrid(), u);
+
+
 	while (true)
 	{
-		c[0] = GeoTessUtils::dot(gridEdges[t][0]->normal, unitVector);
+		c[0] = GeoTessUtils::dot(gridEdges[t][0]->normal, u);
 		if (c[0] > GeoTessPosition::TWALK_TOLERANCE)
 		{
-			c[1] = GeoTessUtils::dot(gridEdges[t][1]->normal, unitVector);
+			c[1] = GeoTessUtils::dot(gridEdges[t][1]->normal, u);
 			if (c[1] > GeoTessPosition::TWALK_TOLERANCE)
 			{
-				c[2] = GeoTessUtils::dot(gridEdges[t][2]->normal, unitVector);
+				c[2] = GeoTessUtils::dot(gridEdges[t][2]->normal, u);
 				if (c[2] > GeoTessPosition::TWALK_TOLERANCE)
 				{
 					if ((gridDescendants[t] < 0) || (tessLevel >= maxTess))
@@ -334,6 +334,11 @@ void GeoTessPosition::getContainingTriangle(int tid)
 						c[0] /= sum; c[1] /= sum; c[2] /= sum;
 						triangle[tid] = t;
 						tessLevels[tid] = tessLevel;
+
+						// Update the 2D vertices and horizontal interpolation coefficients.
+						// Different types of interpolators will handle this differently.
+						update2D(tid, u);
+
 						return;
 					}
 					else { ++tessLevel; t = gridDescendants[t]; }
@@ -469,7 +474,7 @@ int	GeoTessPosition::getIndexOfClosestVertex() const
 string GeoTessPosition::toString()
 {
 	char s[300];
-	sprintf(s, "Triangle %7d layer %2d  lat, lon, depth: %1.6f, %1.6f, %1.3f",
+	snprintf(s, sizeof(s), "Triangle %7d layer %2d  lat, lon, depth: %1.6f, %1.6f, %1.3f",
 			triangle[tessid], layerId,
 			GeoTessUtils::getLatDegrees(unitVector),
 			GeoTessUtils::getLonDegrees(unitVector), getDepth());
@@ -482,7 +487,7 @@ string GeoTessPosition::toString()
 	for (int i = 0; i < (int) v.size(); ++i)
 	{
 		string lls = GeoTessUtils::getLatLonString(grid.getVertex(v[i]));
-		sprintf(s, "%6d %s %10.6f %7.3f", v[i], lls.c_str(),
+		snprintf(s, sizeof(s), "%6d %s %10.6f %7.3f", v[i], lls.c_str(),
 				c[i], CPPUtils::toDegrees(GeoTessUtils::angle(unitVector,
 						grid.getVertex(v[i]))));
 		os << s << endl;

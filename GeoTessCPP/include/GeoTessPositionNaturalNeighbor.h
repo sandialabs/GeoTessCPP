@@ -114,7 +114,7 @@ protected:
 	 * by Sibson, R. (1980), A Vector Identity For Dirichlet Tessellation, Proc. Cambridge
 	 * Philosophical Society, 87, 151-155.
 	 */
-	virtual void update2D(int tid);
+	virtual void update2D(int tid, const double* const uVector);
 
 public:
 

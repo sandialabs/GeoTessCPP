@@ -431,10 +431,15 @@ public:
 	{ loadGridBinary(input); }
 
 	/**
-	 * Copy constructor.  Makes a deep copy
+	 * Copy constructor.  Makes a deep copy.
+	 * If eulerRotationMatrix is specified and is not NULL, then the
+	 * vertices of the grid are rotated according to the 3x3 rotation matrix
+	 * and the gridID of the new grid will be set to "-".
 	 * @param other the other GeoTessGrid whose values are to be duplicated here.
+	 * @param eulerRotationMatrix a 3x3 matrix.  When a unit vetor is multiplied
+	 * by this matrix it is rotated into a new coordinate system.
 	 */
-	GeoTessGrid(GeoTessGrid &other);
+	GeoTessGrid(GeoTessGrid &other, double** eulerRotationMatrix=NULL);
 
 	/**
 	 * Equal operator. Makes a deep copy.
@@ -450,6 +455,10 @@ public:
 	LONG_INT getMemory()
 	{
 		LONG_INT memory = (LONG_INT)sizeof(GeoTessGrid);
+
+		// add memory requirements for all the string variables.
+		memory += (LONG_INT) (gridID.length() + gridInputFile.length() + gridOutputFile.length()
+				+ gridSoftwareVersion.length() + gridGenerationDate.length());
 
 		// double** vertices
 		memory += nVertices * (LONG_INT)sizeof(double*) + nVertices * 3 * (LONG_INT)sizeof(double);
@@ -497,10 +506,6 @@ public:
 		memory += (LONG_INT) (connectedVertices.capacity() * sizeof(set<int>));
 		for (int i=0; i<(int)connectedVertices.size(); ++i)
 			memory += (LONG_INT) (connectedVertices[i].size() * sizeof(int));
-
-		// add memory requirements for all the string variables.
-		memory += (LONG_INT) (gridID.length() + gridInputFile.length() + gridOutputFile.length()
-				+ gridSoftwareVersion.length() + gridGenerationDate.length());
 
 		return memory;
 	}
@@ -616,7 +621,7 @@ public:
 	const string& getGridOutputFile() const { return gridOutputFile; }
 
 	/**
-	 * Retrieve the unit vector that corresponds to the specified vertex.
+	 * Retrieve a reference to the unit vector that corresponds to the specified vertex.
 	 * @param vertex the index of the vertex
 	 * @return unit vector of vertex
 	 */
@@ -775,7 +780,8 @@ public:
 	 * @param vectors (output) a set containing the unit vectors of all the vertices that are
 	 * connected together by triangles on the specified tessellation and level.
 	 */
-	void getVertices(const int& tessellation, const int& level, set<const double*>& vectors);
+	void getVertices(const int& tessellation, const int& level, set<const double*>& vectors,
+			double** eulerGridToModel=NULL);
 
 	/**
 	 * Retrieve a set containing the indices of all the vertices that are connected

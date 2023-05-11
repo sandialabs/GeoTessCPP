@@ -291,7 +291,7 @@ public:
 	/**
 	 * @return the current LibCorr3D version.
 	 */
-	static string getVersion() { return "1.2.5"; };
+	static string getVersion() { return "1.2.7"; };
 
 	// version 1.2.5    2015-08-19
 	// Fixed a bug discovered at AFTAC, in method

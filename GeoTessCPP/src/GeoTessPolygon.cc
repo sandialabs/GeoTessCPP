@@ -58,8 +58,13 @@ double GeoTessPolygon::TOLERANCE = 1e-7;
 // **** _FUNCTION IMPLEMENTATIONS_ *********************************************
 
 GeoTessPolygon::GeoTessPolygon()
-: referencePoint(NULL), referenceIn(false), global(false), lonFirst(false), refCount(0), attachment(NULL)
-{ }
+: referencePoint(NULL), referenceIn(true), global(true), lonFirst(false), refCount(0), attachment(NULL)
+{
+	referencePoint = new double[3];
+	referencePoint[0] = 1.;
+	referencePoint[1] = 0.;
+	referencePoint[2] = 0.;
+}
 
 GeoTessPolygon::GeoTessPolygon(vector<double*>& points)
 : referencePoint(NULL), referenceIn(false), global(false), lonFirst(false), refCount(0), attachment(NULL)

@@ -165,6 +165,10 @@ protected:
 	 */
 	void* attachment;
 
+	/**
+	 * Constructor instantiates a global polygon where the the contains(...) methods
+	 * always return true.
+	 */
 	GeoTessPolygon();
 
 	/**

@@ -21,7 +21,7 @@ int main( int argc, char *argv[] ) {
     return status;
 }
 bool suite_GeoTessDataTest_init = false;
-#include "/Users/sballar/Documents/GeoTessCPP_work/GeoTessCPP_devl/geo-tess-cpp-cxx-test/include/GeoTessDataTest.h"
+#include "/Users/sballar/github/GeoTessCPP/geo-tess-cpp-cxx-test/include/GeoTessDataTest.h"
 
 static GeoTessDataTest suite_GeoTessDataTest;
 
@@ -100,7 +100,7 @@ public:
  void runTest() { suite_GeoTessDataTest.testByteArray(); }
 } testDescription_suite_GeoTessDataTest_testByteArray;
 
-#include "/Users/sballar/Documents/GeoTessCPP_work/GeoTessCPP_devl/geo-tess-cpp-cxx-test/include/GeoTessGridTest.h"
+#include "/Users/sballar/github/GeoTessCPP/geo-tess-cpp-cxx-test/include/GeoTessGridTest.h"
 
 static GeoTessGridTest suite_GeoTessGridTest;
 
@@ -407,7 +407,7 @@ public:
  void runTest() { suite_GeoTessGridTest.testLatitude(); }
 } testDescription_suite_GeoTessGridTest_testLatitude;
 
-#include "/Users/sballar/Documents/GeoTessCPP_work/GeoTessCPP_devl/geo-tess-cpp-cxx-test/include/GeoTessMetaDataTest.h"
+#include "/Users/sballar/github/GeoTessCPP/geo-tess-cpp-cxx-test/include/GeoTessMetaDataTest.h"
 
 static GeoTessMetaDataTest suite_GeoTessMetaDataTest;
 
@@ -702,7 +702,7 @@ public:
  void runTest() { suite_GeoTessMetaDataTest.testGetModelGenerationDate(); }
 } testDescription_suite_GeoTessMetaDataTest_testGetModelGenerationDate;
 
-#include "/Users/sballar/Documents/GeoTessCPP_work/GeoTessCPP_devl/geo-tess-cpp-cxx-test/include/GeoTessModelTest.h"
+#include "/Users/sballar/github/GeoTessCPP/geo-tess-cpp-cxx-test/include/GeoTessModelTest.h"
 
 static GeoTessModelTest suite_GeoTessModelTest;
 
@@ -889,7 +889,7 @@ public:
  void runTest() { suite_GeoTessModelTest.testSetActiveRegion3DDepths(); }
 } testDescription_suite_GeoTessModelTest_testSetActiveRegion3DDepths;
 
-#include "/Users/sballar/Documents/GeoTessCPP_work/GeoTessCPP_devl/geo-tess-cpp-cxx-test/include/GeoTessPositionTest.h"
+#include "/Users/sballar/github/GeoTessCPP/geo-tess-cpp-cxx-test/include/GeoTessPositionTest.h"
 
 static GeoTessPositionTest suite_GeoTessPositionTest;
 
@@ -1190,7 +1190,7 @@ public:
  void runTest() { suite_GeoTessPositionTest.testGetWeights(); }
 } testDescription_suite_GeoTessPositionTest_testGetWeights;
 
-#include "/Users/sballar/Documents/GeoTessCPP_work/GeoTessCPP_devl/geo-tess-cpp-cxx-test/include/GreatCircleTest.h"
+#include "/Users/sballar/github/GeoTessCPP/geo-tess-cpp-cxx-test/include/GreatCircleTest.h"
 
 static GreatCircleTest suite_GreatCircleTest;
 
@@ -1281,7 +1281,7 @@ public:
  void runTest() { suite_GreatCircleTest.testTransformDoubleArrayDoubleArray(); }
 } testDescription_suite_GreatCircleTest_testTransformDoubleArrayDoubleArray;
 
-#include "/Users/sballar/Documents/GeoTessCPP_work/GeoTessCPP_devl/geo-tess-cpp-cxx-test/include/PointMapTest.h"
+#include "/Users/sballar/github/GeoTessCPP/geo-tess-cpp-cxx-test/include/PointMapTest.h"
 
 static PointMapTest suite_PointMapTest;
 
@@ -1420,7 +1420,7 @@ public:
  void runTest() { suite_PointMapTest.testSetActiveRegion3D(); }
 } testDescription_suite_PointMapTest_testSetActiveRegion3D;
 
-#include "/Users/sballar/Documents/GeoTessCPP_work/GeoTessCPP_devl/geo-tess-cpp-cxx-test/include/PolygonTest.h"
+#include "/Users/sballar/github/GeoTessCPP/geo-tess-cpp-cxx-test/include/PolygonTest.h"
 
 static PolygonTest suite_PolygonTest;
 
@@ -1487,7 +1487,7 @@ public:
  void runTest() { suite_PolygonTest.testGreatCircle(); }
 } testDescription_suite_PolygonTest_testGreatCircle;
 
-#include "/Users/sballar/Documents/GeoTessCPP_work/GeoTessCPP_devl/geo-tess-cpp-cxx-test/include/ProfileTest.h"
+#include "/Users/sballar/github/GeoTessCPP/geo-tess-cpp-cxx-test/include/ProfileTest.h"
 
 static ProfileTest suite_ProfileTest;
 
@@ -1506,7 +1506,7 @@ public:
  void runTest() { suite_ProfileTest.testArrays(); }
 } testDescription_suite_ProfileTest_testArrays;
 
-#include "/Users/sballar/Documents/GeoTessCPP_work/GeoTessCPP_devl/geo-tess-cpp-cxx-test/include/GeoTessModelAmplitudeTest.h"
+#include "/Users/sballar/github/GeoTessCPP/geo-tess-cpp-cxx-test/include/GeoTessModelAmplitudeTest.h"
 
 static GeoTessModelAmplitudeTest suite_GeoTessModelAmplitudeTest;
 

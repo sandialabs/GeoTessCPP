@@ -212,8 +212,14 @@ int main(int argc, char** argv)
 	strTmp = NULL;
 
 	// specify the path to the file containing the grid to be use for this test.
-	strncpy(gridFile, path, len);
-	strncat(gridFile, "/small_model_grid.ascii", len);
+	//strncpy(gridFile, path, len);
+	//strncat(gridFile, "/small_model_grid.ascii", len);
+	int nchar = snprintf(gridFile, len, "%s/%s", path, "small_model_grid.ascii");
+	if (nchar < 0 || nchar > len) {
+		fprintf(stderr, "%s\n", "gridFile path is too long");
+		exit(-1);
+	}
+		
 
 	// call a GeoTessModel constructor to build the model.  This will build the
 	// grid, and initialize all the data structures to null.  To be useful, we

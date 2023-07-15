@@ -462,46 +462,6 @@ static void rotate(const double* const x, const double* const p, double a,
 	}
 
 	/**
-	 * Read a string from the input file stream and set into s
-	 * @param s the string that will be populated with results
-	 * @param ifs input stream
-	 */
-	static void readString(string& s, ifstream& ifs)
-	{
-		size_t sze;
-		ifs >> sze;
-		if (sze > 1073741824)
-			s = "ERROR in GeoTessUtils::readString(string& s, ifstream& ifs).  String size > 1GB";
-		else {
-			char* c = new char[sze+1];
-			ifs.read(c, sze);
-			// make sure c is nul terminated
-			if (c[sze-1] != 0) c[sze] = 0;
-			s = c;
-			delete[] c;
-		}
-	}
-
-	/**
-	 * Write the string s to the output file stream.
-	 * @param ofs output stream
-	 * @param s the string to write the output stream.
-	 */
-	static void writeString(ofstream& ofs, const string& s)
-	{
-		// s.length() is a variable of type size_t (an unsigned integer of some sort)
-		ofs << s.length();
-		// s.c_str() returns a pointer to an array that contains a null-terminated 
-		// sequence of characters (i.e., a C-string) representing the current 
-		// value of the string object.
-		// 
-		// This array includes the same sequence of characters that make up the 
-		// value of the string object plus an additional terminating null-character 
-		// ('\0') at the end.
-		ofs.write(s.c_str(), s.length());
-	}
-
-	/**
 	 * Return the angular distance in radians between two unit vectors.
 	 *
 	 * @param v0 a 3 component unit vector

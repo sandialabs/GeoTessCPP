@@ -382,7 +382,7 @@ public:
 	 * Retrieve the current version number
 	 * @return  the current version number
 	 */
-	static string getVersion() { return "1.2.0"; }
+	static string getVersion() { return "1.2.1"; }
 
 	/**
 	 * Retrieve the current GeoTessCPP version number

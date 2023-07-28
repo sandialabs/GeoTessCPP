@@ -42,7 +42,7 @@ endif
 GEOTESS_ROOT=`pwd`
 OS=$(shell uname -s)
 
-all: libraries binaries tests env
+all: libraries binaries env
 
 libraries:
 	@cd GeoTessCPP; make $(BITS)
@@ -51,9 +51,6 @@ libraries:
 
 binaries:
 	@cd GeoTessCPPExamples; make $(BITS)
-
-tests:
-	@cd geo-tess-cpp-cxx-test; make $(BITS)
 
 clean_objs:
 	@cd GeoTessCPP; make clean_objs

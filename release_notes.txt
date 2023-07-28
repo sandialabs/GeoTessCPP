@@ -1,10 +1,12 @@
 GeoTessCPP Release Notes
 
-Tuesday July 18, 2023
+Tuesday July 28, 2023
 
 	GeoTessCPP version 2.7.2
 	LibCorr3D  version 1.2.8
 	GeoTessAmplitude version 1.2.1
 	
-	Minor code modifications to address Fortify scan High issues.
+	Deleted all C interface code.
+	
+	Minor code modifications to address Fortify scan High issues in c++ codes.
 	

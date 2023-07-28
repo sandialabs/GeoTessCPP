@@ -46,42 +46,31 @@ all: libraries binaries tests env
 
 libraries:
 	@cd GeoTessCPP; make $(BITS)
-	@cd GeoTessCShell; make $(BITS)
 	@cd GeoTessAmplitudeCPP; make $(BITS)
-	@cd GeoTessAmplitudeCShell; make $(BITS)
 	@cd LibCorr3D; make $(BITS)
 
 binaries:
 	@cd GeoTessCPPExamples; make $(BITS)
-	@cd GeoTessCExamples; make $(BITS)
 
 tests:
 	@cd geo-tess-cpp-cxx-test; make $(BITS)
 
 clean_objs:
 	@cd GeoTessCPP; make clean_objs
-	@cd GeoTessCShell; make clean_objs
-	@cd GeoTessCExamples; make clean_objs
 	@cd GeoTessAmplitudeCPP; make clean_objs
 	@cd LibCorr3D; make clean_objs
 	@cd GeoTessCPPExamples; make clean_objs
-	@cd GeoTessAmplitudeCShell; make clean_objs
 
 clean:
 	@cd GeoTessCPP; make clean
-	@cd GeoTessCShell; make clean
 	@cd GeoTessAmplitudeCPP; make clean
-	@cd GeoTessAmplitudeCShell; make clean
 	@cd LibCorr3D; make clean
 	@cd GeoTessCPPExamples; make clean
-	@cd GeoTessCExamples; make clean
 	@rm -rf lib
 
 doxygen:
 	@cd GeoTessCPP; doxygen
-	@cd GeoTessCShell; doxygen
 	@cd GeoTessAmplitudeCPP; doxygen
-	@cd GeoTessAmplitudeCShell; doxygen
 	@cd LibCorr3D; doxygen
 
 env:

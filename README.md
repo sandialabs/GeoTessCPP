@@ -13,7 +13,5 @@ This C++ version includes the following components:
 	- LICENSE: A file containing the software license
 	- Makefile: a make file that will call the make files in each component to build the entire 
 	     project
-	- geo-tess-cpp-cxx-test: A collection of unit tests for the various software components.
-	     Only included in the devl version of the software, not the master version.
 
 Source code documentation is available here: https://sandialabs.github.io/GeoTessCPP/

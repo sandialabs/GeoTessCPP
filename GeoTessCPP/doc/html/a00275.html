@@ -259,9 +259,6 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ac5042e541f8e5f5de251ba06a145e91c"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#ac5042e541f8e5f5de251ba06a145e91c">parallel</a> (const double *const u, const double *const v)</td></tr>
 <tr class="memdesc:ac5042e541f8e5f5de251ba06a145e91c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if unit vector u and v are parallel or very close to it.  <a href="a00275.html#ac5042e541f8e5f5de251ba06a145e91c">More...</a><br /></td></tr>
 <tr class="separator:ac5042e541f8e5f5de251ba06a145e91c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60d704c49ed4d136d9e494dcb73363c8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#a60d704c49ed4d136d9e494dcb73363c8">readString</a> (string &amp;s, ifstream &amp;ifs)</td></tr>
-<tr class="memdesc:a60d704c49ed4d136d9e494dcb73363c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a string from the input file stream and set into s.  <a href="a00275.html#a60d704c49ed4d136d9e494dcb73363c8">More...</a><br /></td></tr>
-<tr class="separator:a60d704c49ed4d136d9e494dcb73363c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa9ad50acfc9f86b05c9262ffe7fc578f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#aa9ad50acfc9f86b05c9262ffe7fc578f">rotate</a> (const double *const x, const double *const p, double a, double *const z)</td></tr>
 <tr class="memdesc:aa9ad50acfc9f86b05c9262ffe7fc578f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate unit vector x clockwise around unit vector p, by angle a.  <a href="a00275.html#aa9ad50acfc9f86b05c9262ffe7fc578f">More...</a><br /></td></tr>
 <tr class="separator:aa9ad50acfc9f86b05c9262ffe7fc578f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -277,9 +274,6 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ac6436ceb5a8a2e58855e98eb592a7c88"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#ac6436ceb5a8a2e58855e98eb592a7c88">vectorTripleProductNorthPole</a> (const double *const u, double *const w)</td></tr>
 <tr class="memdesc:ac6436ceb5a8a2e58855e98eb592a7c88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the normalized vector triple product (u x northPole) x u and store result in w.  <a href="a00275.html#ac6436ceb5a8a2e58855e98eb592a7c88">More...</a><br /></td></tr>
 <tr class="separator:ac6436ceb5a8a2e58855e98eb592a7c88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbf4fe3df8175ae094f65f3278471922"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00275.html#afbf4fe3df8175ae094f65f3278471922">writeString</a> (ofstream &amp;ofs, const string &amp;s)</td></tr>
-<tr class="memdesc:afbf4fe3df8175ae094f65f3278471922"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the string s to the output file stream.  <a href="a00275.html#afbf4fe3df8175ae094f65f3278471922">More...</a><br /></td></tr>
-<tr class="separator:afbf4fe3df8175ae094f65f3278471922"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -3047,51 +3041,6 @@ Rotate the xyz-system a third time about the new z-axis by C. </li>
 
 </div>
 </div>
-<a id="a60d704c49ed4d136d9e494dcb73363c8" name="a60d704c49ed4d136d9e494dcb73363c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a60d704c49ed4d136d9e494dcb73363c8">&#9670;&nbsp;</a></span>readString()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void geotess::GeoTessUtils::readString </td>
-          <td>(</td>
-          <td class="paramtype">string &amp;&#160;</td>
-          <td class="paramname"><em>s</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">ifstream &amp;&#160;</td>
-          <td class="paramname"><em>ifs</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Read a string from the input file stream and set into s. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">s</td><td>the string that will be populated with results </td></tr>
-    <tr><td class="paramname">ifs</td><td>input stream </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="aa9ad50acfc9f86b05c9262ffe7fc578f" name="aa9ad50acfc9f86b05c9262ffe7fc578f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa9ad50acfc9f86b05c9262ffe7fc578f">&#9670;&nbsp;</a></span>rotate()</h2>
 
@@ -3370,51 +3319,6 @@ g[0] is the x direction, i.e, g[1] cross g2. </li>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if w has finite length, false if length(w) is zero. </dd></dl>
-
-</div>
-</div>
-<a id="afbf4fe3df8175ae094f65f3278471922" name="afbf4fe3df8175ae094f65f3278471922"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afbf4fe3df8175ae094f65f3278471922">&#9670;&nbsp;</a></span>writeString()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void geotess::GeoTessUtils::writeString </td>
-          <td>(</td>
-          <td class="paramtype">ofstream &amp;&#160;</td>
-          <td class="paramname"><em>ofs</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const string &amp;&#160;</td>
-          <td class="paramname"><em>s</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Write the string s to the output file stream. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ofs</td><td>output stream </td></tr>
-    <tr><td class="paramname">s</td><td>the string to write the output stream. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>

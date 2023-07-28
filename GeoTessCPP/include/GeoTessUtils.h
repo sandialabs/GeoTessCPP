@@ -122,7 +122,7 @@ public:
 	 * The current GeoTess version.
 	 * @return the current GeoTess version
 	 */
-	static string getVersion() { return "2.7.0"; }
+	static string getVersion() { return "2.7.2"; }
 
 	/**
 	 * Return the dot product of two vectors.
@@ -459,32 +459,6 @@ static void rotate(const double* const x, const double* const p, double a,
 		g[0] = x[0] * t[0][0] + x[1] * t[0][1] + x[2] * t[0][2];
 		g[1] = x[0] * t[1][0] + x[1] * t[1][1] + x[2] * t[1][2];
 		g[2] = x[0] * t[2][0] + x[1] * t[2][1] + x[2] * t[2][2];
-	}
-
-	/**
-	 * Read a string from the input file stream and set into s
-	 * @param s the string that will be populated with results
-	 * @param ifs input stream
-	 */
-	static void readString(string& s, ifstream& ifs)
-	{
-		int sze;
-		ifs >> sze;
-		char* c = new char[sze];
-		ifs.read(c, sze);
-		s = c;
-		delete[] c;
-	}
-
-	/**
-	 * Write the string s to the output file stream.
-	 * @param ofs output stream
-	 * @param s the string to write the output stream.
-	 */
-	static void writeString(ofstream& ofs, const string& s)
-	{
-		ofs << s.length();
-		ofs.write(s.c_str(), s.length());
 	}
 
 	/**

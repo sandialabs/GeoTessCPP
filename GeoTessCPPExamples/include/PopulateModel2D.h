@@ -36,7 +36,4 @@
 #ifndef POPULATEMODEL2D_H_
 #define POPULATEMODEL2D_H_
 
-
-
-
 #endif /* POPULATEMODEL2D_H_ */

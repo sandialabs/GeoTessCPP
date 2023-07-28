@@ -310,7 +310,7 @@ public:
 	 * </ul>
 	 */
 	GeoTessMetaData()
-			: earthShape(), modelFileFormat(0), description(""), nLayers(0), nVertices(0), layerNames(NULL), layerTessIds(
+			: earthShape(), modelFileFormat(3), description(""), nLayers(0), nVertices(0), layerNames(NULL), layerTessIds(
 					NULL), dataType(&GeoTessDataType::NONE), nAttributes(-1), attributeNames(
 					NULL), attributeUnits(NULL), boolAttributeFilter(false),
 					inputModelFile("none"), inputGridFile("none"), loadTimeModel(-1.0),

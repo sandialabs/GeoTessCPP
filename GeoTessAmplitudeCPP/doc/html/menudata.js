@@ -33,14 +33,14 @@ var menudata={children:[
 {text:"c",url:"functions.html#index_c"},
 {text:"g",url:"functions.html#index_g"},
 {text:"i",url:"functions.html#index_i"},
-{text:"r",url:"functions.html#index_r"},
+{text:"o",url:"functions.html#index_o"},
 {text:"s",url:"functions.html#index_s"},
 {text:"~",url:"functions.html#index__7E"}]},
 {text:"Functions",url:"functions_func.html",children:[
 {text:"c",url:"functions_func.html#index_c"},
 {text:"g",url:"functions_func.html#index_g"},
 {text:"i",url:"functions_func.html#index_i"},
-{text:"r",url:"functions_func.html#index_r"},
+{text:"o",url:"functions_func.html#index_o"},
 {text:"s",url:"functions_func.html#index_s"},
 {text:"~",url:"functions_func.html#index__7E"}]}]}]},
 {text:"Files",url:"files.html",children:[

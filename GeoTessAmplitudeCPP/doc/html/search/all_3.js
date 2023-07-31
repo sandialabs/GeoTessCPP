@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['refreshfrequencymap_0',['refreshFrequencyMap',['../classgeotess_1_1_geo_tess_model_amplitude.html#ad5d116baf68f6891680aebfc42ffeced',1,'geotess::GeoTessModelAmplitude']]]
+  ['operator_3d_3d_0',['operator==',['../classgeotess_1_1_geo_tess_model_amplitude.html#a23c6eb6c3fa921f572f2ed94aa9cbc8a',1,'geotess::GeoTessModelAmplitude']]]
 ];
